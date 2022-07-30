@@ -1,0 +1,25 @@
+name: complete-checking
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run linting
+        run: |
+          pip install -U pip
+          pip install norminette
+          norminette sources/ includes/ libs/
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile the program
+        run: |
+          make
