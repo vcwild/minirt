@@ -6,17 +6,17 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/07/30 20:24:47 by vwildner         ###   ########.fr        #
+#    Updated: 2022/07/30 20:35:32 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
 CC := $(shell ./scripts/set_compiler.sh)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm
-INTERNAL_LIBS = -lft -lgnl
+INTERNAL_LIBS = -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -32,7 +32,7 @@ INCLUDES_PATH = ./includes
 LIBS_PATH = ./libs
 ARCHIVES_PATH = ./archives
 
-HEADER_FILE = philo.h
+HEADER_FILE = $(NAME).h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
 SOURCE_FILES =	main.c
@@ -46,7 +46,7 @@ MAKE_EXTERNAL = make -C
 # libft
 LBFT_NAME = libft.a
 LBFT_DIR = $(LIBS_PATH)/libft
-LBFT_LIB = ${LBFT_DIR}/$(LBFT_NAME)
+LBFT_LIB = $(LBFT_DIR)/$(LBFT_NAME)
 LBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LBFT_NAME)
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
@@ -59,8 +59,12 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER)
-	@$(CC) $(CFLAGS) -w -g $(OBJECTS) -o $(NAME) -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) $(EXTERNAL_LIBS)
+$(NAME): $(OBJECTS) $(HEADER) libft
+	@$(CC) $(CFLAGS) \
+	-w -g $(OBJECTS) \
+	-o $(NAME) \
+	-L $(ARCHIVES_PATH) \
+	-I $(INCLUDES_PATH) $(INTERNAL_LIBS) $(EXTERNAL_LIBS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
@@ -68,12 +72,12 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 
 libft: $(LBFT_ARCHIVE)
 
-$(LBFT_ARCHIVE): ${LBFT_LIB}
+$(LBFT_ARCHIVE): $(LBFT_LIB)
 	@$(SAFE_MKDIR) $(ARCHIVES_PATH)
 	@$(COPY) $(LBFT_DIR)/libft.a $(ARCHIVES_PATH)
 
-${LBFT_LIB}:
-	@$(MAKE_EXTERNAL) ${LBFT_DIR}
+$(LBFT_LIB):
+	@$(MAKE_EXTERNAL) $(LBFT_DIR)
 
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
@@ -85,10 +89,10 @@ archives_clean:
 
 clean:
 	$(REMOVE) $(OBJECTS_PATH)
-	@${MAKE} fclean -C ${LBFT_DIR}
+	@$(MAKE) fclean -C $(LBFT_DIR)
 
 fclean: clean archives_clean
 	$(REMOVE) $(NAME)
-	${RM} ${ARCHIVES_PATH}/${LBFT_NAME}
+	$(RM) $(ARCHIVES_PATH)/$(LBFT_NAME)
 
 .PHONY: all run valgrind re fclean clean archives_clean libft_clean
