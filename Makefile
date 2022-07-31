@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/07/30 20:35:32 by vwildner         ###   ########.fr        #
+#    Updated: 2022/07/30 21:13:17 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minirt
 CC := $(shell ./scripts/set_compiler.sh)
 CFLAGS = -Wall -Wextra
 
-EXTERNAL_LIBS = -lm
+EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
 INTERNAL_LIBS = -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
@@ -44,10 +44,15 @@ OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 MAKE_EXTERNAL = make -C
 
 # libft
-LBFT_NAME = libft.a
-LBFT_DIR = $(LIBS_PATH)/libft
-LBFT_LIB = $(LBFT_DIR)/$(LBFT_NAME)
-LBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LBFT_NAME)
+LIBFT_NAME = libft.a
+LIBFT_PATH = $(LIBS_PATH)/libft
+LIBFT_LIB = $(LIBFT_PATH)/$(LIBFT_NAME)
+LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT_NAME)
+
+# mlx
+MLX = libmlx.a
+MLX_PATH = $(LIBS_PATH)/mlx_linux
+MLX_ARCHIVE = $(ARCHIVES_PATH)/$(MLX)
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -56,10 +61,11 @@ ifeq (run,$(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
+.PHONY: all run valgrind re fclean clean archives_clean libft libft_clean libmlx libmlx_clean
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -70,14 +76,27 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
 	@$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
 
-libft: $(LBFT_ARCHIVE)
+libft: $(LIBFT_ARCHIVE)
 
-$(LBFT_ARCHIVE): $(LBFT_LIB)
+$(LIBFT_ARCHIVE): $(LIBFT_LIB)
 	@$(SAFE_MKDIR) $(ARCHIVES_PATH)
-	@$(COPY) $(LBFT_DIR)/libft.a $(ARCHIVES_PATH)
+	@$(COPY) $(LIBFT_PATH)/libft.a $(ARCHIVES_PATH)
 
-$(LBFT_LIB):
-	@$(MAKE_EXTERNAL) $(LBFT_DIR)
+$(LIBFT_LIB):
+	@$(MAKE_EXTERNAL) $(LIBFT_PATH)
+
+libmlx:
+	@$(MAKE_EXTERNAL) $(MLX_PATH)
+	@$(SAFE_MKDIR) $(ARCHIVES_PATH)
+	@$(COPY) $(MLX_PATH)/$(MLX) $(ARCHIVES_PATH)
+
+libmlx_clean:
+	@$(MAKE_EXTERNAL) $(MLX_PATH) clean
+	@$(REMOVE) $(MLX_ARCHIVE)
+
+libft_clean:
+	@$(MAKE_EXTERNAL) $(LIBFT_PATH) clean
+	@$(REMOVE) $(LIBFT_ARCHIVE)
 
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
@@ -85,14 +104,10 @@ valgrind: $(NAME)
 re:	fclean all
 
 archives_clean:
-	$(REMOVE) $(ARCHIVES_PATH)
+	@$(REMOVE) $(ARCHIVES_PATH)
 
 clean:
-	$(REMOVE) $(OBJECTS_PATH)
-	@$(MAKE) fclean -C $(LBFT_DIR)
+	@$(REMOVE) $(OBJECTS_PATH)
 
-fclean: clean archives_clean
-	$(REMOVE) $(NAME)
-	$(RM) $(ARCHIVES_PATH)/$(LBFT_NAME)
-
-.PHONY: all run valgrind re fclean clean archives_clean libft_clean
+fclean: clean archives_clean libft_clean libmlx_clean
+	@$(REMOVE) $(NAME)
