@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/07/30 21:13:17 by vwildner         ###   ########.fr        #
+#    Updated: 2022/07/31 17:38:02 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ libft: $(LIBFT_ARCHIVE)
 
 $(LIBFT_ARCHIVE): $(LIBFT_LIB)
 	@$(SAFE_MKDIR) $(ARCHIVES_PATH)
-	@$(COPY) $(LIBFT_PATH)/libft.a $(ARCHIVES_PATH)
+	@$(COPY) $(LIBFT_PATH)/$(LIBFT_NAME) $(ARCHIVES_PATH)
 
 $(LIBFT_LIB):
 	@$(MAKE_EXTERNAL) $(LIBFT_PATH)
@@ -111,3 +111,10 @@ clean:
 
 fclean: clean archives_clean libft_clean libmlx_clean
 	@$(REMOVE) $(NAME)
+
+TEST_SRC += tests/munit/munit.c
+TEST_SRC += tests/main.c
+
+test: $(LIBFT) $(OBJ_DIRS) $(OBJ)
+	$(CC) -g $(TEST_SRC) $(OBJECTS) -I sources -o ./test_bin -lm -L $(ARCHIVES_PATH) -lft
+	./test_bin # || ./test_bin --no-fork
