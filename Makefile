@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/07/31 17:38:02 by vwildner         ###   ########.fr        #
+#    Updated: 2022/07/31 17:58:37 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,7 +114,8 @@ fclean: clean archives_clean libft_clean libmlx_clean
 
 TEST_SRC += tests/munit/munit.c
 TEST_SRC += tests/main.c
+TEST_SRC += tests/test_tuples.c
 
-test: $(LIBFT) $(OBJ_DIRS) $(OBJ)
-	$(CC) -g $(TEST_SRC) $(OBJECTS) -I sources -o ./test_bin -lm -L $(ARCHIVES_PATH) -lft
+test: $(LIBFT) $(OBJECTS)
+	$(CC) -g $(TEST_SRC) $(OBJECTS) -I sources -o ./test_bin -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) -lft -lm
 	./test_bin # || ./test_bin --no-fork

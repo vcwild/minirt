@@ -1,6 +1,6 @@
 #include "munit/munit.h"
-#include "../sources/structures.h"
-#include "../sources/minirt.h"
+#include "../includes/structures.h"
+#include "../includes/minirt.h"
 #include <math.h>
 
 MunitResult matrix_test1(const MunitParameter params[], void *fixture)
