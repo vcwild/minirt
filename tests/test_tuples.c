@@ -1,7 +1,6 @@
 #include "munit/munit.h"
-#include "../includes/structures.h"
-#include "../includes/minirt.h"
-#include "../includes/tuple.h"
+#include <tuple.h>
+#include <canvas.h>
 #include <math.h>
 
 MunitResult tuple_test1(const MunitParameter params[], void *fixture)
@@ -304,9 +303,9 @@ MunitResult tuple_test19(const MunitParameter params[], void *fixture)
 	t_color	*color;
 
 	color = new_color(-0.5, 0.4, 1.7);
-	munit_assert_float(color->red, ==, -0.5);
-	munit_assert_float(color->green, ==, 0.4);
-	munit_assert_float(color->blue, ==, 1.7);
+	munit_assert_float(color->r, ==, -0.5);
+	munit_assert_float(color->g, ==, 0.4);
+	munit_assert_float(color->b, ==, 1.7);
 	free(color);
 	return (MUNIT_OK);
 }
@@ -319,9 +318,9 @@ MunitResult tuple_test20(const MunitParameter params[], void *fixture)
 	b = new_color(0.7, 0.1, 0.25);
 	result = add_colors(a, b);
 	expected = new_color(1.6, 0.7, 1);
-	munit_assert_true(dequals(result->red, expected->red));
-	munit_assert_true(dequals(result->green, expected->green));
-	munit_assert_true(dequals(result->blue, expected->blue));
+	munit_assert_true(dequals(result->r, expected->r));
+	munit_assert_true(dequals(result->g, expected->g));
+	munit_assert_true(dequals(result->b, expected->b));
 	free(a);
 	free(result);
 	free(expected);
@@ -337,9 +336,9 @@ MunitResult tuple_test21(const MunitParameter params[], void *fixture)
 	b = new_color(0.7, 0.1, 0.25);
 	result = subtract_colors(a, b);
 	expected = new_color(0.2, 0.5, 0.5);
-	munit_assert_true(dequals(result->red, expected->red));
-	munit_assert_true(dequals(result->green, expected->green));
-	munit_assert_true(dequals(result->blue, expected->blue));
+	munit_assert_true(dequals(result->r, expected->r));
+	munit_assert_true(dequals(result->g, expected->g));
+	munit_assert_true(dequals(result->b, expected->b));
 	free(a);
 	free(result);
 	free(expected);
@@ -354,9 +353,9 @@ MunitResult tuple_test22(const MunitParameter params[], void *fixture)
 	a = new_color(0.2, 0.3, 0.4);
 	result = multiply_scalar_color(a, 2);
 	expected = new_color(0.4, 0.6, 0.8);
-	munit_assert_true(dequals(result->red, expected->red));
-	munit_assert_true(dequals(result->green, expected->green));
-	munit_assert_true(dequals(result->blue, expected->blue));
+	munit_assert_true(dequals(result->r, expected->r));
+	munit_assert_true(dequals(result->g, expected->g));
+	munit_assert_true(dequals(result->b, expected->b));
 	free(a);
 	free(result);
 	free(expected);
@@ -371,9 +370,9 @@ MunitResult tuple_test23(const MunitParameter params[], void *fixture)
 	b = new_color(0.9, 1, 0.1);
 	result = multiply_colors(a, b);
 	expected = new_color(0.9, 0.2, 0.04);
-	munit_assert_true(dequals(result->red, expected->red));
-	munit_assert_true(dequals(result->green, expected->green));
-	munit_assert_true(dequals(result->blue, expected->blue));
+	munit_assert_true(dequals(result->r, expected->r));
+	munit_assert_true(dequals(result->g, expected->g));
+	munit_assert_true(dequals(result->b, expected->b));
 	free(a);
 	free(b);
 	free(result);

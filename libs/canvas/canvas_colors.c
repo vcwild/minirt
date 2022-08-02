@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   canvas_colors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:16:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/01 22:00:04 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/02 16:15:28 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_color	*new_color(double r, double g, double b)
 	t_color *color;
 
 	color = (t_color *)malloc(sizeof(t_color));
-	color->r = max(0, min(255, (int)floor(r * 256.0)));
-	color->g = max(0, min(255, (int)floor(g * 256.0)));
-	color->b = max(0, min(255, (int)floor(b * 256.0)));
+	color->r = fmax(0.0, fmin(255.0, (int)floor(r * 256.0)));
+	color->g = fmax(0.0, fmin(255.0, (int)floor(g * 256.0)));
+	color->b = fmax(0.0, fmin(255.0, (int)floor(b * 256.0)));
 	return (color);
 }
 

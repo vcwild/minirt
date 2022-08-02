@@ -1,7 +1,7 @@
 #include "munit/munit.h"
-// #include "../includes/tuple.h"
-#include "../includes/structures.h"
-#include "../includes/minirt.h"
+#include "tuple.h"
+#include "structures.h"
+#include "minirt.h"
 #include <math.h>
 
 #define PARAMS const MunitParameter params[], void *fixture
@@ -151,7 +151,7 @@ MunitTest test(char *desc, MunitTestFunc the_test)
 {
 	MunitTest setup;
 
-	setup = malloc(sizeof(MunitTest));
+	// setup = malloc(sizeof(MunitTest));
 	setup.name = desc;
 	setup.test = the_test;
 	setup.setup = NULL;

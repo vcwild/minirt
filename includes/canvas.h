@@ -6,27 +6,24 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/01 21:52:07 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/02 16:15:06 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVAS_H
 # define CANVAS_H
 
+# include <math.h>
 # include <stddef.h>
 # include <stdio.h>
-# include <math.h>
+# include <stdlib.h>
+# include <libft.h>
 
 typedef struct s_color {
-	int	r;
-	int	g;
-	int	b;
+	double	r;
+	double	g;
+	double	b;
 }	t_color;
-
-typedef union u_color {
-	t_color	*color;
-	void	*ptr;
-}	t_maybe_color;
 
 typedef struct s_canvas {
 	unsigned int	width;
