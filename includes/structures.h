@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/07/31 17:20:05 by vwildner         ###   ########.fr       */
+/*   Created: 2022/07/31 15:21:52 by vwildner          #+#    #+#             */
+/*   Updated: 2022/07/31 18:02:00 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef STRUCTURES_H
+# define STRUCTURES_H
 
 # include <libft.h>
-// # include <tuple.h>
-/* external headers */
-
-/* constants */
-
-/* structs */
+# include <stddef.h>
 
 #endif
