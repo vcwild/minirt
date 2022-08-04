@@ -22,4 +22,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Compile the program
         run: |
+          sudo apt install libbsd-dev libxext-dev
           make
