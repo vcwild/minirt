@@ -15,7 +15,7 @@ jobs:
         run: |
           pip install -U pip
           pip install norminette
-          norminette sources/ includes/ libs/
+          norminette sources/ includes/ libs/canvas libs/ft libs/tuple
   build:
     runs-on: ubuntu-latest
     steps:
