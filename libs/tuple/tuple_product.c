@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   product.c                                          :+:      :+:    :+:   */
+/*   tuple_product.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:44:48 by vwildner          #+#    #+#             */
-/*   Updated: 2022/07/31 19:21:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:41:43 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_tuple	*cross(t_tuple *a, t_tuple *b)
 
 t_tuple	*reflect(t_tuple *v, t_tuple *n)
 {
-	t_tuple *doubled;
-	t_tuple *subtracted;
+	t_tuple	*doubled;
+	t_tuple	*subtracted;
 
 	doubled = multiply_scalar(n, 2.0 * dot(v, n));
 	subtracted = subtract_tuples(v, doubled);

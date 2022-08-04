@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:55:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/02 16:17:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:39:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_canvas	*new_canvas(int width, int height)
 {
-	t_canvas *canvas;
-	int		i;
-	int		j;
+	t_canvas	*canvas;
+	int			i;
+	int			j;
 
 	canvas = (t_canvas *)malloc(sizeof(t_canvas));
 	canvas->width = width;
@@ -37,7 +37,10 @@ t_canvas	*new_canvas(int width, int height)
 	return (canvas);
 }
 
-int	write_pixel(t_canvas *c, unsigned int width, unsigned int height, t_color *color)
+int	write_pixel(t_canvas *c,
+				unsigned int width,
+				unsigned int height,
+				t_color *color)
 {
 	if (width > c->width || height > c->height)
 	{

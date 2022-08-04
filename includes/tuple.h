@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tuple.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/04 11:42:04 by vwildner         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TUPLE_H
 # define TUPLE_H
 # define EPSILON 0.0000001
 
-#include <stdlib.h>
-#include <math.h>
+# include <stdlib.h>
+# include <math.h>
 
 typedef struct s_tuple {
 	double	x;

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:37:52 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/02 16:08:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:39:06 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ typedef struct s_ppm {
 	char	*data;
 }	t_ppm;
 
-
 t_ppm	*canvas_to_ppm(t_canvas *c)
 {
 	t_ppm	*ppm;
 
 	ppm = (t_ppm *)malloc(sizeof(t_ppm));
-
 	ppm->header = ft_strdup("P3\n");
 	ft_strjoin(ppm->header, ft_itoa(c->width));
 	ft_strjoin(ppm->header, " ");
