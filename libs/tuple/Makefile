@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 18:04:32 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/04 23:27:27 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/04 23:35:45 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FOLDER_NAME = $(shell ls . | grep .c$ | cut -d '_' -f 1 | head -1)
 NAME = lib$(FOLDER_NAME).a
 
 CC := $(shell ../../scripts/set_compiler.sh)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)
