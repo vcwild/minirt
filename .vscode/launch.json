@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/minirt",
-			"args": ["map.ber"],
+			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
