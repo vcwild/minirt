@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/04 21:52:55 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/04 23:17:28 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 MAKE_EXTERNAL = make -C
 
 # mlx
-MLX = libmlx.a
+MLX = libmlx_Linux.a
 MLX_PATH = $(LIBS_PATH)/mlx_linux
 MLX_ARCHIVE = $(ARCHIVES_PATH)/$(MLX)
 
