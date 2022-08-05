@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/02 18:29:15 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/04 21:52:55 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC := $(shell ./scripts/set_compiler.sh)
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
-INTERNAL_LIBS = -lft
+INTERNAL_LIBS = -lft -ltuple
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -78,7 +78,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
