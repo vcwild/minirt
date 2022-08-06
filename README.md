@@ -31,7 +31,7 @@ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-d
 
 If you want to run tests on project clone munit into /tests folder
 ```sh
-cd tests && git clone https://github.com/nemequ/munit.git
+git submodule init
 ```
 
 This project uses minilibx-linux
