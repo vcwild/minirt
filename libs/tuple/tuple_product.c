@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:44:48 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/04 11:41:43 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:54:35 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ double	dot(t_tuple *a, t_tuple *b)
 
 double	magnitude(t_tuple *a)
 {
-	return (sqrt(dot(a, a)));
+	return (round_to(sqrt(dot(a, a))));
 }
 
 t_tuple	*normalize(t_tuple *a)
 {
-	return (multiply_scalar(a, 1.0 / magnitude(a)));
+	return (multiply_scalar(a, round_to(1.0 / magnitude(a))));
 }
 
 t_tuple	*cross(t_tuple *a, t_tuple *b)

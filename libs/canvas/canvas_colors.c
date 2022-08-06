@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:16:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/04 21:07:25 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:40:08 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ t_color	*new_color(double r, double g, double b)
 	t_color	*color;
 
 	color = (t_color *)malloc(sizeof(t_color));
-	color->r = fmax(0.0, fmin(255.0, floor(r * 256.0)));
-	color->g = fmax(0.0, fmin(255.0, floor(g * 256.0)));
-	color->b = fmax(0.0, fmin(255.0, floor(b * 256.0)));
+	color->r = r;
+	color->g = g;
+	color->b = b;
+	color->rgb = merge_colors(r, g, b);
 	return (color);
 }
 
