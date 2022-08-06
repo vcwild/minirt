@@ -30,6 +30,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run the tests
         run: |
-          sudo apt install libbsd-dev libxext-dev
+          sudo apt install libbsd-dev libxext-dev gcc-10 g++-10
           git submodule init
           make test

@@ -3,7 +3,7 @@
 if [ -f "/etc/redhat-release" ]
 	then return=$"gcc"
 elif [ -f "/etc/debian_version" ]
-	then return="clang"
+	then return="gcc"
 else return="cc"
 fi
 
