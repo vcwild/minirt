@@ -15,11 +15,12 @@ jobs:
         run: |
           pip install -U pip
           pip install norminette
-          norminette sources/ includes/ libs/
+          norminette sources/ includes/ $(find libs/ -type f \( -iname "*.c" ! -iname "wip_*" \) -not -path '*/mlx_linux/*')
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Compile the program
         run: |
+          sudo apt install libbsd-dev libxext-dev
           make

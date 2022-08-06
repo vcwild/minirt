@@ -222,3 +222,4 @@ cython_debug/
 
 # Other
 minirt
+test_bin

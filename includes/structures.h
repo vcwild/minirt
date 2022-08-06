@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/04 23:19:58 by vwildner         ###   ########.fr       */
+/*   Created: 2022/07/31 15:21:52 by vwildner          #+#    #+#             */
+/*   Updated: 2022/07/31 18:02:00 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef STRUCTURES_H
+# define STRUCTURES_H
 
-int	main(int argc, char *argv[])
-{
-	t_tuple	*a;
+# include <libft.h>
+# include <stddef.h>
 
-	a = new_vector(1, 2, 3);
-	printf("%f %f %f\n", a->x, a->y, a->z);
-	return (0);
-}
+#endif

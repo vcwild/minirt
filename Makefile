@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/07/30 21:13:17 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/04 23:20:40 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = minirt
 CC := $(shell ./scripts/set_compiler.sh)
 CFLAGS = -Wall -Wextra
 
-EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
-INTERNAL_LIBS = -lft
+EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
+INTERNAL_LIBS = -lft -ltuple
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -43,16 +43,25 @@ OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
 MAKE_EXTERNAL = make -C
 
-# libft
-LIBFT_NAME = libft.a
-LIBFT_PATH = $(LIBS_PATH)/libft
-LIBFT_LIB = $(LIBFT_PATH)/$(LIBFT_NAME)
-LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT_NAME)
-
 # mlx
-MLX = libmlx.a
+MLX = libmlx_Linux.a
 MLX_PATH = $(LIBS_PATH)/mlx_linux
 MLX_ARCHIVE = $(ARCHIVES_PATH)/$(MLX)
+
+# libft
+LIBFT = ft
+LIBFT_NAME = lib$(LIBFT).a
+LIBFT_PATH = $(LIBS_PATH)/$(LIBFT)
+
+# tuple
+TUPLE = tuple
+TUPLE_NAME = lib$(TUPLE).a
+TUPLE_PATH = $(LIBS_PATH)/$(TUPLE)
+
+# canvas
+CANVAS = canvas
+CANVAS_NAME = lib$(CANVAS).a
+CANVAS_PATH = $(LIBS_PATH)/$(CANVAS)
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -61,11 +70,15 @@ ifeq (run,$(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
-.PHONY: all run valgrind re fclean clean archives_clean libft libft_clean libmlx libmlx_clean
+.PHONY: all run valgrind re fclean clean archives_clean \
+	libft libft_clean \
+	libmlx libmlx_clean \
+	libtuple libtuple_clean \
+	libcanvas libcanvas_clean
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -76,14 +89,11 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
 	@$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
 
-libft: $(LIBFT_ARCHIVE)
+libft:
+	$(MAKE_EXTERNAL) $(LIBFT_PATH)
 
-$(LIBFT_ARCHIVE): $(LIBFT_LIB)
-	@$(SAFE_MKDIR) $(ARCHIVES_PATH)
-	@$(COPY) $(LIBFT_PATH)/libft.a $(ARCHIVES_PATH)
-
-$(LIBFT_LIB):
-	@$(MAKE_EXTERNAL) $(LIBFT_PATH)
+libft_clean:
+	@$(MAKE_EXTERNAL) $(LIBFT_PATH) clean
 
 libmlx:
 	@$(MAKE_EXTERNAL) $(MLX_PATH)
@@ -94,9 +104,17 @@ libmlx_clean:
 	@$(MAKE_EXTERNAL) $(MLX_PATH) clean
 	@$(REMOVE) $(MLX_ARCHIVE)
 
-libft_clean:
-	@$(MAKE_EXTERNAL) $(LIBFT_PATH) clean
-	@$(REMOVE) $(LIBFT_ARCHIVE)
+libtuple:
+	@$(MAKE_EXTERNAL) $(TUPLE_PATH)
+
+libtuple_clean:
+	@$(MAKE_EXTERNAL) $(TUPLE_PATH) clean
+
+libcanvas: libft
+	@$(MAKE_EXTERNAL) $(CANVAS_PATH)
+
+libcanvas_clean:
+	@$(MAKE_EXTERNAL) $(CANVAS_PATH) clean
 
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
@@ -106,8 +124,16 @@ re:	fclean all
 archives_clean:
 	@$(REMOVE) $(ARCHIVES_PATH)
 
-clean:
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean
 	@$(REMOVE) $(OBJECTS_PATH)
 
-fclean: clean archives_clean libft_clean libmlx_clean
+fclean: clean archives_clean
 	@$(REMOVE) $(NAME)
+
+TEST_SRC += tests/munit/munit.c
+TEST_SRC += tests/main.c
+TEST_SRC += tests/test_tuples.c
+
+test: libft libtuple libcanvas
+	$(CC) -g $(TEST_SRC) -o ./test_bin -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) -lft -lm -ltuple -lcanvas
+	./test_bin # || ./test_bin --no-fork
