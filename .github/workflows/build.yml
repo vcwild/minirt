@@ -31,5 +31,5 @@ jobs:
       - name: Run the tests
         run: |
           sudo apt install libbsd-dev libxext-dev gcc-10 g++-10
-          git submodule init
+          git submodule update --init --recursive
           make test
