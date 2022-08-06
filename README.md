@@ -21,6 +21,28 @@ A ray tracer is a program that takes a scene and a camera and renders the scene 
 - There is light in the scene
 - The light emits rays that intersect with objects in the scene
 
+## Dependencies
+
+Install libs
+
+```sh
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+```
+
+If you want to run tests on project clone munit into /tests folder
+```sh
+cd tests && git clone https://github.com/nemequ/munit.git
+```
+
+This project uses minilibx-linux
+MinilibX, a simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
+
+Unofficial documentation for minilibx
+
+- [Harm Smiths Docs](https://harm-smits.github.io/42docs/libs/minilibx)
+
+- [Getting started with the minilibx](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
+
 ### How the Ray Tracer algorithm works
 
 1. Cast a ray into the scene, and find where it strikes a surface.
