@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/06 19:49:27 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:54:59 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_color {
 	double			r;
 	double			g;
 	double			b;
-	unsigned		int	rgb;
+	unsigned int	rgb;
 }	t_color;
 
 typedef struct s_canvas {
