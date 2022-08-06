@@ -39,5 +39,6 @@ A ray tracer is a program that takes a scene and a camera and renders the scene 
 - [How Ray Tracing Works](https://www.youtube.com/watch?v=lKIytgt3KXM)
 - [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 - [Simple Method for Creating 3D Images](https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing)
-- [Khan Academy Renderin](https://www.khanacademy.org/computing/pixar/rendering)
+- [Khan Academy Rendering](https://www.khanacademy.org/computing/pixar/rendering)
 - [Notion 1 Resource](https://www.notion.so/miniRT-5f6fcdf6d05e4742b6c38f0588f12436)
+- [Disney's Practical Guide to Path Tracing](https://www.youtube.com/watch?v=frLwRLS_ZR0)
