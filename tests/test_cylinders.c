@@ -1,3 +1,8 @@
+/*
+Authored by paulo-santana <psergio-@student.42sp.org.br>
+Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
+*/
+
 #include "munit/munit.h"
 #include "ray/ray.h"
 #include "shapes/shapes.h"
@@ -94,25 +99,25 @@ MunitResult cylinder_test2(const MunitParameter params[], void *fixture)
 MunitResult cylinder_test3(const MunitParameter params[], void *fixture)
 {
 	t_shape *cyl = new_cylinder();
-	
+
 	t_tuple point1 = (t_tuple){1, 0, 0, 1};
 	t_tuple *normal = cylinder_normal_at(cyl, &point1);
 	t_tuple expected = (t_tuple){1, 0, 0, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
-	
+
 	point1 = (t_tuple){0, 5, -1, 1};
 	normal = cylinder_normal_at(cyl, &point1);
 	expected = (t_tuple){0, 0, -1, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
-	
+
 	point1 = (t_tuple){0, -2, 1, 1};
 	normal = cylinder_normal_at(cyl, &point1);
 	expected = (t_tuple){0, 0, 1, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
-	
+
 	point1 = (t_tuple){-1, 1, 0, 1};
 	normal = cylinder_normal_at(cyl, &point1);
 	expected = (t_tuple){-1, 0, 0, 0};
@@ -148,7 +153,7 @@ MunitResult cylinder_test4(const MunitParameter params[], void *fixture)
 		{0, 0, 1, 0},
 		{0, 0, 1, 0},
 	};
-	
+
 	int results[] = {0, 0, 0, 0, 0, 2};
 
 	for (int i = 0; i < 6; i++)
@@ -161,7 +166,7 @@ MunitResult cylinder_test4(const MunitParameter params[], void *fixture)
 		free(ray->direction);
 		free(ray);
 	}
-	
+
 
 	return (MUNIT_OK);
 }
