@@ -1,8 +1,6 @@
 name: complete-checking
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -30,6 +28,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run the tests
         run: |
-          sudo apt install libbsd-dev libxext-dev gcc-10 g++-10
-          git submodule update --init --recursive
+          sudo apt install libbsd-dev libxext-dev
           make test
