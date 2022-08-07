@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas_utils.c                                     :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 19:38:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 15:39:13 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/07 15:29:27 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/07 15:29:38 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <canvas.h>
+#include "libft.h"
 
-unsigned int	to_rgb(double c)
+void *ft_realloc(void *ptr, size_t size)
 {
-	unsigned int	color;
+	void *new;
 
-	color = (unsigned int)round(c * 255);
-	if (color > 255)
-		color = 255;
-	return (color);
-}
-
-unsigned int	merge_colors(double r, double g, double b)
-{
-	return (to_rgb(r) << 16 | to_rgb(g) << 8 | to_rgb(b));
+	new = malloc(size);
+	if (new == NULL)
+		return (NULL);
+	if (ptr != NULL)
+	{
+		ft_memcpy(new, ptr, size);
+		free(ptr);
+	}
+	return (new);
 }
