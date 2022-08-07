@@ -1,3 +1,8 @@
+/*
+Authored by paulo-santana <psergio-@student.42sp.org.br>
+Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
+*/
+
 #include "munit/munit.h"
 #include "../sources/structures.h"
 #include "../sources/minirt.h"

@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   tuple_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/06 20:19:06 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/06 17:21:36 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/06 18:58:01 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <tuple.h>
 
-# include <libft.h>
-# include <tuple.h>
-# include <stdio.h>
-// # include <tuple.h>
-/* external headers */
-
-/* constants */
-
-/* structs */
-
-#endif
+double	round_to(double num)
+{
+	return (round(num * pow(10, TUPLE_DECIMAL_PRECISION))
+		/ pow(10, TUPLE_DECIMAL_PRECISION));
+}

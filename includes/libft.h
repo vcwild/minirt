@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/07/30 20:34:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:30:23 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -478,6 +478,15 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
  * @return t_list* Returns the new list or NULL if the allocation fails.
  */
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/**
+ * @brief Reallocates the memory of the given string to the given size.
+ *
+ * @param ptr The adress of the string to reallocate
+ * @param size The size of the new memory
+ * @return void* Returns the adress of the new memory
+ */
+void		*ft_realloc(void *ptr, size_t size);
 
 void		free_matrix(char **matrix);
 

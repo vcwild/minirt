@@ -1,3 +1,8 @@
+/*
+Authored by paulo-santana <psergio-@student.42sp.org.br>
+Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
+*/
+
 #ifndef TEST_UTILS_H
 # define TEST_UTILS_H
 

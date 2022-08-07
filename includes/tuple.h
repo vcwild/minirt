@@ -6,14 +6,14 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/04 11:42:04 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:29:23 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
 # define TUPLE_H
 # define EPSILON 0.0000001
-
+# define TUPLE_DECIMAL_PRECISION 5
 # include <stdlib.h>
 # include <math.h>
 
@@ -45,5 +45,7 @@ double	magnitude(t_tuple *a);
 t_tuple	*normalize(t_tuple *a);
 t_tuple	*cross(t_tuple *a, t_tuple *b);
 t_tuple	*reflect(t_tuple *v, t_tuple *n);
+
+double	round_to(double num);
 
 #endif
