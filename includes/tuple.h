@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 17:02:30 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:13:52 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_tuple
 	double w; // w defines if the tuple is a point, vector or tuple
 } t_tuple;
 
-/** @brief this function create a new tuple
+/** @brief create a new tuple
  * based on the given x, y, z values
  * @param x x axis value
  * @param y y axis value
@@ -39,7 +39,7 @@ typedef struct s_tuple
  */
 t_tuple *new_tuple(double x, double y, double z, double w);
 
-/** @brief this function create a point tuple (w = 1.0)
+/** @brief create a point tuple (w = 1.0)
  * based on the given x, y, z values
  * @param x x axis value
  * @param y y axis value
@@ -48,7 +48,7 @@ t_tuple *new_tuple(double x, double y, double z, double w);
  */
 t_tuple *new_point(double x, double y, double z);
 
-/** @brief this function create a vector tuple  (w = 0.0)
+/** @brief create a vector tuple  (w = 0.0)
  * based on the given x, y, z values
  * @param x x axis value
  * @param y y axis value
@@ -57,14 +57,14 @@ t_tuple *new_point(double x, double y, double z);
  */
 t_tuple *new_vector(double x, double y, double z);
 
-/** @brief this function check if tuple is a point
+/** @brief check if tuple is a point
  * tuple is a point if w is 1.0
  * @param t tuple to be checked
  * @return true if tuple is a point, false otherwise
  */
 int is_point(t_tuple *t);
 
-/** @brief this function check if tuple is a vector
+/** @brief check if tuple is a vector
  * tuple is a vector if w is 0.0
  * @param t tuple to be checked
  * @return true if tuple is a vector, false otherwise
@@ -73,7 +73,7 @@ int is_vector(t_tuple *t);
 
 int is_tuple(t_tuple *t);
 
-/** @brief this function check if two doubles are equals
+/** @brief check if two doubles are equals
  * using the EPSILON value to avoid rounding errors
  * @param a first double to be compared
  * @param b second double to be compared
@@ -81,7 +81,7 @@ int is_tuple(t_tuple *t);
  */
 int dequals(double a, double b);
 
-/** @brief this function check if two tuples are equals
+/** @brief check if two tuples are equals
  * using the dequals function
  * @param a first tuple to be compared
  * @param b second tuple to be compared
@@ -108,7 +108,7 @@ t_tuple *add_tuples(t_tuple *a, t_tuple *b);
  */
 t_tuple *subtract_tuples(t_tuple *a, t_tuple *b);
 
-/** @brief this function invert the sign of the tuple values
+/** @brief invert the sign of the tuple values
  * to get the opposite vector
  * @param a tuple to have values inverted
  * @return a pointer to the inverted tuple
@@ -133,14 +133,14 @@ t_tuple *divide_scalar(t_tuple *t, double v);
 
 double dot(t_tuple *a, t_tuple *b);
 
-/** @brief this function calculate magnitude of a vector, it's
+/** @brief calculate magnitude of a vector, it's
  * how far it is from the origin
  * @param a tuple to be calculated
  * @return magnitude of the vector
  */
 double magnitude(t_tuple *a);
 
-/** @brief this function normalize a vector, it's
+/** @brief normalize a vector, it's
  * make the vector have a magnitude of 1.0 (unit vector)
  * @param a tuple to be normalized
  * @return a pointer to the normalized tuple
