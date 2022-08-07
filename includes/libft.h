@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 15:30:23 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:18:42 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -488,6 +488,11 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
  */
 void		*ft_realloc(void *ptr, size_t size);
 
+/**
+ * @brief Frees a matrix of a given vector size.
+ *
+ * @param matrix The matrix to be freed.
+ */
 void		free_matrix(char **matrix);
 
 #endif
