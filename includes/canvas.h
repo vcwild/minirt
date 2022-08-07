@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 19:39:35 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:46:04 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
  * Red, green, and blue and their respective merged components.
  */
 typedef struct s_color {
-	double			r; // Red
-	double			g; // Green
-	double			b; // Blue
-	unsigned int	rgb; // Decimal representation of the color
+	double			r;
+	double			g;
+	double			b;
+	unsigned int	rgb;
 }	t_color;
 
 /**
@@ -37,9 +37,9 @@ typedef struct s_color {
  * to a matrix of colors that are called pixels.
  */
 typedef struct s_canvas {
-	unsigned int	width; // Width of the canvas
-	unsigned int	height; // Height of the canvas
-	t_color			***pixels; // Color of each pixel in the canvas
+	unsigned int	width;
+	unsigned int	height;
+	t_color			***pixels;
 }	t_canvas;
 
 /**
@@ -154,8 +154,10 @@ t_ppm			*canvas_to_ppm(t_canvas *c);
  * @param color color of pixel
  * @return int 0 if successful, 1 if unsuccessful
  */
-int	write_pixel(t_canvas *c, unsigned int width, unsigned int height,
-				t_color *color);
+int				write_pixel(t_canvas *c,
+					unsigned int width,
+					unsigned int height,
+					t_color *color);
 
 /**
  * @brief get pixel color at specific position on canvas
@@ -165,6 +167,8 @@ int	write_pixel(t_canvas *c, unsigned int width, unsigned int height,
  * @param height height position of pixel
  * @return t_color* color of pixel or NULL if unsuccessful
  */
-t_color	*pixel_at(t_canvas *c, unsigned int width, unsigned int height);
+t_color			*pixel_at(t_canvas *c,
+					unsigned int width,
+					unsigned int height);
 
 #endif
