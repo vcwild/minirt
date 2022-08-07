@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/06 20:19:06 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/07 15:29:27 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/07 15:43:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "libft.h"
 
-# include <libft.h>
-# include <tuple.h>
-# include <stdio.h>
-// # include <tuple.h>
-/* external headers */
+void	*ft_realloc(void *ptr, size_t size)
+{
+	void	*new;
 
-/* constants */
-
-/* structs */
-
-#endif
+	new = malloc(size);
+	if (new == NULL)
+		return (NULL);
+	if (ptr != NULL)
+	{
+		ft_memcpy(new, ptr, size);
+		free(ptr);
+	}
+	return (new);
+}

@@ -6,13 +6,14 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/06 17:24:21 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:02:30 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
 #define TUPLE_H
 #define EPSILON 0.0000001
+# define TUPLE_DECIMAL_PRECISION 5
 
 #include <stdlib.h>
 #include <math.h>
@@ -149,5 +150,7 @@ t_tuple *normalize(t_tuple *a);
 
 t_tuple *cross(t_tuple *a, t_tuple *b);
 t_tuple *reflect(t_tuple *v, t_tuple *n);
+
+double	round_to(double num);
 
 #endif

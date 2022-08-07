@@ -1,3 +1,8 @@
+/*
+Authored by paulo-santana <psergio-@student.42sp.org.br>
+Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
+*/
+
 #include "munit/munit.h"
 #include "tuple.h"
 #include "structures.h"
@@ -178,7 +183,7 @@ int main(int argc, char **argv) {
 		test("/multiply_scalar() multplies a tuple by a fraction", tuple_test12),
 		test("/divide_scalar() divides a tuple by a scalar value", tuple_test13),
 		test("/magnitude() calculates correctly", tuple_test14),
-		test("/normalize() does what it says", tuple_test15),
+		test("/normalize() calculates correctly", tuple_test15),
 		test("/the magnitude of a normalized vector is 1", tuple_test16),
 		test("/dot()", tuple_test17),
 		test("/cross()", tuple_test18),
