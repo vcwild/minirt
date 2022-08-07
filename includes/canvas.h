@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 19:13:52 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:39:35 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@
 # include <fcntl.h>
 
 /**
- * @brief A tuple of three components.
+ * @brief A tuple to represent colors in RGB format.
  * Red, green, and blue and their respective merged components.
- *
  */
 typedef struct s_color {
-	double			r;
-	double			g;
-	double			b;
-	unsigned int	rgb;
+	double			r; // Red
+	double			g; // Green
+	double			b; // Blue
+	unsigned int	rgb; // Decimal representation of the color
 }	t_color;
 
 /**
@@ -38,13 +37,14 @@ typedef struct s_color {
  * to a matrix of colors that are called pixels.
  */
 typedef struct s_canvas {
-	unsigned int	width;
-	unsigned int	height;
-	t_color			***pixels;
+	unsigned int	width; // Width of the canvas
+	unsigned int	height; // Height of the canvas
+	t_color			***pixels; // Color of each pixel in the canvas
 }	t_canvas;
 
 /**
  * @brief A ppm representation of a canvas.
+ *
  * The ppm has a header and a data component.
  * The header has information about the width, height, and color depth.
  * The data has the actual pixels.
@@ -55,53 +55,53 @@ typedef struct s_ppm {
 }	t_ppm;
 
 /**
- * @brief Creates a new color.
+ * @brief Creates a new color and fill struct.
  *
  * @param r The red component of the color.
  * @param g The green component of the color.
  * @param b The blue component of the color.
- * @return t_color* Returns a pointer to the new color.
+ * @return t_color* Returns a pointer to the new color struct.
  */
 t_color			*new_color(double r, double g, double b);
 
 /**
  * @brief Adds two colors together and returns the result.
  *
- * @param a The first color.
- * @param b The second color.
- * @return t_color* Returns the result of the addition.
+ * @param a The first color struct.
+ * @param b The second color struct.
+ * @return t_color* Returns a pointer to the result of the addition struct.
  */
 t_color			*add_colors(t_color *a, t_color *b);
 
 /**
  * @brief Subtracts two colors
  *
- * @param a The first color
- * @param b The second color
- * @return t_color* Returns the difference of the two colors
+ * @param a The first color struct.
+ * @param b The second color struct.
+ * @return t_color* Returns a pointer to the difference of the two colors struct
  */
 t_color			*subtract_colors(t_color *a, t_color *b);
 
 /**
  * @brief Multiplies a color by a scalar value.
  *
- * @param c The color to multiply.
+ * @param c The color struct to multiply.
  * @param v The scalar value.
- * @return t_color* Returns the resulting color.
+ * @return t_color* Returns a pointer to the resulting color struct.
  */
 t_color			*multiply_scalar_color(t_color *c, double v);
 
 /**
- * @brief Multiplies two colors
+ * @brief Multiplies two colors, blending them
  *
- * @param a The first color
- * @param b The second color
+ * @param a The first color struct.
+ * @param b The second color struct.
  * @return t_color* Returns a new color with the result of the multiplication
  */
 t_color			*multiply_colors(t_color *a, t_color *b);
 
 /**
- * @brief Creates a new instance of a canvas.
+ * @brief Creates a new instance of a canvas with each pixel set to black.
  *
  * @param width The width of the canvas.
  * @param height The height of the canvas.
@@ -110,7 +110,7 @@ t_color			*multiply_colors(t_color *a, t_color *b);
 t_canvas		*new_canvas(int width, int height);
 
 /**
- * @brief Creates a merged integer representation
+ * @brief Creates a merged integer representation of a color.
  *
  * @param r The float red component
  * @param g The float green component
@@ -120,10 +120,11 @@ t_canvas		*new_canvas(int width, int height);
 unsigned int	merge_colors(double r, double g, double b);
 
 /**
- * @brief Transforms a floating number to a 0 - 255 integer representation.
+ * @brief Transforms a floating number to a 0 - 255 integer representation
+ * RGB format.
  *
- * @param c The number to transform.
- * @return unsigned int The transformed number.
+ * @param c The float number to transform.
+ * @return unsigned int the transformed RGB value.
  */
 unsigned int	to_rgb(double c);
 
@@ -143,5 +144,27 @@ int				write_ppm(t_canvas *c, char *filename);
  * @return t_ppm* The PPM representation.
  */
 t_ppm			*canvas_to_ppm(t_canvas *c);
+
+/**
+ * @brief write pixels into canvas
+ *
+ * @param c canvas struct to be used
+ * @param width width position of pixel
+ * @param height height position of pixel
+ * @param color color of pixel
+ * @return int 0 if successful, 1 if unsuccessful
+ */
+int	write_pixel(t_canvas *c, unsigned int width, unsigned int height,
+				t_color *color);
+
+/**
+ * @brief get pixel color at specific position on canvas
+ *
+ * @param c canvas struct to be used
+ * @param width width position of pixel
+ * @param height height position of pixel
+ * @return t_color* color of pixel or NULL if unsuccessful
+ */
+t_color	*pixel_at(t_canvas *c, unsigned int width, unsigned int height);
 
 #endif
