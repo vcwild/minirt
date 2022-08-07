@@ -6,12 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 15:40:18 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:31:40 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVAS_H
 # define CANVAS_H
+# define CANVAS_PPM_MAX_LINE_LENGTH 70
 
 # include <math.h>
 # include <stddef.h>
@@ -35,7 +36,7 @@ typedef struct s_canvas {
 
 typedef struct s_ppm {
 	char	*header;
-	char	*data;
+	u_int	*data;
 }	t_ppm;
 
 t_color			*new_color(double r, double g, double b);
