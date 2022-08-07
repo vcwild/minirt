@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:37:52 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 15:40:10 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:44:31 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static t_ppm	*canvas_to_ppm(t_canvas *c)
 	while (c->height--)
 	{
 		while (c->width--)
-			export_pixel(ppm->data,
-						c->pixels[c->height][c->width]);
-
+		{
+			export_pixel(ppm->data, c->pixels[c->height][c->width]);
+		}
 		export_element(ppm->data, "\n");
 	}
 	return (ppm);
@@ -63,7 +63,7 @@ static t_ppm	*canvas_to_ppm(t_canvas *c)
 
 int	write_ppm(t_canvas *c, char *filename)
 {
-	int fd;
+	int		fd;
 	t_ppm	*ppm;
 
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
