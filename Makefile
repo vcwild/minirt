@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/04 23:20:40 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/08 22:47:33 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,7 @@ fclean: clean archives_clean
 TEST_SRC += tests/munit/munit.c
 TEST_SRC += tests/main.c
 TEST_SRC += tests/test_tuples.c
+TEST_SRC += tests/test_canvas.c
 
 test: libft libtuple libcanvas
 	$(CC) -g $(TEST_SRC) -o ./test_bin -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) -lft -lm -ltuple -lcanvas
