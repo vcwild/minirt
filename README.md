@@ -21,6 +21,33 @@ A ray tracer is a program that takes a scene and a camera and renders the scene 
 - There is light in the scene
 - The light emits rays that intersect with objects in the scene
 
+## Requirements for development
+
+These are the dependencies required for development:
+
+### Create a venv
+
+```python3
+python3 -m venv venv
+source venv/bin/activate
+pip install -U pip
+```
+
+### Install norminette
+
+```python3
+pip install -U norminette
+```
+
+### Install pre-commit hooks
+
+```python3
+pip install pre-commit
+pre-commit install --install-hooks --overwrite
+```
+
+## Docs
+
 ### How the Ray Tracer algorithm works
 
 1. Cast a ray into the scene, and find where it strikes a surface.
