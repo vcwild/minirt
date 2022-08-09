@@ -29,6 +29,7 @@ These are the dependencies required for development:
 
 ```python3
 python3 -m venv venv
+source venv/bin/activate
 pip install -U pip
 ```
 
