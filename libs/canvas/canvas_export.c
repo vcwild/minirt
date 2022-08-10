@@ -6,13 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:37:52 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 18:38:48 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:53:23 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <canvas.h>
 
-static int	handle_write(int fd, t_ppm *ppm, int line_length)
+static void	handle_write(int fd, t_ppm *ppm, int line_length)
 {
 	int	i;
 

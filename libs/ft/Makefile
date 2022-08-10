@@ -6,30 +6,26 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 17:31:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/02 18:21:29 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/10 13:51:39 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# INTERNAL_LIBS = -lft
-# EXTERNAL_LIBS = -lm
-
-# --------------------------------------------------------------------------------------------------
 
 FOLDER_NAME = $(shell ls . | grep .c$ | cut -d '_' -f 1 | head -1)
 NAME = lib$(FOLDER_NAME).a
 
-CC := $(shell ../../scripts/set_compiler.sh)
+SET_COMPILER = $(PWD)/scripts/set_compiler.sh
+CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra -Werror
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)
 
-OBJECTS_PATH = ../../objects/$(FOLDER_NAME)
+OBJECTS_PATH = $(PWD)/objects/$(FOLDER_NAME)
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCES)))
 
-INCLUDES_PATH = ../../includes
+INCLUDES_PATH = $(PWD)/includes
 
-ARCHIVES_PATH = ../../archives
+ARCHIVES_PATH = $(PWD)/archives
 
 ARCHIVE_SOURCE = $(ARCHIVES_PATH)/$(NAME)
 
