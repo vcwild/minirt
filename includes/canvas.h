@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 14:32:34 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:40:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <libft.h>
 # include <fcntl.h>
+
+# include <tuple.h>
+# include <libft.h>
 
 /**
  * @brief A tuple to represent colors in RGB format.

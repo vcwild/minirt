@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/09 21:26:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:24:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,21 @@
 /* matrix default size*/
 # define MAT_INI_DIM 4
 
-# include <math.h>
 # include <stddef.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <libft.h>
 # include <fcntl.h>
+
 # include <tuple.h>
+# include <libft.h>
 
 typedef struct s_matrix {
 	int		size;
-	double	data[4][4];
+	double	data[MAT_INI_DIM][MAT_INI_DIM];
 }	t_matrix;
 
 int			matrix_equals(t_matrix *a, t_matrix *b);
 
-t_matrix	*new_matrix(int size, double mat[4][4]);
+t_matrix	*new_matrix(int size, double mat[MAT_INI_DIM][MAT_INI_DIM]);
 t_matrix	*identity_matrix(void);
 t_matrix	*submatrix(t_matrix *a, int row, int col);
 

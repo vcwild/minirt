@@ -6,11 +6,11 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 15:29:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 15:43:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:42:04 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 void	*ft_realloc(void *ptr, size_t size)
 {

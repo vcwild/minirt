@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/09 21:37:59 by itaureli         ###   ########.fr        #
+#    Updated: 2022/08/10 19:18:13 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,7 +123,7 @@ libcanvas: libft
 libcanvas_clean:
 	@$(MAKE_EXTERNAL) $(CANVAS_PATH) clean
 
-libmatrix: libft
+libmatrix: libft libcanvas
 	@$(MAKE_EXTERNAL) $(MATRIX_PATH)
 
 libmatrix_clean:
@@ -146,8 +146,8 @@ fclean: clean archives_clean
 TEST_SRC += tests/munit/munit.c
 TEST_SRC += tests/main.c
 TEST_SRC += tests/test_tuples.c
-TEST_SRC += tests/test_matrix.c
+# TEST_SRC += tests/test_matrix.c
 
-test: libft libtuple libcanvas
-	$(CC) -g $(TEST_SRC) -o ./test_bin -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) -lft -lm -ltuple -lcanvas -lmatrix
+test: libft libtuple libcanvas libmatrix
+	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
 	./test_bin # || ./test_bin --no-fork
