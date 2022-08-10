@@ -6,13 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:20:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/09 21:09:49 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:23:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <matrix.h>
 
-t_matrix	*new_matrix(int size, double mat[MAT_INI_DIM][MAT_INI_DIM])
+t_matrix	*new_matrix(int size, double (*mat)[MAT_INI_DIM])
 {
 	t_matrix	*new;
 

@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 17:31:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/10 13:51:39 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/10 20:05:00 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = lib$(FOLDER_NAME).a
 
 SET_COMPILER = $(PWD)/scripts/set_compiler.sh
 CC = $(shell $(SET_COMPILER))
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)

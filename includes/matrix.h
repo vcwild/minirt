@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:24:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:24:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_matrix {
 
 int			matrix_equals(t_matrix *a, t_matrix *b);
 
-t_matrix	*new_matrix(int size, double mat[MAT_INI_DIM][MAT_INI_DIM]);
+t_matrix	*new_matrix(int size, double (*mat)[MAT_INI_DIM]);
 t_matrix	*identity_matrix(void);
 t_matrix	*submatrix(t_matrix *a, int row, int col);
 
