@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 20:03:18 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:32:34 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_canvas {
  * The data has the actual pixels.
  */
 typedef struct s_ppm {
-	char	*header;
-	u_int	*data;
+	char			*header;
+	unsigned int	*data;
 }	t_ppm;
 
 /**

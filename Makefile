@@ -6,13 +6,14 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/04 23:20:40 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/10 13:53:59 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
-CC := $(shell ./scripts/set_compiler.sh)
+SET_COMPILER = $(PWD)/scripts/set_compiler.sh
+CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
@@ -26,11 +27,11 @@ COPY = cp -p
 
 REMOVE = rm -rf
 
-OBJECTS_PATH = ./objects
-SOURCES_PATH = ./sources
-INCLUDES_PATH = ./includes
-LIBS_PATH = ./libs
-ARCHIVES_PATH = ./archives
+OBJECTS_PATH = $(PWD)/objects
+SOURCES_PATH = $(PWD)/sources
+INCLUDES_PATH = $(PWD)/includes
+LIBS_PATH = $(PWD)/libs
+ARCHIVES_PATH = $(PWD)/archives
 
 HEADER_FILE = $(NAME).h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
