@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:20:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/09 19:49:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/09 21:09:49 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ t_matrix	*new_matrix(int size, double mat[MAT_INI_DIM][MAT_INI_DIM])
 
 	new = (t_matrix *) malloc(sizeof(t_matrix));
 	new->size = size;
-	if (!new || !mat)
-		return (fprintf(stderr, "Error: new matrix failed\n"), NULL);
+	if (!new)
+		return (fprintf(stderr, "Error: matrix allocation failed\n"), NULL);
+	if (!mat)
+		return (new);
 	ft_memcpy(new->data, mat, sizeof(double) * MAT_INI_DIM * MAT_INI_DIM);
 	return (new);
 }
@@ -42,4 +44,29 @@ t_matrix	*identity_matrix(void)
 		}
 	}
 	return (new_matrix(MAT_INI_DIM, mat));
+}
+
+t_matrix	*submatrix(t_matrix *a, int row, int col)
+{
+	int			i;
+	int			j;
+	t_matrix	*new;
+
+	new = new_matrix(a->size - 1, NULL);
+	i = -1;
+	while (++i < a->size)
+	{
+		j = -1;
+		while (++j < a->size)
+		{
+			if (i != row && j != col)
+			{
+				if (i < row)
+					new->data[i][j] = a->data[i][j];
+				else
+					new->data[i - 1][j] = a->data[i][j];
+			}
+		}
+	}
+	return (new);
 }
