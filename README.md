@@ -21,7 +21,11 @@ A ray tracer is a program that takes a scene and a camera and renders the scene 
 - There is light in the scene
 - The light emits rays that intersect with objects in the scene
 
-## Dependencies
+## Requirements for development
+
+These are the dependencies required for development:
+
+### Dependencies
 
 Install libs
 
@@ -33,18 +37,6 @@ If you want to run tests on project clone munit into /tests folder
 ```sh
 git submodule init
 ```
-
-This project uses minilibx-linux
-MinilibX, a simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
-
-Unofficial documentation for minilibx
-
-- [Harm Smiths Docs](https://harm-smits.github.io/42docs/libs/minilibx)
-
-- [Getting started with the minilibx](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
-## Requirements for development
-
-These are the dependencies required for development:
 
 ### Create a venv
 
@@ -80,6 +72,15 @@ pre-commit install --install-hooks --overwrite
    tion.
 5. Combine all colors that contribute to the point (the color of the surface,
    the reflection, and refraction) and return that as the color of the pixel.
+
+This project uses minilibx-linux
+MinilibX, a simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
+
+Unofficial documentation for minilibx
+
+- [Harm Smiths Docs](https://harm-smits.github.io/42docs/libs/minilibx)
+- [Getting started with the minilibx](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
+
 
 ## References
 
