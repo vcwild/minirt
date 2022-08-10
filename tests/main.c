@@ -8,7 +8,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 
 #define PARAMS const MunitParameter params[], void *fixture
 
-// MunitResult matrix_test1(PARAMS);
+MunitResult matrix_test1(PARAMS);
 // MunitResult matrix_test2(PARAMS);
 // MunitResult matrix_test3(PARAMS);
 // MunitResult matrix_test4(PARAMS);
@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
 	};
 
 	MunitTest matrix_tests[] = {
-		// test("/new_matrix(size, initial_values)", matrix_test1),
+		test("/new_matrix(size, initial_values)", matrix_test1),
 	// 	test("/matrix_equals(4x4, 4x4)", matrix_test2),
 	// 	test("/matrix_equals(3x3, 3x3)", matrix_test3),
 	// 	test("/matrix_equals(2x2, 2x2)", matrix_test4),
