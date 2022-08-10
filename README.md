@@ -42,6 +42,32 @@ Unofficial documentation for minilibx
 - [Harm Smiths Docs](https://harm-smits.github.io/42docs/libs/minilibx)
 
 - [Getting started with the minilibx](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
+## Requirements for development
+
+These are the dependencies required for development:
+
+### Create a venv
+
+```python3
+python3 -m venv venv
+source venv/bin/activate
+pip install -U pip
+```
+
+### Install norminette
+
+```python3
+pip install -U norminette
+```
+
+### Install pre-commit hooks
+
+```python3
+pip install pre-commit
+pre-commit install --install-hooks --overwrite
+```
+
+## Docs
 
 ### How the Ray Tracer algorithm works
 
@@ -64,3 +90,4 @@ Unofficial documentation for minilibx
 - [Khan Academy Rendering](https://www.khanacademy.org/computing/pixar/rendering)
 - [Notion 1 Resource](https://www.notion.so/miniRT-5f6fcdf6d05e4742b6c38f0588f12436)
 - [Disney's Practical Guide to Path Tracing](https://www.youtube.com/watch?v=frLwRLS_ZR0)
+- [An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide/)
