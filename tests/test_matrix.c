@@ -4,8 +4,9 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 */
 
 #include "munit/munit.h"
-#include "../includes/structures.h"
-#include "../includes/minirt.h"
+#include <tuple.h>
+#include <canvas.h>
+#include <matrix.h>
 #include <math.h>
 
 MunitResult matrix_test1(const MunitParameter params[], void *fixture)
@@ -28,7 +29,7 @@ MunitResult matrix_test1(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-
+/*
 MunitResult matrix_test2(const MunitParameter params[], void *fixture)
 {
 	double	same[4][4] = {
@@ -464,3 +465,4 @@ MunitResult matrix_test23(const MunitParameter params[], void *fixture)
 	free(a_div);
 	return (MUNIT_OK);
 }
+*/
