@@ -4,10 +4,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 */
 
 #include "munit/munit.h"
-#include <tuple.h>
-#include <canvas.h>
-#include <matrix.h>
-#include <math.h>
+#include "minirt.h"
 
 MunitResult matrix_test1(const MunitParameter params[], void *fixture)
 {

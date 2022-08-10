@@ -4,9 +4,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 */
 
 #include "munit/munit.h"
-#include <tuple.h>
-#include <canvas.h>
-#include <math.h>
+#include "minirt.h"
 
 MunitResult tuple_test1(const MunitParameter params[], void *fixture)
 {
