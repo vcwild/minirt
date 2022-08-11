@@ -26,7 +26,6 @@ MunitResult matrix_test1(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 MunitResult matrix_test2(const MunitParameter params[], void *fixture)
 {
 	double	same[4][4] = {
@@ -225,7 +224,7 @@ MunitResult matrix_test11(const MunitParameter params[], void *fixture)
 			{ 1, 5},
 			{-3, 2},
 		});
-	float result = determinant(a);
+	float result = matrix_determinant(a);
 	munit_assert_float(result, ==, 17);
 	free(a);
 	return (MUNIT_OK);
@@ -313,7 +312,7 @@ MunitResult matrix_test16(const MunitParameter params[], void *fixture)
 	munit_assert_float(cofactor(a, 0, 0), ==, 56);
 	munit_assert_float(cofactor(a, 0, 1), ==, 12);
 	munit_assert_float(cofactor(a, 0, 2), ==, -46);
-	munit_assert_float(determinant(a), ==, -196);
+	munit_assert_float(matrix_determinant(a), ==, -196);
 	free(a);
 	return (MUNIT_OK);
 }
@@ -331,7 +330,7 @@ MunitResult matrix_test17(const MunitParameter params[], void *fixture)
 	munit_assert_float(cofactor(a, 0, 1), ==, 447);
 	munit_assert_float(cofactor(a, 0, 2), ==, 210);
 	munit_assert_float(cofactor(a, 0, 3), ==, 51);
-	munit_assert_float(determinant(a), ==, -4071);
+	munit_assert_float(matrix_determinant(a), ==, -4071);
 	free(a);
 	return (MUNIT_OK);
 }
@@ -344,8 +343,8 @@ MunitResult matrix_test18(const MunitParameter params[], void *fixture)
 			{ 4 , -9, 3 , -7},
 			{ 9 , 1 , 7 , -6},
 			});
-	munit_assert_float(determinant(a), ==, -2120);
-	munit_assert_true(is_invertible(a));
+	munit_assert_float(matrix_determinant(a), ==, -2120);
+	munit_assert_true(matrix_is_invertible(a));
 	free(a);
 	return (MUNIT_OK);
 }
@@ -359,8 +358,8 @@ MunitResult matrix_test19(const MunitParameter params[], void *fixture)
 			{ 0 , 0 , 0 , 0 },
 			});
 
-	munit_assert_float(determinant(a), ==, 0);
-	munit_assert_false(is_invertible(a));
+	munit_assert_float(matrix_determinant(a), ==, 0);
+	munit_assert_false(matrix_is_invertible(a));
 	free(a);
 	return (MUNIT_OK);
 }
@@ -380,8 +379,8 @@ MunitResult matrix_test20(const MunitParameter params[], void *fixture)
 			{ -0.07895, -0.22368, -0.05263,  0.19737 },
 			{ -0.52256, -0.81391, -0.30075,  0.30639 },
 			});
- 	t_matrix *b = inverse(a);
-	munit_assert_float(determinant(a), ==, 532);
+ 	t_matrix *b = invert(a);
+	munit_assert_float(matrix_determinant(a), ==, 532);
 	munit_assert_float(cofactor(a, 2, 3), ==, -160);
 	munit_assert_float(b->data[3][2], ==, -160/532.0);
 	munit_assert_float(cofactor(a, 3, 2), ==, 105);
@@ -407,7 +406,7 @@ MunitResult matrix_test21(const MunitParameter params[], void *fixture)
 			{  0.35897,  0.35897,  0.43590,  0.92308 },
 			{ -0.69231, -0.69231, -0.76923, -1.92308 },
 			});
-	t_matrix *b = inverse(a);
+	t_matrix *b = invert(a);
 	munit_assert_true(matrix_equals(b, expected));
 	free(a);
 	free(b);
@@ -429,7 +428,7 @@ MunitResult matrix_test22(const MunitParameter params[], void *fixture)
 			{ -0.02901 , -0.14630 , -0.10926 ,  0.12963 },
 			{  0.17778 ,  0.06667 , -0.26667 ,  0.33333 },
 			});
-	t_matrix *b = inverse(a);
+	t_matrix *b = invert(a);
 	munit_assert_true(matrix_equals(b, expected));
 	free(a);
 	free(b);
@@ -452,7 +451,7 @@ MunitResult matrix_test23(const MunitParameter params[], void *fixture)
 			{ 6 , -2 , 0 , 5 },
 			});
 	t_matrix *c = matrix_multiply(a, b);
-	t_matrix *b_inv = inverse(b);
+	t_matrix *b_inv = invert(b);
 	t_matrix *a_div = matrix_multiply(c, b_inv);
 	munit_assert_true(matrix_equals(a_div, a));
 	free(a);
@@ -462,4 +461,4 @@ MunitResult matrix_test23(const MunitParameter params[], void *fixture)
 	free(a_div);
 	return (MUNIT_OK);
 }
-*/
+

@@ -9,28 +9,28 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 #define PARAMS const MunitParameter params[], void *fixture
 
 MunitResult matrix_test1(PARAMS);
-// MunitResult matrix_test2(PARAMS);
-// MunitResult matrix_test3(PARAMS);
-// MunitResult matrix_test4(PARAMS);
-// MunitResult matrix_test5(PARAMS);
-// MunitResult matrix_test6(PARAMS);
-// MunitResult matrix_test7(PARAMS);
-// MunitResult matrix_test8(PARAMS);
-// MunitResult matrix_test9(PARAMS);
-// MunitResult matrix_test10(PARAMS);
-// MunitResult matrix_test11(PARAMS);
-// MunitResult matrix_test12(PARAMS);
-// MunitResult matrix_test13(PARAMS);
-// MunitResult matrix_test14(PARAMS);
-// MunitResult matrix_test15(PARAMS);
-// MunitResult matrix_test16(PARAMS);
-// MunitResult matrix_test17(PARAMS);
-// MunitResult matrix_test18(PARAMS);
-// MunitResult matrix_test19(PARAMS);
-// MunitResult matrix_test20(PARAMS);
-// MunitResult matrix_test21(PARAMS);
-// MunitResult matrix_test22(PARAMS);
-// MunitResult matrix_test23(PARAMS);
+MunitResult matrix_test2(PARAMS);
+MunitResult matrix_test3(PARAMS);
+MunitResult matrix_test4(PARAMS);
+MunitResult matrix_test5(PARAMS);
+MunitResult matrix_test6(PARAMS);
+MunitResult matrix_test7(PARAMS);
+MunitResult matrix_test8(PARAMS);
+MunitResult matrix_test9(PARAMS);
+MunitResult matrix_test10(PARAMS);
+MunitResult matrix_test11(PARAMS);
+MunitResult matrix_test12(PARAMS);
+MunitResult matrix_test13(PARAMS);
+MunitResult matrix_test14(PARAMS);
+MunitResult matrix_test15(PARAMS);
+MunitResult matrix_test16(PARAMS);
+MunitResult matrix_test17(PARAMS);
+MunitResult matrix_test18(PARAMS);
+MunitResult matrix_test19(PARAMS);
+MunitResult matrix_test20(PARAMS);
+MunitResult matrix_test21(PARAMS);
+MunitResult matrix_test22(PARAMS);
+MunitResult matrix_test23(PARAMS);
 
 MunitResult tuple_test1(PARAMS);
 MunitResult tuple_test2(PARAMS);
@@ -196,28 +196,28 @@ int main(int argc, char **argv) {
 
 	MunitTest matrix_tests[] = {
 		test("/new_matrix(size, initial_values)", matrix_test1),
-	// 	test("/matrix_equals(4x4, 4x4)", matrix_test2),
-	// 	test("/matrix_equals(3x3, 3x3)", matrix_test3),
-	// 	test("/matrix_equals(2x2, 2x2)", matrix_test4),
-	// 	test("/matrix_multiply(4x4, 4x4)", matrix_test5),
-	// 	test("/matrix_multiply_tuple(4x4, tuple)", matrix_test6),
-	// 	test("/identity_matrix()", matrix_test7),
-	// 	test("/identity_matrix() multiply a tuple", matrix_test8),
-	// 	test("/transponse()", matrix_test9),
-	// 	test("/transponse(identity_matrix)", matrix_test10),
-	// 	test("/determinant(2x2)", matrix_test11),
-	// 	test("/submatrix(3x3) == 2x2", matrix_test12),
-	// 	test("/submatrix(4x4) == 3x3", matrix_test13),
-	// 	test("/minor(3x3)", matrix_test14),
-	// 	test("/cofactor(3x3)", matrix_test15),
-	// 	test("/determinant(3x3)", matrix_test16),
-	// 	test("/determinant(4x4)", matrix_test17),
-	// 	test("/is_invertible(4x4)", matrix_test18),
-	// 	test("/is_invertible(4x4) returns false", matrix_test19),
-	// 	test("/inverse() works", matrix_test20),
-	// 	test("/inverse() works again", matrix_test21),
-	// 	test("/inverse() works again again", matrix_test22),
-	// 	test("/multiplying by the inverse() is the same as dividing", matrix_test23),
+		test("/matrix_equals(4x4, 4x4)", matrix_test2),
+		test("/matrix_equals(3x3, 3x3)", matrix_test3),
+		test("/matrix_equals(2x2, 2x2)", matrix_test4),
+		test("/matrix_multiply(4x4, 4x4)", matrix_test5),
+		test("/matrix_multiply_tuple(4x4, tuple)", matrix_test6),
+		test("/identity_matrix()", matrix_test7),
+		test("/identity_matrix() multiply a tuple", matrix_test8),
+		test("/transponse()", matrix_test9),
+		test("/transponse(identity_matrix)", matrix_test10),
+		test("/matrix_determinant(2x2)", matrix_test11),
+		test("/submatrix(3x3) == 2x2", matrix_test12),
+		test("/submatrix(4x4) == 3x3", matrix_test13),
+		test("/minor(3x3)", matrix_test14),
+		test("/cofactor(3x3)", matrix_test15),
+		test("/matrix_determinant(3x3)", matrix_test16),
+		test("/matrix_determinant(4x4)", matrix_test17),
+		test("/is_invertible(4x4)", matrix_test18),
+		test("/is_invertible(4x4) returns false", matrix_test19),
+		test("/invert() works", matrix_test20),
+		test("/invert() works again", matrix_test21),
+		test("/invert() works again again", matrix_test22),
+		test("/multiplying by the invert() is the same as dividing", matrix_test23),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -227,9 +227,9 @@ int main(int argc, char **argv) {
 	// 	test("/translation() * a vector doesn't change it", matrix_transform_test3),
 	// 	test("/scaling() scales a point", matrix_transform_test4),
 	// 	test("/scaling() scales a vector", matrix_transform_test5),
-	// 	test("/inverse(scaling()) inverts the scaling", matrix_transform_test6),
+	// 	test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
 	// 	test("/rotation_x()", matrix_transform_test7),
-	// 	test("/inverse(rotation_x())", matrix_transform_test8),
+	// 	test("/invert(rotation_x())", matrix_transform_test8),
 	// 	test("/rotation_y()", matrix_transform_test9),
 	// 	test("/rotation_z()", matrix_transform_test10),
 	// 	test("/individual transformations", matrix_transform_test11),
