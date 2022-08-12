@@ -265,6 +265,16 @@ MunitResult matrix_test13(const MunitParameter params[], void *fixture)
 			});
 
 	t_matrix *result = submatrix(a, 2, 1);
+	// munit_assert_float(result->data[0][0], ==, expected->data[0][0]);
+	// munit_assert_float(result->data[0][1], ==, expected->data[0][1]);
+	// munit_assert_float(result->data[0][2], ==, expected->data[0][2]);
+	// munit_assert_float(result->data[1][0], ==, expected->data[1][0]);
+	// munit_assert_float(result->data[1][1], ==, expected->data[1][1]);
+	// munit_assert_float(result->data[1][2], ==, expected->data[1][2]);
+	// munit_assert_float(result->data[2][0], ==, expected->data[2][0]);
+	// munit_assert_float(result->data[2][1], ==, expected->data[2][1]);
+	// munit_assert_float(result->data[2][2], ==, expected->data[2][2]);
+
 	munit_assert_true(matrix_equals(result, expected));
 	free(expected);
 	free(result);
@@ -385,7 +395,11 @@ MunitResult matrix_test20(const MunitParameter params[], void *fixture)
 	munit_assert_float(b->data[3][2], ==, -160/532.0);
 	munit_assert_float(cofactor(a, 3, 2), ==, 105);
 	munit_assert_float(b->data[2][3], ==, 105/532.0);
-	munit_assert_true(matrix_equals(b, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(b->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
 	free(a);
 	free(b);
 	free(expected);
@@ -407,7 +421,12 @@ MunitResult matrix_test21(const MunitParameter params[], void *fixture)
 			{ -0.69231, -0.69231, -0.76923, -1.92308 },
 			});
 	t_matrix *b = invert(a);
-	munit_assert_true(matrix_equals(b, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(b->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
+	// munit_assert_true(matrix_equals(b, expected));
 	free(a);
 	free(b);
 	free(expected);
@@ -429,7 +448,12 @@ MunitResult matrix_test22(const MunitParameter params[], void *fixture)
 			{  0.17778 ,  0.06667 , -0.26667 ,  0.33333 },
 			});
 	t_matrix *b = invert(a);
-	munit_assert_true(matrix_equals(b, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(b->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
+	// munit_assert_true(matrix_equals(b, expected));
 	free(a);
 	free(b);
 	free(expected);
@@ -451,14 +475,13 @@ MunitResult matrix_test23(const MunitParameter params[], void *fixture)
 			{ 6 , -2 , 0 , 5 },
 			});
 	t_matrix *c = matrix_multiply(a, b);
-	t_matrix *b_inv = invert(b);
-	t_matrix *a_div = matrix_multiply(c, b_inv);
-	munit_assert_true(matrix_equals(a_div, a));
+	t_matrix *a_result = matrix_multiply(c, invert(b));
+
+	munit_assert_true(matrix_equals(a_result, a));
 	free(a);
 	free(b);
 	free(c);
-	free(b_inv);
-	free(a_div);
+	free(a_result);
 	return (MUNIT_OK);
 }
 
