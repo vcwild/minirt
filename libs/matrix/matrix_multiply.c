@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/09 21:22:23 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:05:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_matrix	*matrix_multiply(t_matrix *a, t_matrix *b)
 	int			j;
 	int			k;
 
-	if (a->size != b->size)
-		return (NULL);
 	new = new_matrix(a->size, NULL);
 	i = -1;
 	while (++i < a->size)

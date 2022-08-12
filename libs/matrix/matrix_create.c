@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:20:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 21:12:47 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/11 21:21:09 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ t_matrix	*new_matrix(int size, double (*mat)[MAT_INI_DIM])
 	t_matrix	*new;
 
 	new = (t_matrix *) malloc(sizeof(t_matrix));
-	new->size = size;
 	if (!new)
 		return (fprintf(stderr, "Error: matrix allocation failed\n"), NULL);
+	new->size = size;
+	if (!mat)
+		return (new);
 	ft_memcpy(new->data, mat, sizeof(double) * MAT_INI_DIM * MAT_INI_DIM);
 	return (new);
 }

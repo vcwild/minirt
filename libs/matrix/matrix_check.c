@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:25:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 21:18:38 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:47:03 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,11 @@ int	matrix_equals(t_matrix *a, t_matrix *b)
 	return (1);
 }
 
-int	matrix_is_square(t_matrix *mat)
-{
-	return (mat->size == mat->size);
-}
-
 int	matrix_is_identity(t_matrix *mat)
 {
 	int	i;
 	int	j;
 
-	if (!matrix_is_square(mat))
-		return (0);
 	i = -1;
 	while (++i < mat->size)
 	{

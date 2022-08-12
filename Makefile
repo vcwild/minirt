@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/10 20:21:32 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/11 21:43:09 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -ltuple -lcanvas -lmatrix -lft
+INTERNAL_LIBS = -lcanvas -ltuple -lmatrix -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
