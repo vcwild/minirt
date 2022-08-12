@@ -6,13 +6,26 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:11:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 21:04:15 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:37:09 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <matrix.h>
 
-double	matrix_determinant(t_matrix *mat);
+inline double	matrix_determinant(t_matrix *mat)
+{
+	double	det;
+	int		j;
+
+	if (mat->size == 2)
+		return (mat->data[0][0] * mat->data[1][1]
+			- mat->data[0][1] * mat->data[1][0]);
+	det = 0;
+	j = -1;
+	while (++j < mat->size)
+		det += mat->data[0][j] * cofactor(mat, 0, j);
+	return (det);
+}
 
 double	minor(t_matrix *mat, int row, int col)
 {
@@ -31,25 +44,8 @@ double	cofactor(t_matrix *mat, int row, int col)
 
 	min = minor(mat, row, col);
 	if ((row + col) % 2 != 0)
-		min *= -1;
+		min = -min;
 	return (min);
-}
-
-double	matrix_determinant(t_matrix *mat)
-{
-	double	det;
-	int		j;
-
-	det = 0;
-	j = -1;
-	if (mat->size == 1)
-		return (mat->data[0][0]);
-	if (mat->size == 2)
-		return (mat->data[0][0] * mat->data[1][1]
-			- mat->data[0][1] * mat->data[1][0]);
-	while (++j < mat->size)
-		det += mat->data[0][j] * cofactor(mat, 0, j);
-	return (det);
 }
 
 t_matrix	*invert(t_matrix *mat)
@@ -60,9 +56,9 @@ t_matrix	*invert(t_matrix *mat)
 	double		det;
 	double		cof;
 
-	if (!matrix_is_invertible(mat))
-		return (NULL);
 	det = matrix_determinant(mat);
+	if (!det)
+		return (NULL);
 	new = new_matrix(mat->size, NULL);
 	i = -1;
 	while (++i < mat->size)
