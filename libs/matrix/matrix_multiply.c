@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 18:56:47 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:58:05 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_matrix	*matrix_multiply(t_matrix *a, t_matrix *b)
 	t_matrix	*new;
 
 	i = -1;
-	new = new_matrix(MAT_INI_DIM, NULL);
-	while (++i < MAT_INI_DIM)
+	new = new_matrix(a->size, NULL);
+	while (++i < a->size)
 	{
 		j = -1;
-		while (++j < MAT_INI_DIM)
+		while (++j < a->size)
 		{
 			k = -1;
 			sum = 0;
-			while (++k < MAT_INI_DIM)
+			while (++k < a->size)
 				sum += a->data[i][k] * b->data[k][j];
 			new->data[i][j] = sum;
 		}
