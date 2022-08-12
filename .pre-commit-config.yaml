@@ -1,7 +1,7 @@
 default_language_version:
   python: python3
 
-exclude: ^libs/mlx_linux
+exclude: ^libs/mlx_linux ^tests
 
 repos:
   - repo: https://github.com/vcwild/norminette-hook
