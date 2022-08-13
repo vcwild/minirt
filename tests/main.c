@@ -71,7 +71,7 @@ MunitResult matrix_transform_test5(PARAMS);
 MunitResult matrix_transform_test6(PARAMS);
 MunitResult matrix_transform_test7(PARAMS);
 MunitResult matrix_transform_test8(PARAMS);
-// MunitResult matrix_transform_test9(PARAMS);
+MunitResult matrix_transform_test9(PARAMS);
 // MunitResult matrix_transform_test10(PARAMS);
 // MunitResult matrix_transform_test11(PARAMS);
 // MunitResult matrix_transform_test12(PARAMS);
@@ -243,7 +243,7 @@ int main(int argc, char **argv) {
 		test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
 		test("/rotation_x()", matrix_transform_test7),
 		test("/invert(rotation_x())", matrix_transform_test8),
-	// 	test("/rotation_y()", matrix_transform_test9),
+		test("/rotation_y()", matrix_transform_test9),
 	// 	test("/rotation_z()", matrix_transform_test10),
 	// 	test("/individual transformations", matrix_transform_test11),
 	// 	test("/chained transformations", matrix_transform_test12),
