@@ -66,9 +66,9 @@ MunitResult canvas_test4(PARAMS);
 MunitResult matrix_transform_test1(PARAMS);
 MunitResult matrix_transform_test2(PARAMS);
 MunitResult matrix_transform_test3(PARAMS);
-// MunitResult matrix_transform_test4(PARAMS);
-// MunitResult matrix_transform_test5(PARAMS);
-// MunitResult matrix_transform_test6(PARAMS);
+MunitResult matrix_transform_test4(PARAMS);
+MunitResult matrix_transform_test5(PARAMS);
+MunitResult matrix_transform_test6(PARAMS);
 // MunitResult matrix_transform_test7(PARAMS);
 // MunitResult matrix_transform_test8(PARAMS);
 // MunitResult matrix_transform_test9(PARAMS);
@@ -238,9 +238,9 @@ int main(int argc, char **argv) {
 		test("/translation() moves a point", matrix_transform_test1),
 		test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
 		test("/translation() * a vector doesn't change it", matrix_transform_test3),
-	// 	test("/scaling() scales a point", matrix_transform_test4),
-	// 	test("/scaling() scales a vector", matrix_transform_test5),
-	// 	test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
+		test("/scaling() scales a point", matrix_transform_test4),
+		test("/scaling() scales a vector", matrix_transform_test5),
+		test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
 	// 	test("/rotation_x()", matrix_transform_test7),
 	// 	test("/invert(rotation_x())", matrix_transform_test8),
 	// 	test("/rotation_y()", matrix_transform_test9),
