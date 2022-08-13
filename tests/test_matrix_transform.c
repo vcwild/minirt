@@ -182,7 +182,7 @@ MunitResult matrix_transform_test9(const MunitParameter params[], void *fixture)
 	free(full_quarter_result);
 	return (MUNIT_OK);
 }
-/*
+
 MunitResult matrix_transform_test10(const MunitParameter params[], void *fixture)
 {
 	t_tuple *p = new_point(0, 1, 0);
@@ -208,6 +208,7 @@ MunitResult matrix_transform_test10(const MunitParameter params[], void *fixture
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult matrix_transform_test11(const MunitParameter params[], void *fixture)
 {
 	t_tuple *p = new_point(1, 0, 1);
