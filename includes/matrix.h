@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 11:22:19 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:41:33 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include <tuple.h>
 # include <libft.h>
@@ -172,4 +173,17 @@ t_matrix	*translation(double x, double y, double z);
  */
 t_matrix	*scaling(double x, double y, double z);
 
+/**
+ * @brief Rotate an object around the x axis
+ * @param radians The angle of rotation in radians
+ * @return t_matrix* A new matrix with the result of the rotation
+ */
+t_matrix	*rotation_x(double radians);
+
+/**
+ * @brief Calculate radians from degrees
+ * @param degrees Degrees to be converted to radians
+ * @return int Radians
+ */
+int			radians(double degrees);
 #endif
