@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 23:52:18 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:54:20 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ typedef struct s_matrix {
  * @return 1 if the matrices are equal, 0 otherwise
  */
 int			matrix_equals(t_matrix *a, t_matrix *b);
-
-/**
- * @brief Check if matrix is identity matrix (identity matrix is a matrix
- * with 1s on the diagonal)
- * @param mat
- * @return 1 if the matrix is identity matrix, 0 otherwise
- */
 
 /**
  * @brief Check if a matrix is identity matrix (identity matrix is a
