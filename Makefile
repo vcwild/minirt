@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/12 16:53:08 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/12 19:36:04 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,6 +147,7 @@ TEST_SRC += tests/munit/munit.c
 TEST_SRC += tests/main.c
 TEST_SRC += tests/test_tuples.c
 TEST_SRC += tests/test_matrix.c
+TEST_SRC += tests/test_matrix_transform.c
 
 test: libft libtuple libcanvas libmatrix
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
