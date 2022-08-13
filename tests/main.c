@@ -58,6 +58,10 @@ MunitResult tuple_test23(PARAMS);
 MunitResult tuple_test24(PARAMS);
 MunitResult tuple_test25(PARAMS);
 
+MunitResult canvas_test1(PARAMS);
+MunitResult canvas_test2(PARAMS);
+MunitResult canvas_test3(PARAMS);
+MunitResult canvas_test4(PARAMS);
 // MunitResult matrix_transform_test1(PARAMS);
 // MunitResult matrix_transform_test2(PARAMS);
 // MunitResult matrix_transform_test3(PARAMS);
@@ -221,6 +225,14 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
+	MunitTest canvas_tests[] = {
+		test("/new_canvas", canvas_test1),
+		test("/new_canvas", canvas_test2),
+		test("/new_canvas and write_pixel()", canvas_test3),
+		test("/new_canvas and pixel_at()", canvas_test4),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
+
 	// MunitTest matrix_transform_tests[] = {
 	// 	test("/translation() moves a point", matrix_transform_test1),
 	// 	test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
@@ -344,6 +356,7 @@ int main(int argc, char **argv) {
 
 	#define OPTIONS NULL, 1, MUNIT_SUITE_OPTION_NONE
 	MunitSuite tuple_suite =            { "/tuples", tuple_tests, OPTIONS };
+	MunitSuite canvas_suite =            { "/canvas", canvas_tests, OPTIONS };
 	MunitSuite matrix_suite =           { "/matrices", matrix_tests, OPTIONS };
 	// MunitSuite matrix_transform_suite = { "/matrices/tranform", matrix_transform_tests, OPTIONS };
 	// MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
@@ -358,6 +371,7 @@ int main(int argc, char **argv) {
 
 	MunitSuite suites[] = {
 		tuple_suite,
+		canvas_suite,
 		matrix_suite,
 		// matrix_transform_suite,
 		// ray_suite,
