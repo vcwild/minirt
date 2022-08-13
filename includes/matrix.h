@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 10:47:11 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:22:19 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,14 @@ t_matrix	*transpose(t_matrix *mat);
  * @return t_matrix*
  */
 t_matrix	*translation(double x, double y, double z);
+
+/**
+ * @brief Scale all points of an object
+ * @param x The x point
+ * @param y The y point
+ * @param z The z point
+ * @return t_matrix* A new matrix with the result of the scaling
+ */
+t_matrix	*scaling(double x, double y, double z);
 
 #endif
