@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 13:27:15 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:44:41 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,6 @@ t_matrix	*matrix_multiply_n(t_matrix **mats)
 	int			i;
 
 	i = -1;
-	while (mats[i])
-	{
-		new = matrix_multiply(mats[i + 1], tmp);
-		tmp = new;
-		i++;
-	}
-	return (new);
-}
-
-/* Original N
-t_matrix	*matrix_multiply_n(t_matrix **mats)
-{
-	t_matrix	*new;
-	t_matrix	*tmp;
-	int			i;
-
-	i = -1;
 	while (mats[++i])
 		;
 	tmp = mats[--i];
@@ -72,10 +55,7 @@ t_matrix	*matrix_multiply_n(t_matrix **mats)
 	}
 	return (new);
 }
-*/
 
-/*
-Working multiply 3 function
 t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 {
 	t_matrix	*new;
@@ -84,23 +64,6 @@ t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 	new = matrix_multiply(a, b);
 	tmp = new;
 	new = matrix_multiply(c, tmp);
-	return (new);
-}
-*/
-
-t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
-{
-	t_matrix	**mats;
-	t_matrix	*new;
-
-	if (a->size != b->size || a->size != c->size || b->size != c->size)
-		return (fprintf(stderr, "Error: matrix sizes do not match\n"), NULL);
-	mats = (t_matrix **)malloc(sizeof(t_matrix *) * 3);
-	mats[0] = a;
-	mats[1] = b;
-	mats[2] = c;
-	new = matrix_multiply_n(mats);
-	free(mats);
 	return (new);
 }
 

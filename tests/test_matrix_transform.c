@@ -247,13 +247,11 @@ MunitResult matrix_transform_test12(const MunitParameter params[], void *fixture
 	t_matrix *B = scaling(5, 5, 5);
 	t_matrix *C = translation(10, 5, 7);
 
-	// this function was never tested before
 	t_matrix *T = matrix_multiply_3(A, B, C);
 
 	t_tuple *p2 = matrix_multiply_tuple(T, p);
 	t_tuple *p2_expected = new_point(15, 0, 7);
 
-	//munit_assert_double(p2->x, ==, p2_expected->x);
 	munit_assert_true(tuple_equals(p2, p2_expected));
 
 	free(p);
@@ -265,6 +263,7 @@ MunitResult matrix_transform_test12(const MunitParameter params[], void *fixture
 	free(p2_expected);
 	return (MUNIT_OK);
 }
+
 /*
 MunitResult matrix_transform_test13(const MunitParameter params[], void *fixture)
 {
