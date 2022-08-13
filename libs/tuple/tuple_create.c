@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:44:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:26:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:07:49 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ t_tuple	*new_tuple(double x, double y, double z, double w)
 	return (tuple);
 }
 
-t_tuple	*new_point(double x, double y, double z)
+t_point	*new_point(double x, double y, double z)
 {
 	return (new_tuple(x, y, z, 1.0));
 }
 
-t_tuple	*new_vector(double x, double y, double z)
+t_vector	*new_vector(double x, double y, double z)
 {
 	return (new_tuple(x, y, z, 0.0));
 }

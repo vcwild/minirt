@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 15:51:19 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/13 16:15:08 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef RAY_H
+# define RAY_H
 
-# include <stdio.h>
-# include <math.h>
+# include <matrix.h>
 
-# include <canvas.h>
-# include <ray.h>
+typedef struct s_ray {
+	t_tuple	*origin;
+	t_tuple	*direction;
+}				t_ray;
 
-/* constants */
-
-/* structs */
+t_ray	*new_ray(t_tuple *origin, t_tuple *direction);
 
 #endif

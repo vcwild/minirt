@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 15:39:33 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:16:29 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@
  * z axis pointing out of the screen
  * w defines if the tuple is a point, vector or tuple
 */
-typedef struct s_tuple
+struct s_tuple
 {
 	double	x;
 	double	y;
 	double	z;
 	double	w;
-}	t_tuple;
+};
+
+/* type aliases, only used for typing convenience */
+typedef struct s_tuple	t_tuple;
+typedef struct s_tuple	t_point;
+typedef struct s_tuple	t_vector;
 
 /**
  * @brief create a new tuple
@@ -43,7 +48,7 @@ typedef struct s_tuple
  * @param w w type of the tuple
  * @return a pointer to tuple created
  */
-t_tuple	*new_tuple(double x, double y, double z, double w);
+t_tuple		*new_tuple(double x, double y, double z, double w);
 
 /**
  * @brief create a point tuple (w = 1.0)
@@ -53,7 +58,7 @@ t_tuple	*new_tuple(double x, double y, double z, double w);
  * @param z z axis value
  * @return a pointer to tuple created
  */
-t_tuple	*new_point(double x, double y, double z);
+t_point		*new_point(double x, double y, double z);
 
 /**
  * @brief create a vector tuple  (w = 0.0)
@@ -63,7 +68,7 @@ t_tuple	*new_point(double x, double y, double z);
  * @param z z axis value
  * @return a pointer to tuple created
  */
-t_tuple	*new_vector(double x, double y, double z);
+t_vector	*new_vector(double x, double y, double z);
 
 /**
  * @brief check if tuple is a point
@@ -71,7 +76,7 @@ t_tuple	*new_vector(double x, double y, double z);
  * @param t tuple to be checked
  * @return true if tuple is a point, false otherwise
  */
-int		is_point(t_tuple *t);
+int			is_point(t_tuple *t);
 
 /**
  * @brief check if tuple is a vector
@@ -79,9 +84,9 @@ int		is_point(t_tuple *t);
  * @param t tuple to be checked
  * @return true if tuple is a vector, false otherwise
  */
-int		is_vector(t_tuple *t);
+int			is_vector(t_tuple *t);
 
-int		is_tuple(t_tuple *t);
+int			is_tuple(t_tuple *t);
 
 /**
  * @brief check if two doubles are equals
@@ -90,7 +95,7 @@ int		is_tuple(t_tuple *t);
  * @param b second double to be compared
  * @return true if equals, false otherwise
  */
-int		dequals(double a, double b);
+int			dequals(double a, double b);
 
 /**
  * @brief check if two tuples are equals
@@ -99,7 +104,7 @@ int		dequals(double a, double b);
  * @param b second tuple to be compared
  * @return true if equals, false otherwise
  */
-int		tuple_equals(t_tuple *a, t_tuple *b);
+int			tuple_equals(t_tuple *a, t_tuple *b);
 
 /**
  * @brief make a new tuple that is the sum of two tuples,
@@ -109,7 +114,7 @@ int		tuple_equals(t_tuple *a, t_tuple *b);
  * @param b second tuple to be added
  * @return a pointer to the new tuple
  */
-t_tuple	*add_tuples(t_tuple *a, t_tuple *b);
+t_tuple		*add_tuples(t_tuple *a, t_tuple *b);
 
 /**
  * @brief make a new tuple that is the difference of two tuples,
@@ -120,7 +125,7 @@ t_tuple	*add_tuples(t_tuple *a, t_tuple *b);
  * @param b second tuple to be subtracted
  * @return a pointer to the new tuple
  */
-t_tuple	*subtract_tuples(t_tuple *a, t_tuple *b);
+t_tuple		*subtract_tuples(t_tuple *a, t_tuple *b);
 
 /**
  * @brief invert the sign of the tuple values
@@ -128,7 +133,7 @@ t_tuple	*subtract_tuples(t_tuple *a, t_tuple *b);
  * @param a tuple to have values inverted
  * @return a pointer to the inverted tuple
  */
-t_tuple	*negate_tuple(t_tuple *a);
+t_tuple		*negate_tuple(t_tuple *a);
 
 /**
  * @brief multiply a tuple by a scalar values
@@ -137,7 +142,7 @@ t_tuple	*negate_tuple(t_tuple *a);
  * @param v scalar value
  * @return the tuple values multiplied by the scalar value
  */
-t_tuple	*multiply_scalar(t_tuple *t, double v);
+t_tuple		*multiply_scalar(t_tuple *t, double v);
 
 /**
  * @brief divide a tuple by a scalar values
@@ -146,7 +151,7 @@ t_tuple	*multiply_scalar(t_tuple *t, double v);
  * @param v scalar value
  * @return the tuple values divided by the scalar value
  */
-t_tuple	*divide_scalar(t_tuple *t, double v);
+t_tuple		*divide_scalar(t_tuple *t, double v);
 
 /**
  * @brief calculate the angle between two vectors
@@ -154,7 +159,7 @@ t_tuple	*divide_scalar(t_tuple *t, double v);
  * @param b second tuple
  * @return double scalar value of the angle between the two vectors
  */
-double	dot(t_tuple *a, t_tuple *b);
+double		dot(t_tuple *a, t_tuple *b);
 
 /**
  * @brief calculate magnitude of a vector, it's
@@ -162,7 +167,7 @@ double	dot(t_tuple *a, t_tuple *b);
  * @param a tuple to be calculated
  * @return magnitude of the vector
  */
-double	magnitude(t_tuple *a);
+double		magnitude(t_tuple *a);
 
 /**
  * @brief normalize a vector, it's
@@ -170,7 +175,7 @@ double	magnitude(t_tuple *a);
  * @param a tuple to be normalized
  * @return a pointer to the normalized tuple
  */
-t_tuple	*normalize(t_tuple *a);
+t_tuple		*normalize(t_tuple *a);
 
 /**
  * @brief calculate the cross product of two vectors
@@ -178,9 +183,9 @@ t_tuple	*normalize(t_tuple *a);
  * @param b seconde tuple
  * @return t_tuple* vector that is the cross product of the two tuples
  */
-t_tuple	*cross(t_tuple *a, t_tuple *b);
+t_tuple		*cross(t_tuple *a, t_tuple *b);
 
-t_tuple	*reflect(t_tuple *v, t_tuple *n);
-double	round_to(double num);
+t_tuple		*reflect(t_tuple *v, t_tuple *n);
+double		round_to(double num);
 
 #endif
