@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/11 20:56:28 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/12 19:55:57 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,12 @@ double		cofactor(t_matrix *mat, int row, int col);
 t_matrix	*invert(t_matrix *mat);
 
 t_matrix	*transpose(t_matrix *mat);
+
+t_matrix	*matrix_translation(double x, double y, double z);
+t_matrix	*matrix_scaling(double x, double y, double z);
+
+t_matrix	*matrix_rotation_x(double angle);
+t_matrix	*matrix_rotation_y(double angle);
+t_matrix	*matrix_rotation_z(double angle);
 
 #endif
