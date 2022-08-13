@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_multiply.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 18:58:05 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:58:42 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,27 @@ t_matrix	*matrix_multiply_n(t_matrix **mats)
 	i = -1;
 	while (mats[++i])
 		;
-	tmp = mats[--i];
+	new = mats[--i];
 	while (i--)
 	{
-		new = matrix_multiply(mats[i], tmp);
-		free(tmp);
 		tmp = new;
+		new = matrix_multiply(tmp, mats[i]);
+		if (i > 1)
+			free(tmp);
 	}
 	return (new);
 }
 
 t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 {
-	t_matrix	**mats;
 	t_matrix	*new;
+	t_matrix	*tmp;
 
 	if (a->size != b->size || a->size != c->size || b->size != c->size)
 		return (fprintf(stderr, "Error: matrix sizes do not match\n"), NULL);
-	mats = (t_matrix **)malloc(sizeof(t_matrix *) * 3);
-	mats[0] = a;
-	mats[1] = b;
-	mats[2] = c;
-	new = matrix_multiply_n(mats);
-	free(mats);
+	new = matrix_multiply(a, b);
+	tmp = new;
+	new = matrix_multiply(c, tmp);
 	return (new);
 }
 

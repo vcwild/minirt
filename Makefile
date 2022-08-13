@@ -6,7 +6,7 @@
 #    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/13 10:00:43 by itaureli         ###   ########.fr        #
+#    Updated: 2022/08/13 10:42:50 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,6 +148,7 @@ TEST_SRC += tests/main.c
 TEST_SRC += tests/test_tuples.c
 TEST_SRC += tests/test_matrix.c
 TEST_SRC += tests/test_canvas.c
+TEST_SRC += tests/test_matrix_transform.c
 
 test: libft libtuple libcanvas libmatrix
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm

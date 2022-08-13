@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 23:54:20 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:46:59 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include <tuple.h>
 # include <libft.h>
@@ -153,4 +154,50 @@ t_matrix	*invert(t_matrix *mat);
  */
 t_matrix	*transpose(t_matrix *mat);
 
+/**
+ * @brief Translation matrix is a transformation matrix that moves a point
+ * it changes the coordinates of a point by adding or subtracting from them
+ * @param x The x coordinate of the translation
+ * @param y The y coordinate of the translation
+ * @param z The z coordinate of the translation
+ * @return t_matrix*
+ */
+t_matrix	*translation(double x, double y, double z);
+
+/**
+ * @brief Scale all points of an object
+ * @param x The x point
+ * @param y The y point
+ * @param z The z point
+ * @return t_matrix* A new matrix with the result of the scaling
+ */
+t_matrix	*scaling(double x, double y, double z);
+
+/**
+ * @brief Rotate an object around the x axis
+ * @param radians The angle of rotation in radians
+ * @return t_matrix* A new matrix with the result of the rotation
+ */
+t_matrix	*rotation_x(double radians);
+
+/**
+ * @brief Rotate an object around the y axis
+ * @param radians The angle of rotation in radians
+ * @return t_matrix* A new matrix with the result of the rotation
+ */
+t_matrix	*rotation_y(double radians);
+
+/**
+ * @brief Rotate an object around the z axis
+ * @param radians The angle of rotation in radians
+ * @return t_matrix* A new matrix with the result of the rotation
+ */
+t_matrix	*rotation_z(double radians);
+
+/**
+ * @brief Calculate radians from degrees
+ * @param degrees Degrees to be converted to radians
+ * @return int Radians
+ */
+int			radians(double degrees);
 #endif
