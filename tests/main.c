@@ -225,6 +225,14 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
+	MunitTest canvas_tests[] = {
+		test("/new_canvas", canvas_test1),
+		test("/new_canvas", canvas_test2),
+		test("/new_canvas and write_pixel()", canvas_test3),
+		test("/new_canvas and pixel_at()", canvas_test4),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
+
 	// MunitTest matrix_transform_tests[] = {
 	// 	test("/translation() moves a point", matrix_transform_test1),
 	// 	test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
