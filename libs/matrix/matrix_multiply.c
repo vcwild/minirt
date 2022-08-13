@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 15:44:41 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:58:42 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ t_matrix	*matrix_multiply_n(t_matrix **mats)
 	i = -1;
 	while (mats[++i])
 		;
-	tmp = mats[--i];
+	new = mats[--i];
 	while (i--)
 	{
-		new = matrix_multiply(mats[i], tmp);
-		free(tmp);
 		tmp = new;
+		new = matrix_multiply(tmp, mats[i]);
+		if (i > 1)
+			free(tmp);
 	}
 	return (new);
 }
@@ -61,6 +62,8 @@ t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 	t_matrix	*new;
 	t_matrix	*tmp;
 
+	if (a->size != b->size || a->size != c->size || b->size != c->size)
+		return (fprintf(stderr, "Error: matrix sizes do not match\n"), NULL);
 	new = matrix_multiply(a, b);
 	tmp = new;
 	new = matrix_multiply(c, tmp);
