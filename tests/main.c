@@ -75,7 +75,7 @@ MunitResult matrix_transform_test9(PARAMS);
 MunitResult matrix_transform_test10(PARAMS);
 MunitResult matrix_transform_test11(PARAMS);
 MunitResult matrix_transform_test12(PARAMS);
-// MunitResult matrix_transform_test13(PARAMS);
+MunitResult matrix_transform_test13(PARAMS);
 // MunitResult matrix_transform_test14(PARAMS);
 // MunitResult matrix_transform_test15(PARAMS);
 // MunitResult matrix_transform_test16(PARAMS);
@@ -247,7 +247,7 @@ int main(int argc, char **argv) {
 		test("/rotation_z()", matrix_transform_test10),
 		test("/individual transformations", matrix_transform_test11),
 		test("/chained transformations", matrix_transform_test12),
-	//	test("/chained n transformations", matrix_transform_test13),
+		test("/chained n transformations", matrix_transform_test13),
 	//	test("/view_transform()", matrix_transform_test14),
 	// 	test("/view_transform() looking to +z", matrix_transform_test15),
 	// 	test("/view_transform() moves the world", matrix_transform_test16),
