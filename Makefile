@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/14 22:32:20 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/14 22:32:39 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix libray
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
