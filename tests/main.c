@@ -81,7 +81,7 @@ MunitResult matrix_transform_test13(PARAMS);
 // MunitResult matrix_transform_test16(PARAMS);
 
 MunitResult ray_test1(PARAMS);
-// MunitResult ray_test2(PARAMS);
+MunitResult ray_test2(PARAMS);
 // MunitResult ray_test3(PARAMS);
 // MunitResult ray_test4(PARAMS);
 // MunitResult ray_test5(PARAMS);
@@ -256,7 +256,7 @@ int main(int argc, char **argv) {
 
 	MunitTest ray_tests[] = {
 		test("/new_ray()", ray_test1),
-	// test("/position()", ray_test2),
+		test("/position()", ray_test2),
 	// 	test("/a ray intersect() a sphere at two points", ray_test3),
 	// 	test("/a ray intersect() a sphere at a tangent", ray_test4),
 	// 	test("/a ray misses the sphere", ray_test5),

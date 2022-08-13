@@ -20,7 +20,7 @@ MunitResult ray_test1(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
+
 MunitResult ray_test2(const MunitParameter params[], void *fixture)
 {
 	t_tuple *expected;
@@ -55,6 +55,7 @@ MunitResult ray_test2(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult ray_test3(const MunitParameter params[], void *fixture)
 {
 	t_intersections	*xs;
