@@ -293,6 +293,7 @@ MunitResult matrix_transform_test13(const MunitParameter params[], void *fixture
 	return (MUNIT_OK);
 }
 
+// The below content comes from chapter 7 of the book.
 /*
 MunitResult matrix_transform_test14(const MunitParameter params[], void *fixture)
 {
