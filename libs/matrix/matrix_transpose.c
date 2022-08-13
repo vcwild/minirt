@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   matrix_transpose.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 15:21:52 by vwildner          #+#    #+#             */
-/*   Updated: 2022/07/31 18:02:00 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/10 20:44:03 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/10 20:55:23 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#include <matrix.h>
 
-# include <libft.h>
-# include <stddef.h>
+t_matrix	*transpose(t_matrix *mat)
+{
+	t_matrix	*new;
+	int			i;
+	int			j;
 
-#endif
+	new = new_matrix(mat->size, NULL);
+	i = -1;
+	while (++i < mat->size)
+	{
+		j = -1;
+		while (++j < mat->size)
+			new->data[j][i] = mat->data[i][j];
+	}
+	return (new);
+}

@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/10 13:53:59 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/12 16:53:08 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lft -ltuple
+INTERNAL_LIBS = -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -64,6 +64,11 @@ CANVAS = canvas
 CANVAS_NAME = lib$(CANVAS).a
 CANVAS_PATH = $(LIBS_PATH)/$(CANVAS)
 
+# matrix
+MATRIX = matrix
+MATRIX_NAME = lib$(MATRIX).a
+MATRIX_PATH = $(LIBS_PATH)/$(MATRIX)
+
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
@@ -75,11 +80,12 @@ endif
 	libft libft_clean \
 	libmlx libmlx_clean \
 	libtuple libtuple_clean \
-	libcanvas libcanvas_clean
+	libcanvas libcanvas_clean \
+	libmatrix libmatrix_clean
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -117,6 +123,12 @@ libcanvas: libft
 libcanvas_clean:
 	@$(MAKE_EXTERNAL) $(CANVAS_PATH) clean
 
+libmatrix: libft libcanvas
+	@$(MAKE_EXTERNAL) $(MATRIX_PATH)
+
+libmatrix_clean:
+	@$(MAKE_EXTERNAL) $(MATRIX_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
@@ -125,7 +137,7 @@ re:	fclean all
 archives_clean:
 	@$(REMOVE) $(ARCHIVES_PATH)
 
-clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean
 	@$(REMOVE) $(OBJECTS_PATH)
 
 fclean: clean archives_clean
@@ -134,7 +146,8 @@ fclean: clean archives_clean
 TEST_SRC += tests/munit/munit.c
 TEST_SRC += tests/main.c
 TEST_SRC += tests/test_tuples.c
+TEST_SRC += tests/test_matrix.c
 
-test: libft libtuple libcanvas
-	$(CC) -g $(TEST_SRC) -o ./test_bin -L $(ARCHIVES_PATH) -I $(INCLUDES_PATH) -lft -lm -ltuple -lcanvas
+test: libft libtuple libcanvas libmatrix
+	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
 	./test_bin # || ./test_bin --no-fork

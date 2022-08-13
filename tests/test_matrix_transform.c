@@ -32,7 +32,7 @@ MunitResult matrix_transform_test1(const MunitParameter params[], void *fixture)
 MunitResult matrix_transform_test2(const MunitParameter params[], void *fixture)
 {
 	t_matrix *transform = translation(5, -3, 2);
-	t_matrix *inv = inverse(transform);
+	t_matrix *inv = invert(transform);
 	t_tuple *p = new_point(-3, 4, 5);
 
 	t_tuple *result = matrix_multiply_tuple(inv, p);
@@ -102,7 +102,7 @@ MunitResult matrix_transform_test5(const MunitParameter params[], void *fixture)
 MunitResult matrix_transform_test6(const MunitParameter params[], void *fixture)
 {
 	t_matrix *transform = scaling(2, 3, 4);
-	t_matrix *inv = inverse(transform);
+	t_matrix *inv = invert(transform);
 	t_tuple *v = new_vector(-4, 6, 8);
 	t_tuple *expected = new_vector(-2, 2, 2);
 
@@ -147,7 +147,7 @@ MunitResult matrix_transform_test8(const MunitParameter params[], void *fixture)
 {
 	t_tuple *p = new_point(0, 1, 0);
 	t_matrix *half_quarter = rotation_x(M_PI_4);
-	t_matrix *inv = inverse(half_quarter);
+	t_matrix *inv = invert(half_quarter);
 
 	t_tuple *expected = new_point(0, M_SQRT2 / 2, -M_SQRT2 / 2);
 
