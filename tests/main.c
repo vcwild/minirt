@@ -80,7 +80,7 @@ MunitResult matrix_transform_test13(PARAMS);
 // MunitResult matrix_transform_test15(PARAMS);
 // MunitResult matrix_transform_test16(PARAMS);
 
-// MunitResult ray_test1(PARAMS);
+MunitResult ray_test1(PARAMS);
 // MunitResult ray_test2(PARAMS);
 // MunitResult ray_test3(PARAMS);
 // MunitResult ray_test4(PARAMS);
@@ -254,9 +254,9 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest ray_tests[] = {
-	// 	test("/new_ray()", ray_test1),
-	// 	test("/position()", ray_test2),
+	MunitTest ray_tests[] = {
+		test("/new_ray()", ray_test1),
+	// test("/position()", ray_test2),
 	// 	test("/a ray intersect() a sphere at two points", ray_test3),
 	// 	test("/a ray intersect() a sphere at a tangent", ray_test4),
 	// 	test("/a ray misses the sphere", ray_test5),
@@ -270,8 +270,8 @@ int main(int argc, char **argv) {
 	// 	test("/hit() with a scrambled order", ray_test13),
 	// 	test("/tranform() a ray with a translation matrix", ray_test14),
 	// 	test("/tranform() a ray with a scaling matrix", ray_test15),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest sphere_tests[] = {
 	// 	test("/new_sphere() has a transform matrix", sphere_test1),
@@ -360,7 +360,7 @@ int main(int argc, char **argv) {
 	MunitSuite canvas_suite =            { "/canvas", canvas_tests, OPTIONS };
 	MunitSuite matrix_suite =           { "/matrices", matrix_tests, OPTIONS };
 	MunitSuite matrix_transform_suite = { "/matrices/transform", matrix_transform_tests, OPTIONS };
-	// MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
+	MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
 	// MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	// MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
@@ -375,7 +375,7 @@ int main(int argc, char **argv) {
 		canvas_suite,
 		matrix_suite,
 		matrix_transform_suite,
-		// ray_suite,
+		ray_suite,
 		// light_suite,
 		// material_suite,
 		// world_suite,

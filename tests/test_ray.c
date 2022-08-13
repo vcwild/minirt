@@ -3,13 +3,8 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
 #include "munit/munit.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include "ray/ray.h"
-#include "shapes/shapes.h"
-#include <stdlib.h>
+#include "minirt.h"
 
 MunitResult ray_test1(const MunitParameter params[], void *fixture)
 {
@@ -25,6 +20,7 @@ MunitResult ray_test1(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult ray_test2(const MunitParameter params[], void *fixture)
 {
 	t_tuple *expected;
@@ -303,3 +299,4 @@ MunitResult ray_test15(const MunitParameter params[], void *fixture)
 	free(expected_origin);
 	return (MUNIT_OK);
 }
+*/
