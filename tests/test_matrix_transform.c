@@ -23,7 +23,7 @@ MunitResult matrix_transform_test1(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
+
 MunitResult matrix_transform_test2(const MunitParameter params[], void *fixture)
 {
 	t_matrix *transform = translation(5, -3, 2);
@@ -60,6 +60,7 @@ MunitResult matrix_transform_test3(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult matrix_transform_test4(const MunitParameter params[], void *fixture)
 {
 	t_matrix *transform = scaling(2, 3, 4);

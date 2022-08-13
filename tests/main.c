@@ -64,8 +64,8 @@ MunitResult canvas_test3(PARAMS);
 MunitResult canvas_test4(PARAMS);
 
 MunitResult matrix_transform_test1(PARAMS);
-// MunitResult matrix_transform_test2(PARAMS);
-// MunitResult matrix_transform_test3(PARAMS);
+MunitResult matrix_transform_test2(PARAMS);
+MunitResult matrix_transform_test3(PARAMS);
 // MunitResult matrix_transform_test4(PARAMS);
 // MunitResult matrix_transform_test5(PARAMS);
 // MunitResult matrix_transform_test6(PARAMS);
@@ -236,8 +236,8 @@ int main(int argc, char **argv) {
 
 	MunitTest matrix_transform_tests[] = {
 		test("/translation() moves a point", matrix_transform_test1),
-	// 	test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
-	// 	test("/translation() * a vector doesn't change it", matrix_transform_test3),
+		test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
+		test("/translation() * a vector doesn't change it", matrix_transform_test3),
 	// 	test("/scaling() scales a point", matrix_transform_test4),
 	// 	test("/scaling() scales a vector", matrix_transform_test5),
 	// 	test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
@@ -251,8 +251,8 @@ int main(int argc, char **argv) {
 	// 	test("/view_transform()", matrix_transform_test14),
 	// 	test("/view_transform() looking to +z", matrix_transform_test15),
 	// 	test("/view_transform() moves the world", matrix_transform_test16),
-	//	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest ray_tests[] = {
 	// 	test("/new_ray()", ray_test1),
@@ -284,8 +284,8 @@ int main(int argc, char **argv) {
 	// 	test("/normal_at() with a translated sphere", sphere_test8),
 	// 	test("/normal_at() with a scaled and rotated sphere", sphere_test9),
 	// 	test("/a new sphere has a default material", sphere_test10),
-		{ NULL, NULL, NULL, NULL, 0, NULL },
-	};
+	//	{ NULL, NULL, NULL, NULL, 0, NULL },
+	//};
 
 	// MunitTest light_tests[] = {
 	// 	test("/new_point_light() returns a light", light_test1),
