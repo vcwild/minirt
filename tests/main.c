@@ -62,7 +62,8 @@ MunitResult canvas_test1(PARAMS);
 MunitResult canvas_test2(PARAMS);
 MunitResult canvas_test3(PARAMS);
 MunitResult canvas_test4(PARAMS);
-// MunitResult matrix_transform_test1(PARAMS);
+
+MunitResult matrix_transform_test1(PARAMS);
 // MunitResult matrix_transform_test2(PARAMS);
 // MunitResult matrix_transform_test3(PARAMS);
 // MunitResult matrix_transform_test4(PARAMS);
@@ -233,8 +234,8 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest matrix_transform_tests[] = {
-	// 	test("/translation() moves a point", matrix_transform_test1),
+	MunitTest matrix_transform_tests[] = {
+		test("/translation() moves a point", matrix_transform_test1),
 	// 	test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
 	// 	test("/translation() * a vector doesn't change it", matrix_transform_test3),
 	// 	test("/scaling() scales a point", matrix_transform_test4),
@@ -250,7 +251,7 @@ int main(int argc, char **argv) {
 	// 	test("/view_transform()", matrix_transform_test14),
 	// 	test("/view_transform() looking to +z", matrix_transform_test15),
 	// 	test("/view_transform() moves the world", matrix_transform_test16),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
+	//	{ NULL, NULL, NULL, NULL, 0, NULL },
 	// };
 
 	// MunitTest ray_tests[] = {
@@ -283,8 +284,8 @@ int main(int argc, char **argv) {
 	// 	test("/normal_at() with a translated sphere", sphere_test8),
 	// 	test("/normal_at() with a scaled and rotated sphere", sphere_test9),
 	// 	test("/a new sphere has a default material", sphere_test10),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest light_tests[] = {
 	// 	test("/new_point_light() returns a light", light_test1),
@@ -358,7 +359,7 @@ int main(int argc, char **argv) {
 	MunitSuite tuple_suite =            { "/tuples", tuple_tests, OPTIONS };
 	MunitSuite canvas_suite =            { "/canvas", canvas_tests, OPTIONS };
 	MunitSuite matrix_suite =           { "/matrices", matrix_tests, OPTIONS };
-	// MunitSuite matrix_transform_suite = { "/matrices/tranform", matrix_transform_tests, OPTIONS };
+	MunitSuite matrix_transform_suite = { "/matrices/transform", matrix_transform_tests, OPTIONS };
 	// MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
 	// MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
@@ -373,7 +374,7 @@ int main(int argc, char **argv) {
 		tuple_suite,
 		canvas_suite,
 		matrix_suite,
-		// matrix_transform_suite,
+		matrix_transform_suite,
 		// ray_suite,
 		// light_suite,
 		// material_suite,
