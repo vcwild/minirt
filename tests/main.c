@@ -58,22 +58,22 @@ MunitResult tuple_test23(PARAMS);
 MunitResult tuple_test24(PARAMS);
 MunitResult tuple_test25(PARAMS);
 
-// MunitResult matrix_transform_test1(PARAMS);
-// MunitResult matrix_transform_test2(PARAMS);
-// MunitResult matrix_transform_test3(PARAMS);
-// MunitResult matrix_transform_test4(PARAMS);
-// MunitResult matrix_transform_test5(PARAMS);
-// MunitResult matrix_transform_test6(PARAMS);
-// MunitResult matrix_transform_test7(PARAMS);
-// MunitResult matrix_transform_test8(PARAMS);
-// MunitResult matrix_transform_test9(PARAMS);
-// MunitResult matrix_transform_test10(PARAMS);
-// MunitResult matrix_transform_test11(PARAMS);
-// MunitResult matrix_transform_test12(PARAMS);
-// MunitResult matrix_transform_test13(PARAMS);
-// MunitResult matrix_transform_test14(PARAMS);
-// MunitResult matrix_transform_test15(PARAMS);
-// MunitResult matrix_transform_test16(PARAMS);
+MunitResult matrix_transform_test1(PARAMS);
+MunitResult matrix_transform_test2(PARAMS);
+MunitResult matrix_transform_test3(PARAMS);
+MunitResult matrix_transform_test4(PARAMS);
+MunitResult matrix_transform_test5(PARAMS);
+MunitResult matrix_transform_test6(PARAMS);
+MunitResult matrix_transform_test7(PARAMS);
+MunitResult matrix_transform_test8(PARAMS);
+MunitResult matrix_transform_test9(PARAMS);
+MunitResult matrix_transform_test10(PARAMS);
+MunitResult matrix_transform_test11(PARAMS);
+MunitResult matrix_transform_test12(PARAMS);
+MunitResult matrix_transform_test13(PARAMS);
+MunitResult matrix_transform_test14(PARAMS);
+MunitResult matrix_transform_test15(PARAMS);
+MunitResult matrix_transform_test16(PARAMS);
 
 // MunitResult ray_test1(PARAMS);
 // MunitResult ray_test2(PARAMS);
@@ -221,25 +221,25 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest matrix_transform_tests[] = {
-	// 	test("/translation() moves a point", matrix_transform_test1),
-	// 	test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
-	// 	test("/translation() * a vector doesn't change it", matrix_transform_test3),
-	// 	test("/scaling() scales a point", matrix_transform_test4),
-	// 	test("/scaling() scales a vector", matrix_transform_test5),
-	// 	test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
-	// 	test("/rotation_x()", matrix_transform_test7),
-	// 	test("/invert(rotation_x())", matrix_transform_test8),
-	// 	test("/rotation_y()", matrix_transform_test9),
-	// 	test("/rotation_z()", matrix_transform_test10),
-	// 	test("/individual transformations", matrix_transform_test11),
-	// 	test("/chained transformations", matrix_transform_test12),
-	// 	test("/chained n transformations", matrix_transform_test13),
-	// 	test("/view_transform()", matrix_transform_test14),
-	// 	test("/view_transform() looking to +z", matrix_transform_test15),
-	// 	test("/view_transform() moves the world", matrix_transform_test16),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+	MunitTest matrix_transform_tests[] = {
+		test("/translation() moves a point", matrix_transform_test1),
+		test("/invserse(translation()) moves a point to the oposite direction", matrix_transform_test2),
+		test("/translation() * a vector doesn't change it", matrix_transform_test3),
+		test("/scaling() scales a point", matrix_transform_test4),
+		test("/scaling() scales a vector", matrix_transform_test5),
+		test("/invert(scaling()) inverts the scaling", matrix_transform_test6),
+		test("/rotation_x()", matrix_transform_test7),
+		test("/invert(rotation_x())", matrix_transform_test8),
+		test("/rotation_y()", matrix_transform_test9),
+		test("/rotation_z()", matrix_transform_test10),
+		test("/individual transformations", matrix_transform_test11),
+		test("/chained transformations", matrix_transform_test12),
+		test("/chained n transformations", matrix_transform_test13),
+		test("/view_transform()", matrix_transform_test14),
+		test("/view_transform() looking to +z", matrix_transform_test15),
+		test("/view_transform() moves the world", matrix_transform_test16),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest ray_tests[] = {
 	// 	test("/new_ray()", ray_test1),
@@ -345,7 +345,7 @@ int main(int argc, char **argv) {
 	#define OPTIONS NULL, 1, MUNIT_SUITE_OPTION_NONE
 	MunitSuite tuple_suite =            { "/tuples", tuple_tests, OPTIONS };
 	MunitSuite matrix_suite =           { "/matrices", matrix_tests, OPTIONS };
-	// MunitSuite matrix_transform_suite = { "/matrices/tranform", matrix_transform_tests, OPTIONS };
+	MunitSuite matrix_transform_suite = { "/matrices/tranform", matrix_transform_tests, OPTIONS };
 	// MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
 	// MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };

@@ -3,18 +3,12 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
-#include "camera/camera.h"
 #include "munit/munit.h"
-#include "../sources/structures.h"
-#include "../sources/minirt.h"
-#include "../sources/debug.h"
-#include "tuple/tuple.h"
-#include <math.h>
+#include "minirt.h"
 
 MunitResult matrix_transform_test1(const MunitParameter params[], void *fixture)
 {
-	t_matrix *transform = translation(5, -3, 2);
+	t_matrix *transform = matrix_translation(5, -3, 2);
 	t_tuple *p = new_point(-3, 4, 5);
 
 	t_tuple *result = matrix_multiply_tuple(transform, p);
@@ -31,7 +25,7 @@ MunitResult matrix_transform_test1(const MunitParameter params[], void *fixture)
 
 MunitResult matrix_transform_test2(const MunitParameter params[], void *fixture)
 {
-	t_matrix *transform = translation(5, -3, 2);
+	t_matrix *transform = matrix_translation(5, -3, 2);
 	t_matrix *inv = invert(transform);
 	t_tuple *p = new_point(-3, 4, 5);
 
@@ -50,7 +44,7 @@ MunitResult matrix_transform_test2(const MunitParameter params[], void *fixture)
 
 MunitResult matrix_transform_test3(const MunitParameter params[], void *fixture)
 {
-	t_matrix *transform = translation(5, -3, 2);
+	t_matrix *transform = matrix_translation(5, -3, 2);
 	t_tuple *p = new_vector(-3, 4, 5);
 
 	t_tuple *result = matrix_multiply_tuple(transform, p);
@@ -218,7 +212,7 @@ MunitResult matrix_transform_test11(const MunitParameter params[], void *fixture
 	t_tuple *p = new_point(1, 0, 1);
 	t_matrix *A = rotation_x(M_PI_2);
 	t_matrix *B = scaling(5, 5, 5);
-	t_matrix *C = translation(10, 5, 7);
+	t_matrix *C = matrix_translation(10, 5, 7);
 
 	t_tuple *p2 = matrix_multiply_tuple(A, p);
 	t_tuple *p2_expected = new_point(1, -1, 0);
@@ -250,7 +244,7 @@ MunitResult matrix_transform_test12(const MunitParameter params[], void *fixture
 	t_tuple *p = new_point(1, 0, 1);
 	t_matrix *A = rotation_x(M_PI_2);
 	t_matrix *B = scaling(5, 5, 5);
-	t_matrix *C = translation(10, 5, 7);
+	t_matrix *C = matrix_translation(10, 5, 7);
 
 	t_matrix *T = matrix_multiply3(A, B, C);
 
@@ -274,7 +268,7 @@ MunitResult matrix_transform_test13(const MunitParameter params[], void *fixture
 	t_tuple *p = new_point(1, 0, 1);
 	t_matrix *A = rotation_x(M_PI_2);
 	t_matrix *B = scaling(5, 5, 5);
-	t_matrix *C = translation(10, 5, 7);
+	t_matrix *C = matrix_translation(10, 5, 7);
 
 	t_matrix **Ts = malloc(sizeof(t_matrix *) * 4);
 	Ts[0] = A;
@@ -341,7 +335,7 @@ MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture
 	t_tuple *up = new_vector(0, 1, 0);
 	t_matrix *t = view_transform(from, to, up);
 
-	t_matrix *expected = translation(0, 0, -8);
+	t_matrix *expected = matrix_translation(0, 0, -8);
 
 	munit_assert_true(matrix_equals(t, expected));
 	free(expected);
