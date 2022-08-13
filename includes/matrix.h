@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 23:54:20 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 10:47:11 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,15 @@ t_matrix	*invert(t_matrix *mat);
  * @return t_matrix* A new matrix with the result of the transposition
  */
 t_matrix	*transpose(t_matrix *mat);
+
+/**
+ * @brief Translation matrix is a transformation matrix that moves a point
+ * it changes the coordinates of a point by adding or subtracting from them
+ * @param x The x coordinate of the translation
+ * @param y The y coordinate of the translation
+ * @param z The z coordinate of the translation
+ * @return t_matrix*
+ */
+t_matrix	*translation(double x, double y, double z);
 
 #endif
