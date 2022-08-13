@@ -1,0 +1,12 @@
+default_language_version:
+  python: python3
+
+exclude: ^libs/mlx_linux ^tests
+
+repos:
+  - repo: https://github.com/vcwild/norminette-hook
+    rev: v0.1.0
+    hooks:
+    - id: norminette-hook
+      verbose: true
+      stages: [commit]

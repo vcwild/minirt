@@ -6,30 +6,26 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 17:23:23 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/07 15:36:58 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/10 13:48:44 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-INTERNAL_LIBS = -lft
-# EXTERNAL_LIBS = -lm
-
-# --------------------------------------------------------------------------------------------------
 
 FOLDER_NAME = $(shell ls . | grep .c$ | cut -d '_' -f 1 | head -1)
 NAME = lib$(FOLDER_NAME).a
 
-CC := $(shell ../../scripts/set_compiler.sh)
+SET_COMPILER = $(PWD)/scripts/set_compiler.sh
+CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)
 
-OBJECTS_PATH = ../../objects/$(FOLDER_NAME)
+OBJECTS_PATH = $(PWD)/objects/$(FOLDER_NAME)
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCES)))
 
-INCLUDES_PATH = ../../includes
+INCLUDES_PATH = $(PWD)/includes
 
-ARCHIVES_PATH = ../../archives
+ARCHIVES_PATH = $(PWD)/archives
 
 ARCHIVE_SOURCE = $(ARCHIVES_PATH)/$(NAME)
 
@@ -45,7 +41,7 @@ $(ARCHIVE_SOURCE): $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
-	@$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $< -L $(ARCHIVES_PATH) $(INTERNAL_LIBS) $(EXTERNAL_LIBS)
+	$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
 
 clean:
 	@$(RM) $(OBJECTS)

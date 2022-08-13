@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 19:46:04 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:40:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <libft.h>
 # include <fcntl.h>
+
+# include <tuple.h>
+# include <libft.h>
 
 /**
  * @brief A tuple to represent colors in RGB format.
@@ -50,8 +51,8 @@ typedef struct s_canvas {
  * The data has the actual pixels.
  */
 typedef struct s_ppm {
-	char	*header;
-	u_int	*data;
+	char			*header;
+	unsigned int	*data;
 }	t_ppm;
 
 /**

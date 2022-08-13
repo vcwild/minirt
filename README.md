@@ -21,20 +21,74 @@ A ray tracer is a program that takes a scene and a camera and renders the scene 
 - There is light in the scene
 - The light emits rays that intersect with objects in the scene
 
+## Requirements for development
+
+These are the dependencies required for development:
+
+### Dependencies
+
+Install libs
+
+```sh
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+```
+
+If you want to run tests on project clone munit into /tests folder
+```sh
+git submodule init
+```
+
+### Create a venv
+
+```python3
+python3 -m venv venv
+source venv/bin/activate
+pip install -U pip
+```
+
+### Install norminette
+
+```python3
+pip install -U norminette
+```
+
+### Install pre-commit hooks
+
+```python3
+pip install pre-commit
+pre-commit install --install-hooks --overwrite
+```
+
+## Docs
+
 ### How the Ray Tracer algorithm works
 
 1. Cast a ray into the scene, and find where it strikes a surface.
 2. Cast a ray from that point toward each light source to determine which
-lights illuminate that point.
+   lights illuminate that point.
 3. If the surface is reflective, cast a new ray in the direction of reflection and
-recursively determine what color is reflected there.
+   recursively determine what color is reflected there.
 4. If the surface is transparent, do the same thing in the direction of refrac-
-tion.
+   tion.
 5. Combine all colors that contribute to the point (the color of the surface,
-the reflection, and refraction) and return that as the color of the pixel.
+   the reflection, and refraction) and return that as the color of the pixel.
+
+This project uses minilibx-linux
+MinilibX, a simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
+
+Unofficial documentation for minilibx
+
+- [Harm Smiths Docs](https://harm-smits.github.io/42docs/libs/minilibx)
+- [Getting started with the minilibx](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
+
 
 ## References
 
 - [The Ray Tracer Challenge](https://www.raytracing.org/raytracerchallenge/)
 - [How Ray Tracing Works](https://www.youtube.com/watch?v=lKIytgt3KXM)
 - [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- [Simple Method for Creating 3D Images](https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing)
+- [Khan Academy Rendering](https://www.khanacademy.org/computing/pixar/rendering)
+- [Notion 1 Resource](https://www.notion.so/miniRT-5f6fcdf6d05e4742b6c38f0588f12436)
+- [Disney's Practical Guide to Path Tracing](https://www.youtube.com/watch?v=frLwRLS_ZR0)
+- [An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide/)

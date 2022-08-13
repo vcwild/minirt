@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/02 17:31:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/10 20:05:00 by vwildner         ###   ########.fr        #
+#    Created: 2022/08/02 17:23:23 by vwildner          #+#    #+#              #
+#    Updated: 2022/08/10 18:33:53 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,13 @@ $(ARCHIVE_SOURCE): $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
-	@$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
+	$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJECTS)
+	@$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
