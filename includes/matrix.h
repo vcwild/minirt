@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 11:41:33 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:44:40 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,13 @@ t_matrix	*scaling(double x, double y, double z);
  * @return t_matrix* A new matrix with the result of the rotation
  */
 t_matrix	*rotation_x(double radians);
+
+/**
+ * @brief Rotate an object around the y axis
+ * @param radians The angle of rotation in radians
+ * @return t_matrix* A new matrix with the result of the rotation
+ */
+t_matrix	*rotation_y(double radians);
 
 /**
  * @brief Calculate radians from degrees

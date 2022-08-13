@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:28:55 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/13 11:40:42 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:43:42 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ t_matrix	*rotation_x(double radians)
 	new->data[1][1] = cos(radians);
 	new->data[1][2] = -sin(radians);
 	new->data[2][1] = sin(radians);
+	new->data[2][2] = cos(radians);
+	return (new);
+}
+
+t_matrix	*rotation_y(double radians)
+{
+	t_matrix	*new;
+
+	new = identity_matrix();
+	new->data[0][0] = cos(radians);
+	new->data[0][2] = sin(radians);
+	new->data[2][0] = -sin(radians);
 	new->data[2][2] = cos(radians);
 	return (new);
 }
