@@ -83,13 +83,13 @@ MunitResult matrix_transform_test13(PARAMS);
 MunitResult ray_test1(PARAMS);
 MunitResult ray_test2(PARAMS);
 MunitResult ray_test3(PARAMS);
-// MunitResult ray_test4(PARAMS);
-// MunitResult ray_test5(PARAMS);
-// MunitResult ray_test6(PARAMS);
-// MunitResult ray_test7(PARAMS);
-// MunitResult ray_test8(PARAMS);
-// MunitResult ray_test9(PARAMS);
-// MunitResult ray_test10(PARAMS);
+MunitResult ray_test4(PARAMS);
+MunitResult ray_test5(PARAMS);
+MunitResult ray_test6(PARAMS);
+MunitResult ray_test7(PARAMS);
+MunitResult ray_test8(PARAMS);
+MunitResult ray_test9(PARAMS);
+MunitResult ray_test10(PARAMS);
 // MunitResult ray_test11(PARAMS);
 // MunitResult ray_test12(PARAMS);
 // MunitResult ray_test13(PARAMS);
@@ -258,14 +258,14 @@ int main(int argc, char **argv) {
 		test("/new_ray()", ray_test1),
 		test("/position()", ray_test2),
 		test("/a ray intersect() a sphere at two points", ray_test3),
-	// 	test("/a ray intersect() a sphere at a tangent", ray_test4),
-	// 	test("/a ray misses the sphere", ray_test5),
-	// 	test("/a ray originates inside a sphere", ray_test6),
-	// 	test("/a sphere is behind a ray", ray_test7),
-	// 	test("/an intersection encapsulates t and object", ray_test8),
-	// 	test("/intersect() sets the object on the intersection", ray_test9),
-	// 	test("/hit() when all inters are positive", ray_test10),
-	// 	test("/hit() when some are negative", ray_test11),
+		test("/a ray intersect() a sphere at a tangent", ray_test4),
+		test("/a ray misses the sphere", ray_test5),
+		test("/a ray originates inside a sphere", ray_test6),
+		test("/a sphere is behind a ray", ray_test7),
+		test("/an intersection encapsulates t and object", ray_test8),
+		test("/intersect() sets the object on the intersection", ray_test9),
+		test("/hit() when all inters are positive", ray_test10),
+		// test("/hit() when some are negative", ray_test11),
 	// 	test("/hit() when all inters are negative", ray_test12),
 	// 	test("/hit() with a scrambled order", ray_test13),
 	// 	test("/tranform() a ray with a translation matrix", ray_test14),
