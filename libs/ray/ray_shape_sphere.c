@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:55:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:00:40 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:24:42 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs)
 	disc = get_discriminant(&s->sphere, r, &coef);
 	if (disc < 0)
 		return ;
+	t = (-coef.b - sqrt(disc)) / (2 * coef.a);
+	new = new_intersection(t, s, OBJ_SPHERE);
+	add_intersection(xs, new);
 	if (dequals(disc, 0))
-		t = (-coef.b) - sqrt(disc) / (2 * coef.a);
-	else
-		t = (-coef.b + sqrt(disc)) / (2 * coef.a);
+		return ;
+	t = (-coef.b + sqrt(disc)) / (2 * coef.a);
 	new = new_intersection(t, s, OBJ_SPHERE);
 	add_intersection(xs, new);
 }
