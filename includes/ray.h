@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/15 16:33:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:29:41 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_point			*get_position(t_ray *ray, double distance);
 t_shape			*new_sphere(void);
 void			set_transform(t_shape *s, t_matrix *mat);
 void			sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+void			intersect(t_shape *shape, t_ray *r, t_intersections *xs);
+t_vector		*get_sphere_normal(t_shape *shape, t_point *point);
 
 /* utils */
 double			get_discriminant(t_sphere *s, t_ray *r, t_disc_coef *coef);

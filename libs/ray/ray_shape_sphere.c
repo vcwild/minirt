@@ -6,23 +6,11 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:55:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/15 16:34:34 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:33:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ray.h>
-
-t_vector	*get_sphere_normal(t_shape *shape, t_point *point)
-{
-	t_point	*normal;
-	t_point	*center;
-
-	(void)shape;
-	center = new_point(0, 0, 0);
-	normal = subtract_tuples(point, center);
-	normal->w = 0;
-	return (free(center), normal);
-}
 
 void	sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs)
 {
@@ -63,4 +51,13 @@ void	set_transform(t_shape *s, t_matrix *mat)
 	s->transform = mat;
 	free(s->inverse_transform);
 	s->inverse_transform = invert(mat);
+}
+
+void	intersect(t_shape *shape, t_ray *r, t_intersections *xs)
+{
+	t_ray	*tmp_ray;
+
+	tmp_ray = transform(r, shape->inverse_transform);
+	shape->intersect(shape, tmp_ray, xs);
+	free(tmp_ray);
 }
