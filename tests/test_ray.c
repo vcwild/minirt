@@ -55,7 +55,6 @@ MunitResult ray_test2(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 MunitResult ray_test3(const MunitParameter params[], void *fixture)
 {
 	t_intersections	*xs;
@@ -76,6 +75,7 @@ MunitResult ray_test3(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult ray_test4(const MunitParameter params[], void *fixture)
 {
 	t_ray *r = new_ray(new_point(0, 1, -5), new_vector(0, 0, 1));
