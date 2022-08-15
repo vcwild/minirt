@@ -198,7 +198,6 @@ MunitResult ray_test10(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 MunitResult ray_test11(const MunitParameter params[], void *fixture)
 {
 	t_shape *s = new_sphere();
@@ -257,6 +256,7 @@ MunitResult ray_test13(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+
 MunitResult ray_test14(const MunitParameter params[], void *fixture)
 {
 	t_ray *ray = new_ray(new_point(1, 2, 3), new_vector(0, 1, 0));
@@ -302,4 +302,4 @@ MunitResult ray_test15(const MunitParameter params[], void *fixture)
 	free(expected_origin);
 	return (MUNIT_OK);
 }
-*/
+

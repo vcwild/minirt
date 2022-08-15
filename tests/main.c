@@ -90,11 +90,11 @@ MunitResult ray_test7(PARAMS);
 MunitResult ray_test8(PARAMS);
 MunitResult ray_test9(PARAMS);
 MunitResult ray_test10(PARAMS);
-// MunitResult ray_test11(PARAMS);
-// MunitResult ray_test12(PARAMS);
-// MunitResult ray_test13(PARAMS);
-// MunitResult ray_test14(PARAMS);
-// MunitResult ray_test15(PARAMS);
+MunitResult ray_test11(PARAMS);
+MunitResult ray_test12(PARAMS);
+MunitResult ray_test13(PARAMS);
+MunitResult ray_test14(PARAMS);
+MunitResult ray_test15(PARAMS);
 
 // MunitResult sphere_test1(PARAMS);
 // MunitResult sphere_test2(PARAMS);
@@ -265,11 +265,11 @@ int main(int argc, char **argv) {
 		test("/an intersection encapsulates t and object", ray_test8),
 		test("/intersect() sets the object on the intersection", ray_test9),
 		test("/hit() when all inters are positive", ray_test10),
-		// test("/hit() when some are negative", ray_test11),
-	// 	test("/hit() when all inters are negative", ray_test12),
-	// 	test("/hit() with a scrambled order", ray_test13),
-	// 	test("/tranform() a ray with a translation matrix", ray_test14),
-	// 	test("/tranform() a ray with a scaling matrix", ray_test15),
+		test("/hit() when some are negative", ray_test11),
+		test("/hit() when all inters are negative", ray_test12),
+		test("/hit() with a scrambled order", ray_test13),
+		test("/tranform() a ray with a translation matrix", ray_test14),
+		test("/tranform() a ray with a scaling matrix", ray_test15),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
