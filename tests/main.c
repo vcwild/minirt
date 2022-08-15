@@ -96,8 +96,8 @@ MunitResult ray_test13(PARAMS);
 MunitResult ray_test14(PARAMS);
 MunitResult ray_test15(PARAMS);
 
-// MunitResult sphere_test1(PARAMS);
-// MunitResult sphere_test2(PARAMS);
+MunitResult sphere_test1(PARAMS);
+MunitResult sphere_test2(PARAMS);
 // MunitResult sphere_test3(PARAMS);
 // MunitResult sphere_test4(PARAMS);
 // MunitResult sphere_test5(PARAMS);
@@ -273,9 +273,9 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest sphere_tests[] = {
-	// 	test("/new_sphere() has a transform matrix", sphere_test1),
-	// 	test("/set_transform() sets a new sphere transform matrix", sphere_test2),
+	MunitTest sphere_tests[] = {
+		test("/new_sphere() has a transform matrix", sphere_test1),
+		test("/set_transform() sets a new sphere transform matrix", sphere_test2),
 	// 	test("/intersect() uses the sphere transform matrix", sphere_test3),
 	// 	test("/normal_at() at a point on the x axis", sphere_test4),
 	// 	test("/normal_at() at a point on the y axis", sphere_test5),
@@ -284,8 +284,8 @@ int main(int argc, char **argv) {
 	// 	test("/normal_at() with a translated sphere", sphere_test8),
 	// 	test("/normal_at() with a scaled and rotated sphere", sphere_test9),
 	// 	test("/a new sphere has a default material", sphere_test10),
-	//	{ NULL, NULL, NULL, NULL, 0, NULL },
-	//};
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest light_tests[] = {
 	// 	test("/new_point_light() returns a light", light_test1),
@@ -361,11 +361,11 @@ int main(int argc, char **argv) {
 	MunitSuite matrix_suite =           { "/matrices", matrix_tests, OPTIONS };
 	MunitSuite matrix_transform_suite = { "/matrices/transform", matrix_transform_tests, OPTIONS };
 	MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
+	MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
 	// MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	// MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
 	// MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
-	// MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
 	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
 	// MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
 	// MunitSuite cylinder_suite =         { "/cylinders", cylinder_tests, OPTIONS };
@@ -376,12 +376,12 @@ int main(int argc, char **argv) {
 		matrix_suite,
 		matrix_transform_suite,
 		ray_suite,
+		sphere_suite,
 		// light_suite,
 		// material_suite,
 		// world_suite,
 		// camera_suite,
 		// shape_suite,
-		// sphere_suite,
 		// plane_suite,
 		// cylinder_suite,
 		NULL,

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:55:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:24:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:34:34 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,12 @@ t_shape	*new_sphere(void)
 	shape->get_normal = get_sphere_normal;
 	shape->intersect = sphere_intersect;
 	return (shape);
+}
+
+void	set_transform(t_shape *s, t_matrix *mat)
+{
+	free(s->transform);
+	s->transform = mat;
+	free(s->inverse_transform);
+	s->inverse_transform = invert(mat);
 }

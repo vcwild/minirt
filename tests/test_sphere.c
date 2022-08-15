@@ -3,23 +3,14 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
 #include "munit/munit.h"
-#include "shapes/shapes.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include "ray/ray.h"
-#include <math.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
+#include "minirt.h"
 
 // a sphere is a shape
 MunitResult sphere_test1(const MunitParameter params[], void *fixture)
 {
 	t_shape *shape = new_sphere();
-	t_sphere *props = &shape->sphere_props;
+	t_sphere *props = &shape->sphere;
 	t_matrix *identity = identity_matrix();
 
 	munit_assert_true(matrix_equals(shape->transform, identity));
@@ -27,6 +18,7 @@ MunitResult sphere_test1(const MunitParameter params[], void *fixture)
 	destroy_sphere(shape);
 	return (MUNIT_OK);
 }
+
 
 MunitResult sphere_test2(const MunitParameter params[], void *fixture)
 {
@@ -40,6 +32,7 @@ MunitResult sphere_test2(const MunitParameter params[], void *fixture)
 	destroy_ray(ray);
 	return (MUNIT_OK);
 }
+
 
 // a sphere has a sphere intersection function
 MunitResult sphere_test3(const MunitParameter params[], void *fixture)
@@ -61,6 +54,7 @@ MunitResult sphere_test3(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult sphere_test4(const MunitParameter params[], void *fixture)
 {
 	t_shape *sphere = new_sphere();
@@ -181,3 +175,4 @@ MunitResult sphere_test10(const MunitParameter params[], void *fixture)
 	free(material);
 	return (MUNIT_OK);
 }
+*/

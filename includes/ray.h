@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 22:45:13 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:33:42 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,16 @@ typedef struct s_discriminant_coefficients {
 
 /* create */
 t_shape			*new_shape(void);
-t_shape			*new_sphere(void);
 t_ray			*new_ray(t_point *origin, t_vector *direction);
 t_point			*get_position(t_ray *ray, double distance);
 
-/* intersect */
-double			get_discriminant(t_sphere *s, t_ray *r, t_disc_coef *coef);
+/* sphere */
+t_shape			*new_sphere(void);
+void			set_transform(t_shape *s, t_matrix *mat);
 void			sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+
+/* utils */
+double			get_discriminant(t_sphere *s, t_ray *r, t_disc_coef *coef);
 
 /* intersection */
 t_intersection	*new_intersection(double t, t_shape *obj, t_object_type type);
@@ -92,6 +95,7 @@ double			rand_double(void);
 /* destroy */
 void			destroy_sphere(t_shape *s);
 void			destroy_intersections_list(t_intersections *xs);
+void			destroy_ray(t_ray *r);
 
 /* transform */
 t_ray			*transform(t_ray *r, t_matrix *mat);
