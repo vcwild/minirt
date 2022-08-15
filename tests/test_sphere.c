@@ -54,6 +54,7 @@ MunitResult sphere_test3(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+// The below content comes from chapter 6 of the book.
 /*
 MunitResult sphere_test4(const MunitParameter params[], void *fixture)
 {
