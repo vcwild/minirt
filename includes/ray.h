@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:06:43 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:47:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,11 @@ void			sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs);
 t_ray			*new_ray(t_point *origin, t_vector *direction);
 t_point			*get_position(t_ray *ray, double distance);
 
+/* intersection */
 t_intersection	*new_intersection(double t, t_shape *obj, t_object_type type);
 void			add_intersection(t_intersections *xs, t_intersection *new);
 void			sphere_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+void			sort_intersections(t_intersections *xs);
 
 double			rand_double(void);
 
