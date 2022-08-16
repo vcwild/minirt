@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/15 16:17:49 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/16 20:29:15 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lray -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -llight -lmaterial -lray -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -74,6 +74,16 @@ RAY = ray
 RAY_NAME = lib$(RAY).a
 RAY_PATH = $(LIBS_PATH)/$(RAY)
 
+# material
+MATERIAL = material
+MATERIAL_NAME = lib$(MATERIAL).a
+MATERIAL_PATH = $(LIBS_PATH)/$(MATERIAL)
+
+# light
+LIGHT = light
+LIGHT_NAME = lib$(LIGHT).a
+LIGHT_PATH = $(LIBS_PATH)/$(LIGHT)
+
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
@@ -90,7 +100,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix libray
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -140,12 +150,24 @@ libray: libmatrix libtuple
 libray_clean:
 	@$(MAKE_EXTERNAL) $(RAY_PATH) clean
 
+libmaterial: libray
+	@$(MAKE_EXTERNAL) $(MATERIAL_PATH)
+
+libmaterial_clean:
+	@$(MAKE_EXTERNAL) $(MATERIAL_PATH) clean
+
+liblight: libray
+	@$(MAKE_EXTERNAL) $(LIGHT_PATH)
+
+liblight_clean:
+	@$(MAKE_EXTERNAL) $(LIGHT_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
 re:	fclean all
 
-clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean
 	@$(REMOVE) $(OBJECTS_PATH)
 
 archives_clean:
