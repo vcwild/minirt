@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/16 20:29:15 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/16 20:33:31 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,8 @@ LIGHT = light
 LIGHT_NAME = lib$(LIGHT).a
 LIGHT_PATH = $(LIBS_PATH)/$(LIGHT)
 
+ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
+
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
@@ -100,7 +102,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
+$(NAME): $(OBJECTS) $(HEADER) $(ALL_LIBS)
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -185,6 +187,6 @@ TEST_SRC += tests/test_matrix_transform.c
 TEST_SRC += tests/test_ray.c
 TEST_SRC += tests/test_sphere.c
 
-test: libft libtuple libcanvas libmatrix libray
+test: $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
 	./test_bin # || ./test_bin --no-fork
