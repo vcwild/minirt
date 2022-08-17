@@ -216,18 +216,17 @@ MunitResult tuple_test14(const MunitParameter params[], void *fixture)
 
 	a = new_vector(1, 2, 3);
 	result = magnitude(a);
-	expected = round_to(sqrt(14));
+	expected = sqrt(14);
 	munit_assert_float(result, ==, expected);
 	free(a);
 
 	a = new_vector(-1, -2, -3);
 	result = magnitude(a);
-	expected = round_to(sqrt(14));
+	expected = sqrt(14);
 	munit_assert_float(result, ==, expected);
 	free(a);
 	return (MUNIT_OK);
 }
-
 
 MunitResult tuple_test15(const MunitParameter params[], void *fixture)
 {
@@ -236,7 +235,10 @@ MunitResult tuple_test15(const MunitParameter params[], void *fixture)
 	a = new_vector(4, 0, 0);
 	norm = normalize(a);
 	expected = new_vector(1, 0, 0);
-	munit_assert_true(tuple_equals(norm, expected));
+	munit_assert_float(round_to(norm->x), ==, expected->x);
+	munit_assert_float(round_to(norm->y), ==, expected->y);
+	munit_assert_float(round_to(norm->z), ==, expected->z);
+	munit_assert_float(round_to(norm->w), ==, expected->w);
 	free(a);
 	free(norm);
 	free(expected);
@@ -244,11 +246,10 @@ MunitResult tuple_test15(const MunitParameter params[], void *fixture)
 	a = new_vector(1, 2, 3);
 	norm = normalize(a);
 	expected = new_vector(0.26726, 0.53452, 0.80178);
-	// munit_assert_float(norm->x, ==, expected->x);
-	// munit_assert_float(norm->y, ==, expected->y);
-	// munit_assert_float(norm->z, ==, expected->z);
-	// munit_assert_float(norm->w, ==, expected->w);
-	munit_assert_true(tuple_equals(norm, expected));
+	munit_assert_float(round_to(norm->x), ==, expected->x);
+	munit_assert_float(round_to(norm->y), ==, expected->y);
+	munit_assert_float(round_to(norm->z), ==, expected->z);
+	munit_assert_float(round_to(norm->w), ==, expected->w);
 	free(a);
 	free(norm);
 	free(expected);
@@ -261,7 +262,7 @@ MunitResult tuple_test16(const MunitParameter params[], void *fixture)
 
 	a = new_vector(1, 2, 3);
 	norm = normalize(a);
-	munit_assert_float(magnitude(norm), ==, 1.0);
+	munit_assert_float(round_to(magnitude(norm)), ==, 1.0);
 	free(a);
 	free(norm);
 
