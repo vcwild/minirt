@@ -1,5 +1,5 @@
 <div align="center">
-  <img src=".github/assets/minirt.png" width="350px" />
+  <img src="https://images-cdn.9gag.com/photo/a5MPGyN_700b.jpg" width="230px" />
 </div>
 <div align="center">
   <img src="https://img.shields.io/github/languages/count/vcwild/philosophers?color=%23E96418&style=flat-square" alt="languages" />
