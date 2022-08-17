@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:03:03 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/14 21:44:58 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/14 21:59:39 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <ray.h>
 
-# include <stdio.h>
-# include <math.h>
+t_intersection	*hit(t_intersections *xs)
+{
+	t_intersection	*first_hit;
+	size_t			i;
 
-# include <canvas.h>
-# include <ray.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	i = 0;
+	first_hit = NULL;
+	if (!xs->is_sorted)
+		sort_intersections(xs);
+	while (i < xs->count)
+	{
+		first_hit = xs->intersections[i];
+		if (first_hit->t > 0)
+			return (first_hit);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ray_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:03:03 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/14 20:57:20 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/15 16:32:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <ray.h>
 
-# include <stdio.h>
-# include <math.h>
+void	destroy_shape(t_shape *s)
+{
+	free(s->transform);
+	free(s->inverse_transform);
+	free(s);
+}
 
-# include <canvas.h>
-# include <ray.h>
+void	destroy_sphere(t_shape *s)
+{
+	destroy_shape(s);
+}
 
-/* constants */
+void	destroy_intersections_list(t_intersections *xs)
+{
+	while (xs->count--)
+	{
+		free(xs->intersections[xs->count]);
+	}
+	free(xs->intersections);
+	free(xs);
+}
 
-/* structs */
-
-#endif
+void	destroy_ray(t_ray *r)
+{
+	free(r->direction);
+	free(r->origin);
+	free(r);
+}

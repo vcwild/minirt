@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/13 10:42:50 by itaureli         ###   ########.fr        #
+#    Updated: 2022/08/15 16:17:49 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -lray -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -69,6 +69,11 @@ MATRIX = matrix
 MATRIX_NAME = lib$(MATRIX).a
 MATRIX_PATH = $(LIBS_PATH)/$(MATRIX)
 
+# ray
+RAY = ray
+RAY_NAME = lib$(RAY).a
+RAY_PATH = $(LIBS_PATH)/$(RAY)
+
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
@@ -85,7 +90,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix
+$(NAME): $(OBJECTS) $(HEADER) libft libmlx libtuple libcanvas libmatrix libray
 	@$(CC) $(CFLAGS) \
 	-w -g $(OBJECTS) \
 	-o $(NAME) \
@@ -129,16 +134,22 @@ libmatrix: libft libcanvas
 libmatrix_clean:
 	@$(MAKE_EXTERNAL) $(MATRIX_PATH) clean
 
+libray: libmatrix libtuple
+	@$(MAKE_EXTERNAL) $(RAY_PATH)
+
+libray_clean:
+	@$(MAKE_EXTERNAL) $(RAY_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
 re:	fclean all
 
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean
+	@$(REMOVE) $(OBJECTS_PATH)
+
 archives_clean:
 	@$(REMOVE) $(ARCHIVES_PATH)
-
-clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean
-	@$(REMOVE) $(OBJECTS_PATH)
 
 fclean: clean archives_clean
 	@$(REMOVE) $(NAME)
@@ -149,7 +160,9 @@ TEST_SRC += tests/test_tuples.c
 TEST_SRC += tests/test_matrix.c
 TEST_SRC += tests/test_canvas.c
 TEST_SRC += tests/test_matrix_transform.c
+TEST_SRC += tests/test_ray.c
+TEST_SRC += tests/test_sphere.c
 
-test: libft libtuple libcanvas libmatrix
+test: libft libtuple libcanvas libmatrix libray
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
 	./test_bin # || ./test_bin --no-fork

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ray_shape_sphere_normal.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/14 21:03:03 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/15 20:28:38 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/15 20:33:29 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <ray.h>
 
-# include <stdio.h>
-# include <math.h>
+t_vector	*get_sphere_normal(t_shape *shape, t_point *point)
+{
+	t_point	*normal;
+	t_point	*center;
 
-# include <canvas.h>
-# include <ray.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	(void)shape;
+	center = new_point(0, 0, 0);
+	normal = subtract_tuples(point, center);
+	normal->w = 0;
+	return (free(center), normal);
+}

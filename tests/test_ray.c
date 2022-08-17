@@ -3,13 +3,8 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
 #include "munit/munit.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include "ray/ray.h"
-#include "shapes/shapes.h"
-#include <stdlib.h>
+#include "minirt.h"
 
 MunitResult ray_test1(const MunitParameter params[], void *fixture)
 {
@@ -24,6 +19,7 @@ MunitResult ray_test1(const MunitParameter params[], void *fixture)
 	free(r);
 	return (MUNIT_OK);
 }
+
 
 MunitResult ray_test2(const MunitParameter params[], void *fixture)
 {
@@ -97,6 +93,7 @@ MunitResult ray_test4(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+
 MunitResult ray_test5(const MunitParameter params[], void *fixture)
 {
 	t_ray *r = new_ray(new_point(0, 2, -5), new_vector(0, 0, 1));
@@ -152,13 +149,14 @@ MunitResult ray_test7(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+
 MunitResult ray_test8(const MunitParameter params[], void *fixture)
 {
 	t_shape *s = new_sphere();
 	t_intersection *intersection = new_intersection(3.5, s, OBJ_SPHERE);
 
 	munit_assert_float(intersection->t, ==, 3.5);
-	munit_assert_ptr_equal(intersection->object, s);
+	munit_assert_ptr_equal(intersection->shape, s);
 	munit_assert_int(intersection->object_type, ==, OBJ_SPHERE);
 	destroy_sphere(s);
 	free(intersection);
@@ -175,8 +173,8 @@ MunitResult ray_test9(const MunitParameter params[], void *fixture)
 	add_intersection(xs, i1);
 	add_intersection(xs, i2);
 	munit_assert_int(xs->count, ==, 2);
-	munit_assert_ptr_equal(xs->intersections[0]->object, s);
-	munit_assert_ptr_equal(xs->intersections[1]->object, s);
+	munit_assert_ptr_equal(xs->intersections[0]->shape, s);
+	munit_assert_ptr_equal(xs->intersections[1]->shape, s);
 	destroy_sphere(s);
 	destroy_intersections_list(xs);
 	return (MUNIT_OK);
@@ -258,6 +256,7 @@ MunitResult ray_test13(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+
 MunitResult ray_test14(const MunitParameter params[], void *fixture)
 {
 	t_ray *ray = new_ray(new_point(1, 2, 3), new_vector(0, 1, 0));
@@ -303,3 +302,4 @@ MunitResult ray_test15(const MunitParameter params[], void *fixture)
 	free(expected_origin);
 	return (MUNIT_OK);
 }
+
