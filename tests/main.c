@@ -99,12 +99,12 @@ MunitResult ray_test15(PARAMS);
 MunitResult sphere_test1(PARAMS);
 MunitResult sphere_test2(PARAMS);
 MunitResult sphere_test3(PARAMS);
-// MunitResult sphere_test4(PARAMS);
-// MunitResult sphere_test5(PARAMS);
-// MunitResult sphere_test6(PARAMS);
-// MunitResult sphere_test7(PARAMS);
-// MunitResult sphere_test8(PARAMS);
-// MunitResult sphere_test9(PARAMS);
+MunitResult sphere_test4(PARAMS);
+MunitResult sphere_test5(PARAMS);
+MunitResult sphere_test6(PARAMS);
+MunitResult sphere_test7(PARAMS);
+MunitResult sphere_test8(PARAMS);
+MunitResult sphere_test9(PARAMS);
 // MunitResult sphere_test10(PARAMS);
 
 // MunitResult plane_test1(PARAMS);
@@ -277,12 +277,12 @@ int main(int argc, char **argv) {
 		test("/new_sphere() has a transform matrix", sphere_test1),
 		test("/set_transform() sets a new sphere transform matrix", sphere_test2),
 		test("/intersect() uses the sphere transform matrix", sphere_test3),
-	// 	test("/normal_at() at a point on the x axis", sphere_test4),
-	// 	test("/normal_at() at a point on the y axis", sphere_test5),
-	// 	test("/normal_at() at a point on the z axis", sphere_test6),
-	// 	test("/normal_at() at a nonaxial point", sphere_test7),
-	// 	test("/normal_at() with a translated sphere", sphere_test8),
-	// 	test("/normal_at() with a scaled and rotated sphere", sphere_test9),
+		test("/get_normal() at a point on the x axis", sphere_test4),
+		test("/get_normal() at a point on the y axis", sphere_test5),
+		test("/get_normal() at a point on the z axis", sphere_test6),
+		test("/get_normal() at a nonaxial point", sphere_test7),
+		test("/get_normal() with a translated sphere", sphere_test8),
+		test("/get_normal() with a scaled and rotated sphere", sphere_test9),
 	// 	test("/a new sphere has a default material", sphere_test10),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
