@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 19:38:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 06:19:06 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:53:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ unsigned int	merge_colors(double r, double g, double b)
 
 t_color	*add_colors_free_args(t_color *a, t_color *b)
 {
-	t_color *final;
+	t_color	*final;
 
 	final = add_colors(a, b);
 	free(a);
