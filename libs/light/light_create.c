@@ -6,19 +6,19 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:25:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:22:11 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:34:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <light.h>
 
-t_point_light	*new_point_light(t_point *p, t_color *c)
+t_point_light	*new_point_light(t_point *p, t_color *intensity)
 {
 	t_point_light	*new;
 
 	new = (t_point_light *)malloc(sizeof(t_point_light));
 	new->position = p;
-	new->intensity = c;
+	new->intensity = intensity;
 	return (new);
 }
 

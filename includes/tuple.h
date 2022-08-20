@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 16:16:29 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:40:24 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,22 @@ t_tuple		*normalize(t_tuple *a);
  */
 t_tuple		*cross(t_tuple *a, t_tuple *b);
 
+/**
+ * @brief A function that returns the result of refleting in the vector
+ * around the normal vector
+ *
+ * @param v the vector to be reflected
+ * @param n the normal vector
+ * @return t_tuple* the reflected vector
+ */
 t_tuple		*reflect(t_tuple *v, t_tuple *n);
+
+/**
+ * @brief Rounds a double value to the nearest integer
+ *
+ * @param num the double value to be rounded
+ * @return double the rounded value
+ */
 double		round_to(double num);
 
 #endif
