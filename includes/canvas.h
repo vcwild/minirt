@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:40:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:54:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,15 @@ t_color			*new_color(double r, double g, double b);
  * @return t_color* Returns a pointer to the result of the addition struct.
  */
 t_color			*add_colors(t_color *a, t_color *b);
+
+/**
+ * @brief Adds two colors and then frees the original ones.
+ *
+ * @param a The first color struct.
+ * @param b The second color struct.
+ * @return t_color* Returns a pointer to the result of the addition struct.
+ */
+t_color			*add_colors_free_args(t_color *a, t_color *b);
 
 /**
  * @brief Subtracts two colors

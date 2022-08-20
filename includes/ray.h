@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/16 22:43:48 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:51:46 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RAY_H
 
 # include <matrix.h>
+# include <material.h>
 
 /* ray intersection size */
 # define RAY_XS_SIZE 50
@@ -80,6 +81,7 @@ typedef struct s_intersections {
 struct s_shape {
 	t_matrix		*transform;
 	t_matrix		*inverse_transform;
+	t_material		*material;
 	union {
 		t_sphere	sphere;
 	};
@@ -124,6 +126,15 @@ t_ray			*new_ray(t_point *origin, t_vector *direction);
  * @return t_point* returns a new point at the given distance
  */
 t_point			*get_position(t_ray *ray, double distance);
+
+/**
+ * @brief A function that calculates the normal of a given shape
+ * in the given world point.
+ *
+ * @param shape The shape to get normal value.
+ * @param world_point The world point of scene.
+ */
+t_vector		*get_normal(t_shape *shape, t_point *world_point);
 
 /* sphere */
 

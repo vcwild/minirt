@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   material_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 07:05:32 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/20 05:08:17 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/20 05:08:30 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <material.h>
 
-# include <stdio.h>
-# include <math.h>
-
-# include <canvas.h>
-# include <ray.h>
-# include <light.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+void	destroy_material(t_material *m)
+{
+	free(m->color);
+	free(m);
+}

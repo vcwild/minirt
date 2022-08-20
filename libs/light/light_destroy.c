@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas_utils.c                                     :+:      :+:    :+:   */
+/*   light_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 19:38:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:53:50 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/20 13:47:45 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/20 13:47:47 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <canvas.h>
+#include <light.h>
 
-unsigned int	to_rgb(double c)
+void	destroy_point_light(t_point_light *l)
 {
-	unsigned int	color;
-
-	color = (unsigned int)round(c * 255);
-	if (color > 255)
-		color = 255;
-	return (color);
+	free(l->position);
+	free(l->intensity);
+	free(l);
 }
 
-unsigned int	merge_colors(double r, double g, double b)
+void	destroy_position_args(t_lighting_args *args)
 {
-	return (to_rgb(r) << 16 | to_rgb(g) << 8 | to_rgb(b));
+	free(args->position);
+	free(args->normal_vector);
+	free(args->eye_vector);
 }
 
-t_color	*add_colors_free_args(t_color *a, t_color *b)
+void	destroy_lighting_args(t_lighting_args *args)
 {
-	t_color	*final;
-
-	final = add_colors(a, b);
-	free(a);
-	free(b);
-	return (final);
+	destroy_material(args->material);
+	destroy_point_light(args->lighting);
+	destroy_position_args(args);
+	free(args);
 }

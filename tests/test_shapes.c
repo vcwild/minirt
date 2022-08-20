@@ -16,7 +16,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 #include "../libft/libft.h"
 #include "utils.h"
 
-t_tuple *test_normal_at(t_shape *shape, t_tuple *p)
+t_tuple *test_get_normal(t_shape *shape, t_tuple *p)
 {
 	return (new_vector(p->x, p->y, p->z));
 }
@@ -24,7 +24,7 @@ t_tuple *test_normal_at(t_shape *shape, t_tuple *p)
 t_shape *new_test_shape(void)
 {
 	t_shape *shape = new_shape();
-	shape->normal_at = test_normal_at;
+	shape->get_normal = test_get_normal;
 	return (shape);
 }
 
@@ -99,7 +99,7 @@ MunitResult shape_test5(const MunitParameter params[], void *fixture)
 	expected = new_vector(0, 0.70711, -0.70711);
 	set_transform(shape, translation(0, 1, 0));
 	point = new_point(0, 1.70711, -0.70711);
-	result = normal_at(shape, point);
+	result = get_normal(shape, point);
 
 	munit_assert_true(tuple_equals(result, expected));
 	free(result);
@@ -121,7 +121,7 @@ MunitResult shape_test6(const MunitParameter params[], void *fixture)
 	set_transform(shape, trans);
 
 	t_tuple *p = new_point(0, M_SQRT2 / 2, -M_SQRT2 / 2);
-	t_tuple *normal = normal_at(shape, p);
+	t_tuple *normal = get_normal(shape, p);
 	t_tuple *expected = new_vector(0, 0.97014, -0.24254);
 
 	munit_assert_true(tuple_equals(normal, expected));

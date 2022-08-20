@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   material_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 07:05:32 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/16 20:25:35 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/20 05:02:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <material.h>
 
-# include <stdio.h>
-# include <math.h>
+t_material	*new_material(void)
+{
+	t_material	*material;
 
-# include <canvas.h>
-# include <ray.h>
-# include <light.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	material = (t_material *)malloc(sizeof(t_material));
+	material->color = new_color(1, 1, 1);
+	material->ambient = 0.1;
+	material->diffuse = 0.9;
+	material->specular = 0.9;
+	material->shininess = 200.0;
+	return (material);
+}

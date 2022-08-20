@@ -54,15 +54,13 @@ MunitResult sphere_test3(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-// The below content comes from chapter 6 of the book.
-/*
 MunitResult sphere_test4(const MunitParameter params[], void *fixture)
 {
 	t_shape *sphere = new_sphere();
 	t_tuple *point = new_point(1, 0, 0);
 	t_tuple *expected = new_vector(1, 0, 0);
 
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	munit_assert_true(tuple_equals(normal, expected));
 	free(normal);
 	free(expected);
@@ -77,7 +75,7 @@ MunitResult sphere_test5(const MunitParameter params[], void *fixture)
 	t_tuple *point = new_point(0, 1, 0);
 	t_tuple *expected = new_vector(0, 1, 0);
 
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	munit_assert_true(tuple_equals(normal, expected));
 	free(normal);
 	free(expected);
@@ -92,7 +90,7 @@ MunitResult sphere_test6(const MunitParameter params[], void *fixture)
 	t_tuple *point = new_point(0, 0, 1);
 	t_tuple *expected = new_vector(0, 0, 1);
 
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	munit_assert_true(tuple_equals(normal, expected));
 	free(normal);
 	free(expected);
@@ -108,7 +106,7 @@ MunitResult sphere_test7(const MunitParameter params[], void *fixture)
 	t_tuple *point = new_point(value, value, value);
 	t_tuple *expected = new_vector(value, value, value);
 
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	munit_assert_true(tuple_equals(normal, expected));
 	free(normal);
 	free(expected);
@@ -123,10 +121,13 @@ MunitResult sphere_test8(const MunitParameter params[], void *fixture)
 	set_transform(sphere, translation(0, 1, 0));
 
 	t_tuple *point = new_point(0, 1.70711, -0.70711);
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	t_tuple *expected = new_vector(0, 0.70711, -0.70711);
 
-	munit_assert_true(tuple_equals(normal, expected));
+	munit_assert_float(normal->x, ==, expected->x);
+	munit_assert_float(round_to(normal->y), ==, expected->y);
+	munit_assert_float(round_to(normal->z), ==, expected->z);
+	munit_assert_float(round_to(normal->w), ==, expected->w);
 	free(normal);
 	free(expected);
 	free(point);
@@ -143,10 +144,13 @@ MunitResult sphere_test9(const MunitParameter params[], void *fixture)
 	set_transform(sphere, tr);
 
 	t_tuple *point = new_point(0, sqrtf(M_PI) / 2, -sqrtf(M_PI) / 2);
-	t_tuple *normal = normal_at(sphere, point);
+	t_tuple *normal = get_normal(sphere, point);
 	t_tuple *expected = new_vector(0, 0.97014, -0.24254);
 
-	munit_assert_true(tuple_equals(normal, expected));
+	munit_assert_float(normal->x, ==, expected->x);
+	munit_assert_float(round_to(normal->y), ==, expected->y);
+	munit_assert_float(round_to(normal->z), ==, expected->z);
+	munit_assert_float(round_to(normal->w), ==, expected->w);
 	free(point);
 	free(normal);
 	free(expected);
@@ -157,23 +161,22 @@ MunitResult sphere_test9(const MunitParameter params[], void *fixture)
 }
 
 // a sphere has a default material
+
 MunitResult sphere_test10(const MunitParameter params[], void *fixture)
 {
 	t_shape *sphere = new_sphere();
 	t_material *material = new_material();
 
-	munit_assert_float(sphere->material->ambient->red, ==, material->ambient->red);
-	munit_assert_float(sphere->material->ambient->green, ==, material->ambient->green);
-	munit_assert_float(sphere->material->ambient->blue, ==, material->ambient->blue);
+	munit_assert_float(sphere->material->ambient, ==, material->ambient);
 	munit_assert_float(sphere->material->diffuse, ==, material->diffuse);
 	munit_assert_float(sphere->material->specular, ==, material->specular);
 	munit_assert_float(sphere->material->shininess, ==, material->shininess);
-	munit_assert_float(sphere->material->color->red, ==, material->color->red);
-	munit_assert_float(sphere->material->color->green, ==, material->color->green);
-	munit_assert_float(sphere->material->color->blue, ==, material->color->blue);
+	munit_assert_float(sphere->material->color->r, ==, material->color->r);
+	munit_assert_float(sphere->material->color->g, ==, material->color->g);
+	munit_assert_float(sphere->material->color->b, ==, material->color->b);
 	destroy_sphere(sphere);
 	free(material->color);
 	free(material);
 	return (MUNIT_OK);
 }
-*/
+

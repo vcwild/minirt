@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   light_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 07:05:32 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/20 13:31:28 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/20 13:31:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <light.h>
 
-# include <stdio.h>
-# include <math.h>
+t_color	*sum_light_components(t_color *diffuse,
+		t_color *specular, t_color *ambient)
+{
+	t_color	*new;
+	t_color	*tmp;
 
-# include <canvas.h>
-# include <ray.h>
-# include <light.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	tmp = add_colors_free_args(diffuse, specular);
+	new = add_colors_free_args(tmp, ambient);
+	return (new);
+}
