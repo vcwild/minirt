@@ -129,10 +129,10 @@ MunitResult sphere_test10(PARAMS);
 
 MunitResult material_test1(PARAMS);
 MunitResult material_test2(PARAMS);
-// MunitResult material_test3(PARAMS);
-// MunitResult material_test4(PARAMS);
-// MunitResult material_test5(PARAMS);
-// MunitResult material_test6(PARAMS);
+MunitResult material_test3(PARAMS);
+MunitResult material_test4(PARAMS);
+MunitResult material_test5(PARAMS);
+MunitResult material_test6(PARAMS);
 // MunitResult material_test7(PARAMS);
 
 // MunitResult world_test1(PARAMS);
@@ -295,10 +295,10 @@ int main(int argc, char **argv) {
 	MunitTest material_tests[] = {
 		test("/new_material() returns a default material", material_test1),
 		test("/lighting() calculates the shade of a point", material_test2),
-	// 	test("/lighting() with the eye offseted 45º", material_test3),
-	// 	test("/lighting() with the light offseted 45º", material_test4),
-	// 	test("/lighting() with the eye in the path of the reflection", material_test5),
-	// 	test("/lighting() with the light behind the surface", material_test6),
+		test("/lighting() with the eye offseted 45º", material_test3),
+		test("/lighting() with the light offseted 45º", material_test4),
+		test("/lighting() with the eye in the path of the reflection", material_test5),
+		test("/lighting() with the light behind the surface", material_test6),
 	// 	test("/lighting() with shadows", material_test7),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
