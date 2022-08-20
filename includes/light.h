@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 13:46:54 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:32:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,6 @@ t_color			*lighting(t_lighting_args *args);
 void			destroy_lighting_args(t_lighting_args *args);
 void			destroy_point_light(t_point_light *l);
 
+t_color			*sum_light_components(t_color *diffuse,
+					t_color *specular, t_color *ambient);
 #endif
