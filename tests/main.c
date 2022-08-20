@@ -105,7 +105,7 @@ MunitResult sphere_test6(PARAMS);
 MunitResult sphere_test7(PARAMS);
 MunitResult sphere_test8(PARAMS);
 MunitResult sphere_test9(PARAMS);
-// MunitResult sphere_test10(PARAMS);
+MunitResult sphere_test10(PARAMS);
 
 // MunitResult plane_test1(PARAMS);
 // MunitResult plane_test2(PARAMS);
@@ -127,8 +127,8 @@ MunitResult sphere_test9(PARAMS);
 
 // MunitResult light_test1(PARAMS);
 
-// MunitResult material_test1(PARAMS);
-// MunitResult material_test2(PARAMS);
+MunitResult material_test1(PARAMS);
+MunitResult material_test2(PARAMS);
 // MunitResult material_test3(PARAMS);
 // MunitResult material_test4(PARAMS);
 // MunitResult material_test5(PARAMS);
@@ -283,7 +283,7 @@ int main(int argc, char **argv) {
 		test("/get_normal() at a nonaxial point", sphere_test7),
 		test("/get_normal() with a translated sphere", sphere_test8),
 		test("/get_normal() with a scaled and rotated sphere", sphere_test9),
-	// 	test("/a new sphere has a default material", sphere_test10),
+		test("/a new sphere has a default material", sphere_test10),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -292,16 +292,16 @@ int main(int argc, char **argv) {
 	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
 	// };
 
-	// MunitTest material_tests[] = {
-	// 	test("/new_material() returns a default material", material_test1),
-	// 	test("/lighting() calculates the shade of a point", material_test2),
+	MunitTest material_tests[] = {
+		test("/new_material() returns a default material", material_test1),
+		test("/lighting() calculates the shade of a point", material_test2),
 	// 	test("/lighting() with the eye offseted 45º", material_test3),
 	// 	test("/lighting() with the light offseted 45º", material_test4),
 	// 	test("/lighting() with the eye in the path of the reflection", material_test5),
 	// 	test("/lighting() with the light behind the surface", material_test6),
 	// 	test("/lighting() with shadows", material_test7),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest world_tests[] = {
 	// 	test("/new_world() creates a world", world_test1),
@@ -362,8 +362,8 @@ int main(int argc, char **argv) {
 	MunitSuite matrix_transform_suite = { "/matrices/transform", matrix_transform_tests, OPTIONS };
 	MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
+	MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
-	// MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	// MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
 	// MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };

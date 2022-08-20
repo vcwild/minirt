@@ -3,25 +3,17 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "lights/lights.h"
 #include "munit/munit.h"
-#include "../sources/structures.h"
-#include "../sources/minirt.h"
-#include "ray/ray.h"
-#include "shapes/shapes.h"
-#include "tuple/tuple.h"
-#include <math.h>
+#include "minirt.h"
 
 MunitResult material_test1(const MunitParameter params[], void *fixture)
 {
 	t_material *m = new_material();
 
-	munit_assert_float(m->color->red , ==, 1);
-	munit_assert_float(m->color->green , ==, 1);
-	munit_assert_float(m->color->blue , ==, 1);
-	munit_assert_float(m->ambient->red, ==, 0.1);
-	munit_assert_float(m->ambient->green, ==, 0.1);
-	munit_assert_float(m->ambient->blue, ==, 0.1);
+	munit_assert_float(m->color->r , ==, 1);
+	munit_assert_float(m->color->g , ==, 1);
+	munit_assert_float(m->color->b , ==, 1);
+	munit_assert_float(m->ambient, ==, 0.1);
 	munit_assert_float(m->diffuse, ==, 0.9);
 	munit_assert_float(m->specular, ==, 0.9);
 	munit_assert_float(m->shininess, ==, 200.0);
@@ -39,20 +31,21 @@ MunitResult material_test2(const MunitParameter params[], void *fixture)
 	t_tuple *eyev = new_vector(0, 0, -1);
 	t_tuple *normalv = new_vector(0, 0, -1);
 	t_point_light *light = new_point_light(new_point(0, 0, -10), new_color(1, 1, 1));
-	t_lighting_args args;
+	t_lighting_args *args;
 
+	args = new_lighting_args()
 	args.material = m;
-	args.light = light;
+	args.lighting = light;
 	args.position = position;
 	args.eye_vector = eyev;
 	args.normal_vector = normalv;
-	args.in_shadow = 0;
+	// args.in_shadow = 0;
 
-	t_color *result = lighting(&args);
+	t_color *result = lighting(args);
 
-	munit_assert_true(dequals(result->red, 1.9));
-	munit_assert_true(dequals(result->green, 1.9));
-	munit_assert_true(dequals(result->blue, 1.9));
+	munit_assert_true(dequals(result->r, 1.9));
+	munit_assert_true(dequals(result->g, 1.9));
+	munit_assert_true(dequals(result->b, 1.9));
 
 	free(m->color);
 	free(m);
@@ -66,6 +59,7 @@ MunitResult material_test2(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 // lighting with the eye offset 45º
 MunitResult material_test3(const MunitParameter params[], void *fixture)
 {
@@ -246,3 +240,4 @@ MunitResult material_test7(const MunitParameter params[], void *fixture)
 	free(result);
 	return (MUNIT_OK);
 }
+*/

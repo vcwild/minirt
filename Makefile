@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/16 20:33:31 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/20 05:12:48 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -llight -lmaterial -lray -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -152,7 +152,7 @@ libray: libmatrix libtuple
 libray_clean:
 	@$(MAKE_EXTERNAL) $(RAY_PATH) clean
 
-libmaterial: libray
+libmaterial: libray libcanvas
 	@$(MAKE_EXTERNAL) $(MATERIAL_PATH)
 
 libmaterial_clean:
@@ -186,6 +186,7 @@ TEST_SRC += tests/test_canvas.c
 TEST_SRC += tests/test_matrix_transform.c
 TEST_SRC += tests/test_ray.c
 TEST_SRC += tests/test_sphere.c
+TEST_SRC += tests/test_materials.c
 
 test: $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/16 22:43:48 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/20 04:50:02 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RAY_H
 
 # include <matrix.h>
+# include <material.h>
 
 /* ray intersection size */
 # define RAY_XS_SIZE 50
@@ -80,6 +81,7 @@ typedef struct s_intersections {
 struct s_shape {
 	t_matrix		*transform;
 	t_matrix		*inverse_transform;
+	t_material		*material;
 	union {
 		t_sphere	sphere;
 	};

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 20:57:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/15 16:32:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 05:07:30 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	destroy_shape(t_shape *s)
 {
 	free(s->transform);
 	free(s->inverse_transform);
+	destroy_material(s->material);
 	free(s);
 }
 
