@@ -26,35 +26,19 @@ MunitResult material_test1(const MunitParameter params[], void *fixture)
 MunitResult material_test2(const MunitParameter params[], void *fixture)
 {
 	t_material *m = new_material();
-	t_tuple *position = new_point(0, 0, 0);
-
+	t_tuple *point = new_point(0, 0, 0);
 	t_tuple *eyev = new_vector(0, 0, -1);
 	t_tuple *normalv = new_vector(0, 0, -1);
 	t_point_light *light = new_point_light(new_point(0, 0, -10), new_color(1, 1, 1));
-	t_lighting_args *args;
-
-	args = new_lighting_args()
-	args.material = m;
-	args.lighting = light;
-	args.position = position;
-	args.eye_vector = eyev;
-	args.normal_vector = normalv;
-	// args.in_shadow = 0;
-
+	t_position_args *pos = new_position_args(point, normalv, eyev);
+	t_lighting_args *args = new_light_args(m, light, pos);
 	t_color *result = lighting(args);
 
-	munit_assert_true(dequals(result->r, 1.9));
-	munit_assert_true(dequals(result->g, 1.9));
-	munit_assert_true(dequals(result->b, 1.9));
+	munit_assert_float(result->r, ==, 1.9);
+	munit_assert_float(result->g, ==, 1.9);
+	munit_assert_float(result->b, ==, 1.9);
 
-	free(m->color);
-	free(m);
-	free(light->intensity);
-	free(light->position);
-	free(light);
-	free(position);
-	free(eyev);
-	free(normalv);
+	destroy_lighting_args(args);
 	free(result);
 	return (MUNIT_OK);
 }
