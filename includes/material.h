@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:23:35 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:51:28 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:59:34 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <canvas.h>
 
+/**
+ * @brief Struct for a material, with material color, ambient, diffuse,
+ * specular, shininess.
+ */
 typedef struct s_material {
 	t_color	*color;
 	double	ambient;
