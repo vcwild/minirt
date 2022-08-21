@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:55:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 05:05:19 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 13:53:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	intersect(t_shape *shape, t_ray *r, t_intersections *xs)
 
 	tmp_ray = transform(r, shape->inverse_transform);
 	shape->intersect(shape, tmp_ray, xs);
-	free(tmp_ray);
+	destroy_ray(tmp_ray);
 }

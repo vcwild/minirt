@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:09:30 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/21 13:00:00 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:14:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,22 +69,28 @@ int	add_sphere(t_world *w, t_shape *sphere)
 t_world	*default_world(void)
 {
 	t_world			*new;
-	t_point_light	*pl;
-	t_shape			*sphere;
+	t_shape			*s1;
+	t_shape			*s2;
+	t_matrix		*scale;
 
 	new = new_world();
-	pl = new_point_light(new_point(-10, 10, -10), new_color(1, 1, 1));
-	add_light(new, pl);
-	sphere = new_sphere();
-	free(sphere->material->color);
-	sphere->material->color = new_color(0.8, 1.0, 0.6);
-	sphere->material->diffuse = 0.7;
-	sphere->material->specular = 0.2;
-	add_sphere(new, sphere);
-	destroy_sphere(sphere);
-	sphere = new_sphere();
-	free(sphere->transform);
-	sphere->transform = scaling(0.5, 0.5, 0.5);
-	add_sphere(new, sphere);
+	if (!new)
+	{
+		fprintf(stderr, "Error: There was an error creating the world!");
+		return (NULL);
+	}
+	add_light(new,
+		new_point_light(new_point(-10, 10, -10), new_color(1, 1, 1)));
+	s1 = new_sphere();
+	free(s1->material->color);
+	s1->material->color = new_color(0.8, 1.0, 0.6);
+	s1->material->specular = 0.2;
+	s1->material->diffuse = 0.7;
+	s1->material->shininess = 200;
+	add_sphere(new, s1);
+	s2 = new_sphere();
+	scale = scaling(0.5, 0.5, 0.5);
+	set_transform(s2, scale);
+	add_sphere(new, s2);
 	return (new);
 }
