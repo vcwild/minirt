@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   world_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 11:06:33 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/21 12:19:12 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/21 12:34:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <world.h>
 
-# include <stdio.h>
-# include <math.h>
+t_intersections	*intersect_world(t_world *w, t_ray *r)
+{
+	t_intersections	*xs;
+	t_list			*tmp;
 
-# include <canvas.h>
-# include <ray.h>
-# include <world.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	xs = new_intersections_list();
+	tmp = w->objects.spheres;
+	while (tmp)
+	{
+		intersect((t_shape *)tmp->content, r, xs);
+		tmp = tmp->next;
+	}
+	sort_intersections(xs);
+	return (xs);
+}

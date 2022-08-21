@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   world_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 11:06:33 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/21 11:35:40 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/21 12:36:18 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <world.h>
 
-# include <stdio.h>
-# include <math.h>
-
-# include <canvas.h>
-# include <ray.h>
-# include <world.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+void	destroy_world(t_world *w)
+{
+	free(w);
+}

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:48:33 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:43:19 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIGHT_H
 
 # include <material.h>
+# include <ray.h>
 
 /**
  * @brief Structure for a point light.

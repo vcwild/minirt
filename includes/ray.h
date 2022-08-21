@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:51:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 12:44:02 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ t_shape			*new_shape(void);
  * @return t_ray* returns a new ray.
  */
 t_ray			*new_ray(t_point *origin, t_vector *direction);
+
+t_intersections	*new_intersections_list(void);
 
 /**
  * @brief Get the position object
