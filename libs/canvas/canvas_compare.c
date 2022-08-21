@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple_utils.c                                      :+:      :+:    :+:   */
+/*   canvas_compare.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 17:21:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 17:39:39 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/21 17:49:36 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/21 17:50:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <tuple.h>
+#include <canvas.h>
 
-double	round_to(double num)
+bool	color_equals(t_color *a, t_color *b)
 {
-	return (round(num * pow(10, TUPLE_DECIMAL_PRECISION))
-		/ pow(10, TUPLE_DECIMAL_PRECISION));
-}
-
-t_vector	*negate_tuple_free(t_vector *v)
-{
-	t_vector	*tmp;
-	int			i;
-
-	tmp = v;
-	v = negate_tuple(v);
-	free(tmp);
-	return (v);
+	return (a->r == b->r && a->g == b->g && a->b == b->b);
 }

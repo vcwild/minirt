@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 12:44:02 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:17:03 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,4 +260,5 @@ void			destroy_ray(t_ray *r);
  */
 t_ray			*transform(t_ray *r, t_matrix *mat);
 
+t_intersection	*hit(t_intersections *xs);
 #endif

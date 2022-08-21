@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:10:04 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/21 15:41:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:29:54 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WORLD_H
 
 # include <light.h>
+# include <stdbool.h>
 
 typedef struct s_objects {
 	int				total;
@@ -33,6 +34,7 @@ typedef struct s_computations {
 	t_point			*point;
 	t_vector		*eyev;
 	t_vector		*normalv;
+	bool			inside;
 }					t_computations;
 
 t_world			*new_world(void);

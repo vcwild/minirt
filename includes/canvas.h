@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:54:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:49:19 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # include <tuple.h>
 # include <libft.h>
@@ -180,5 +181,7 @@ int				write_pixel(t_canvas *c,
 t_color			*pixel_at(t_canvas *c,
 					unsigned int width,
 					unsigned int height);
+
+bool			color_equals(t_color *a, t_color *b);
 
 #endif

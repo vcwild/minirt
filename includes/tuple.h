@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:40:24 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:40:01 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,7 @@ t_tuple		*reflect(t_tuple *v, t_tuple *n);
  * @return double the rounded value
  */
 double		round_to(double num);
+
+t_vector	*negate_tuple_free(t_vector *v);
 
 #endif

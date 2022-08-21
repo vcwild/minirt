@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:25:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:34:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:28:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_lighting_args	*new_light_args(t_material *m,
 	new->position = args->position;
 	new->normal_vector = args->normal_vector;
 	new->eye_vector = args->eye_vector;
+	new->in_shadow = false;
 	free(args);
 	return (new);
 }

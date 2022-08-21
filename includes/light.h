@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 11:43:19 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:08:41 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_lighting_args {
 	t_vector		*eye_vector;
 	t_vector		*normal_vector;
 	t_point			*position;
+	bool			in_shadow;
 }					t_lighting_args;
 
 /**
