@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_destroy.c                                    :+:      :+:    :+:   */
+/*   world_computations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 11:35:40 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 15:42:25 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/21 15:26:12 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/21 15:40:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <world.h>
 
-void	destroy_world(t_world *w)
+t_computations	*prepare_computations(t_intersection *x, t_ray *r)
 {
-	ft_lstclear(&w->lights, (void (*)(void *))destroy_point_light);
-	ft_lstclear(&w->objects.spheres, (void (*)(void *))destroy_sphere);
-	free(w);
-}
+	t_computations	*new;
 
-void	destroy_computations(t_computations *c)
-{
-	free(c->eyev);
-	free(c->normalv);
-	free(c->point);
-	free(c);
+	new = (t_computations *)malloc(sizeof(t_computations));
+	new->t = x->t;
+	new->object_type = x->object_type;
+	new->shape = x->shape;
+	new->point = get_position(r, new->t);
+	new->eyev = negate_tuple(r->direction);
+	new->normalv = get_normal(new->shape, new->point);
+	return (new);
 }
