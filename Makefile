@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/20 05:12:48 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/21 09:14:27 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -64,7 +64,7 @@ CANVAS = canvas
 CANVAS_NAME = lib$(CANVAS).a
 CANVAS_PATH = $(LIBS_PATH)/$(CANVAS)
 
-# matrix
+# world
 MATRIX = matrix
 MATRIX_NAME = lib$(MATRIX).a
 MATRIX_PATH = $(LIBS_PATH)/$(MATRIX)
@@ -84,7 +84,13 @@ LIGHT = light
 LIGHT_NAME = lib$(LIGHT).a
 LIGHT_PATH = $(LIBS_PATH)/$(LIGHT)
 
+# world
+WORLD = world
+WORLD_NAME = lib$(WORLD).a
+WORLD_PATH = $(LIBS_PATH)/$(WORLD)
+
 ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
+ALL_LIBS += libworld
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -98,7 +104,11 @@ endif
 	libmlx libmlx_clean \
 	libtuple libtuple_clean \
 	libcanvas libcanvas_clean \
-	libmatrix libmatrix_clean
+	libmatrix libmatrix_clean \
+	libray libray_clean \
+	libmaterial libmaterial_clean \
+	liblight liblight_clean \
+	libworld libworld_clean
 
 all: $(NAME)
 
@@ -164,12 +174,18 @@ liblight: libray
 liblight_clean:
 	@$(MAKE_EXTERNAL) $(LIGHT_PATH) clean
 
+libworld:
+	@$(MAKE_EXTERNAL) $(WORLD_PATH)
+
+libworld_clean:
+	@$(MAKE_EXTERNAL) $(WORLD_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
 re:	fclean all
 
-clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean libworld_clean
 	@$(REMOVE) $(OBJECTS_PATH)
 
 archives_clean:
