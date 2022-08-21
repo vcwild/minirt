@@ -138,10 +138,10 @@ MunitResult material_test6(PARAMS);
 MunitResult world_test1(PARAMS);
 MunitResult world_test2(PARAMS);
 MunitResult world_test3(PARAMS);
-// MunitResult world_test4(PARAMS);
-// MunitResult world_test5(PARAMS);
-// MunitResult world_test6(PARAMS);
-// MunitResult world_test7(PARAMS);
+MunitResult world_test4(PARAMS);
+MunitResult world_test5(PARAMS);
+MunitResult world_test6(PARAMS);
+MunitResult world_test7(PARAMS);
 // MunitResult world_test8(PARAMS);
 // MunitResult world_test9(PARAMS);
 // MunitResult world_test10(PARAMS);
@@ -307,10 +307,10 @@ int main(int argc, char **argv) {
 		test("/new_world() creates a world", world_test1),
 		test("/default_world() might be a useless function", world_test2),
 		test("/intersect_world() intersect a world with a ray", world_test3),
-	// 	test("/precomputing the state of an intersection", world_test4),
-	// 	test("/the hit, eye outside", world_test5),
-	// 	test("/the hit, eye inside", world_test6),
-	// 	test("/shading an intersection", world_test7),
+		test("/precomputing the state of an intersection", world_test4),
+		test("/the hit, eye outside", world_test5),
+		test("/the hit, eye inside", world_test6),
+		test("/shading an intersection", world_test7),
 	// 	test("/shading an intersection from the inside", world_test8),
 	// 	test("/the color when a ray misses", world_test9),
 	// 	test("/the color when a ray hits", world_test10),

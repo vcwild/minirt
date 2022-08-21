@@ -69,7 +69,7 @@ MunitResult world_test3(const MunitParameter params[], void *fixture)
 	destroy_world(w);
 	return (MUNIT_OK);
 }
-/*
+
 // intersect a world with a ray
 MunitResult world_test4(const MunitParameter params[], void *fixture)
 {
@@ -84,7 +84,7 @@ MunitResult world_test4(const MunitParameter params[], void *fixture)
 	t_tuple *expected_normalv = new_vector(0, 0, -1);
 
 	munit_assert_float(comps->t, ==, i->t);
-	munit_assert_ptr_equal(comps->object, i->object);
+	munit_assert_ptr_equal(comps->shape, i->shape);
 	munit_assert_true(tuple_equals(comps->point, expected_point));
 	munit_assert_true(tuple_equals(comps->eyev, expected_eyev));
 	munit_assert_true(tuple_equals(comps->normalv, expected_normalv));
@@ -134,6 +134,7 @@ MunitResult world_test6(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+
 // shading an intersection
 MunitResult world_test7(const MunitParameter params[], void *fixture)
 {
@@ -157,6 +158,7 @@ MunitResult world_test7(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 // shading an intersection from the inside
 MunitResult world_test8(const MunitParameter params[], void *fixture)
 {
