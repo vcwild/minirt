@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/21 09:14:27 by itaureli         ###   ########.fr        #
+#    Updated: 2022/08/21 11:08:07 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -174,7 +174,7 @@ liblight: libray
 liblight_clean:
 	@$(MAKE_EXTERNAL) $(LIGHT_PATH) clean
 
-libworld:
+libworld: liblight
 	@$(MAKE_EXTERNAL) $(WORLD_PATH)
 
 libworld_clean:
@@ -203,6 +203,7 @@ TEST_SRC += tests/test_matrix_transform.c
 TEST_SRC += tests/test_ray.c
 TEST_SRC += tests/test_sphere.c
 TEST_SRC += tests/test_materials.c
+TEST_SRC += tests/test_world.c
 
 test: $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm

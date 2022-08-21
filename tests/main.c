@@ -135,9 +135,9 @@ MunitResult material_test5(PARAMS);
 MunitResult material_test6(PARAMS);
 // MunitResult material_test7(PARAMS);
 
-// MunitResult world_test1(PARAMS);
-// MunitResult world_test2(PARAMS);
-// MunitResult world_test3(PARAMS);
+MunitResult world_test1(PARAMS);
+MunitResult world_test2(PARAMS);
+MunitResult world_test3(PARAMS);
 // MunitResult world_test4(PARAMS);
 // MunitResult world_test5(PARAMS);
 // MunitResult world_test6(PARAMS);
@@ -303,10 +303,10 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest world_tests[] = {
-	// 	test("/new_world() creates a world", world_test1),
-	// 	test("/default_world() might be a useless function", world_test2),
-	// 	test("/intersect_world() intersect a world with a ray", world_test3),
+	MunitTest world_tests[] = {
+		test("/new_world() creates a world", world_test1),
+		test("/default_world() might be a useless function", world_test2),
+		test("/intersect_world() intersect a world with a ray", world_test3),
 	// 	test("/precomputing the state of an intersection", world_test4),
 	// 	test("/the hit, eye outside", world_test5),
 	// 	test("/the hit, eye inside", world_test6),
@@ -315,8 +315,8 @@ int main(int argc, char **argv) {
 	// 	test("/the color when a ray misses", world_test9),
 	// 	test("/the color when a ray hits", world_test10),
 	// 	test("/the color with an intersection behind the ray", world_test11),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest camera_tests[] = {
 	// 	test("/new_camera() creates a camera", camera_test1),
@@ -363,8 +363,8 @@ int main(int argc, char **argv) {
 	MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
 	MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
+	MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
-	// MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
 	// MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
 	// MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
@@ -378,8 +378,8 @@ int main(int argc, char **argv) {
 		ray_suite,
 		sphere_suite,
 		material_suite,
+		world_suite,
 		// light_suite,
-		// world_suite,
 		// camera_suite,
 		// shape_suite,
 		// plane_suite,
