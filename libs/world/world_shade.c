@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_shade.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 17:51:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 19:49:37 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/21 22:19:04 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ bool	is_shadowed(t_world *w, t_point *p, t_point_light *pl)
 		is_shadowed = true;
 	free(v);
 	destroy_ray(ray);
-	destroy_intersections_list(xs);
+
+	// seg fault here
+	// destroy_intersections_list(xs);
 	return (is_shadowed);
 }
 
@@ -81,6 +83,9 @@ t_color	*shade_hit(t_world *w, t_computations *c)
 		ft_lstadd_front(&colors, ft_lstnew(lighting(&args)));
 		tmp = tmp->next;
 	}
-	final = sum_colors(colors, color_add);
-	return ();
+	final = sum_colors(colors);
+
+	// final return exact 0.3 up to expected...
+	printf("colors: %lf %lf %lf\n", final->r, final->g, final->b);
+	return (final);
 }
