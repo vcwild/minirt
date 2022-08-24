@@ -204,24 +204,27 @@ MunitResult world_test9(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // the color when a ray hits
 MunitResult world_test10(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();
 	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 0, 1));
-	t_color *expected = new_color(.38066, .47583, .2855);
+	t_color *expected_color = new_color(.38066, .47583, .2855);
 
 	t_color *color = color_at(world, ray);
 
-	munit_assert_true(color_equals(color, expected));
+	munit_assert_true(color_equals(color, expected_color));
+	munit_assert_float(round_to(expected_color->r), ==, 0.38066);
+	munit_assert_float(round_to(expected_color->g), ==, 0.47583);
+	munit_assert_float(round_to(expected_color->b), ==, 0.2855);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
-	free(expected);
+	free(expected_color);
 	return (MUNIT_OK);
 }
 
+/*
 // the color with an intersection behind the ray
 MunitResult world_test11(const MunitParameter params[], void *fixture)
 {
