@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 17:51:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 22:19:04 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/23 21:13:15 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_ray	*get_ray(t_point *p, t_vector *target)
 	dir = normalize(v);
 	new = new_ray(p, dir);
 	free(v);
-	free(dir);
 	return (new);
 }
 
@@ -41,11 +40,9 @@ bool	is_shadowed(t_world *w, t_point *p, t_point_light *pl)
 	xs = intersect_world(w, ray);
 	if (hit(xs) && (hit(xs)->t < dist))
 		is_shadowed = true;
-	free(v);
 	destroy_ray(ray);
-
-	// seg fault here
-	// destroy_intersections_list(xs);
+	free(v);
+	destroy_intersections_list(xs);
 	return (is_shadowed);
 }
 
@@ -84,8 +81,5 @@ t_color	*shade_hit(t_world *w, t_computations *c)
 		tmp = tmp->next;
 	}
 	final = sum_colors(colors);
-
-	// final return exact 0.3 up to expected...
-	printf("colors: %lf %lf %lf\n", final->r, final->g, final->b);
 	return (final);
 }
