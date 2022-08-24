@@ -187,7 +187,6 @@ MunitResult world_test8(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // the color when a ray misses
 MunitResult world_test9(const MunitParameter params[], void *fixture)
 {
@@ -205,6 +204,7 @@ MunitResult world_test9(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 // the color when a ray hits
 MunitResult world_test10(const MunitParameter params[], void *fixture)
 {

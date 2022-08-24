@@ -143,7 +143,7 @@ MunitResult world_test5(PARAMS);
 MunitResult world_test6(PARAMS);
 MunitResult world_test7(PARAMS);
 MunitResult world_test8(PARAMS);
-// MunitResult world_test9(PARAMS);
+MunitResult world_test9(PARAMS);
 // MunitResult world_test10(PARAMS);
 // MunitResult world_test11(PARAMS);
 
@@ -312,7 +312,7 @@ int main(int argc, char **argv) {
 		test("/the hit, eye inside", world_test6),
 		test("/shading an intersection", world_test7),
 		test("/shading an intersection from the inside", world_test8),
-	// 	test("/the color when a ray misses", world_test9),
+		test("/the color when a ray misses", world_test9),
 	// 	test("/the color when a ray hits", world_test10),
 	// 	test("/the color with an intersection behind the ray", world_test11),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
