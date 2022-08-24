@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:10:04 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/21 21:23:46 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:28:48 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,5 @@ void			destroy_world(t_world *w);
  * @param c The data to destroy.
  */
 void			destroy_computations(t_computations *c);
-
+t_color			*shade_hit(t_world *w, t_computations *c);
 #endif
