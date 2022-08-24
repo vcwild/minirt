@@ -148,7 +148,9 @@ MunitResult world_test7(const MunitParameter params[], void *fixture)
 	t_color *color = shade_hit(world, comps);
 	t_color *expected_color = new_color(0.38066, 0.47583, 0.2855);
 
-	munit_assert_true(color_equals(color, expected_color));
+	munit_assert_float(round_to(expected_color->r), ==, 0.38066);
+	munit_assert_float(round_to(expected_color->g), ==, 0.47583);
+	munit_assert_float(round_to(expected_color->b), ==, 0.2855);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
