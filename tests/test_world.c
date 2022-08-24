@@ -160,7 +160,6 @@ MunitResult world_test7(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // shading an intersection from the inside
 MunitResult world_test8(const MunitParameter params[], void *fixture)
 {
@@ -176,7 +175,9 @@ MunitResult world_test8(const MunitParameter params[], void *fixture)
 
 	t_color *expected_color = new_color(0.90498, 0.90498, 0.90498);
 
-	munit_assert_true(color_equals(color, expected_color));
+	munit_assert_float(round_to(expected_color->r), ==, 0.90498);
+	munit_assert_float(round_to(expected_color->g), ==, 0.90498);
+	munit_assert_float(round_to(expected_color->b), ==, 0.90498);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
@@ -186,6 +187,7 @@ MunitResult world_test8(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 // the color when a ray misses
 MunitResult world_test9(const MunitParameter params[], void *fixture)
 {
