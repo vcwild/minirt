@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:19:12 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/24 21:23:23 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:28:56 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_color	*get_color(t_world *w, t_ray *r)
 	free(comps->eyev);
 	free(comps->normalv);
 	free(comps->point);
-	free(comps->over_point);
 	free(comps);
 	return (color);
 }
