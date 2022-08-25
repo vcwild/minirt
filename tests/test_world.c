@@ -199,6 +199,7 @@ MunitResult world_test9(const MunitParameter params[], void *fixture)
 
 
 // the color when a ray hits
+// remember computations->point is left without being freed
 MunitResult world_test10(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:19:12 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/24 22:23:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/24 23:11:31 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_color	*get_color(t_world *w, t_ray *r)
 	destroy_intersections_list(xs);
 	free(comps->eyev);
 	free(comps->normalv);
-	free(comps->point);
 	free(comps);
 	return (color);
 }
