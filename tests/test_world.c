@@ -134,7 +134,6 @@ MunitResult world_test6(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-
 // shading an intersection
 MunitResult world_test7(const MunitParameter params[], void *fixture)
 {
@@ -144,17 +143,14 @@ MunitResult world_test7(const MunitParameter params[], void *fixture)
 	t_intersection *intersection = new_intersection(4, sphere, OBJ_SPHERE);
 	t_computations *comps = prepare_computations(intersection, ray);
 
-
 	t_color *color = shade_hit(world, comps);
-	t_color *expected_color = new_color(0.38066, 0.47583, 0.2855);
 
-	munit_assert_float(round_to(expected_color->r), ==, 0.38066);
-	munit_assert_float(round_to(expected_color->g), ==, 0.47583);
-	munit_assert_float(round_to(expected_color->b), ==, 0.2855);
+	munit_assert_float(round_to(color->r), ==, 0.38066);
+	munit_assert_float(round_to(color->g), ==, 0.47583);
+	munit_assert_float(round_to(color->b), ==, 0.2855);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
-	free(expected_color);
 	free(intersection);
 	destroy_computations(comps);
 	return (MUNIT_OK);
@@ -173,15 +169,12 @@ MunitResult world_test8(const MunitParameter params[], void *fixture)
 	t_computations *comps = prepare_computations(intersection, ray);
 	t_color *color = shade_hit(world, comps);
 
-	t_color *expected_color = new_color(0.90498, 0.90498, 0.90498);
-
-	munit_assert_float(round_to(expected_color->r), ==, 0.90498);
-	munit_assert_float(round_to(expected_color->g), ==, 0.90498);
-	munit_assert_float(round_to(expected_color->b), ==, 0.90498);
+	munit_assert_float(round_to(color->r), ==, 0.90498);
+	munit_assert_float(round_to(color->g), ==, 0.90498);
+	munit_assert_float(round_to(color->b), ==, 0.90498);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
-	free(expected_color);
 	free(intersection);
 	destroy_computations(comps);
 	return (MUNIT_OK);
@@ -192,35 +185,32 @@ MunitResult world_test9(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();
 	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 1, 0));
-	t_color *expected = new_color(0, 0, 0);
 
-	t_color *color = color_at(world, ray);
+	t_color *color = get_color(world, ray);
 
-	munit_assert_true(color_equals(color, expected));
+	munit_assert_float(round_to(color->r), ==, 0);
+	munit_assert_float(round_to(color->g), ==, 0);
+	munit_assert_float(round_to(color->b), ==, 0);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
-	free(expected);
 	return (MUNIT_OK);
 }
+
 
 // the color when a ray hits
 MunitResult world_test10(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();
 	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 0, 1));
-	t_color *expected_color = new_color(.38066, .47583, .2855);
+	t_color *color = get_color(world, ray);
 
-	t_color *color = color_at(world, ray);
-
-	munit_assert_true(color_equals(color, expected_color));
-	munit_assert_float(round_to(expected_color->r), ==, 0.38066);
-	munit_assert_float(round_to(expected_color->g), ==, 0.47583);
-	munit_assert_float(round_to(expected_color->b), ==, 0.2855);
+	munit_assert_float(round_to(color->r), ==, 0.38066);
+	munit_assert_float(round_to(color->g), ==, 0.47583);
+	munit_assert_float(round_to(color->b), ==, 0.2855);
 	destroy_ray(ray);
 	destroy_world(world);
 	free(color);
-	free(expected_color);
 	return (MUNIT_OK);
 }
 

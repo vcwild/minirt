@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 17:21:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 17:39:39 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/24 20:59:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ double	round_to(double num)
 t_vector	*negate_tuple_free(t_vector *v)
 {
 	t_vector	*tmp;
-	int			i;
 
 	tmp = v;
 	v = negate_tuple(v);
