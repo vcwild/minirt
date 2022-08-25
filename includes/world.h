@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:10:04 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/23 22:28:48 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:19:01 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,7 @@ void			destroy_world(t_world *w);
  */
 void			destroy_computations(t_computations *c);
 t_color			*shade_hit(t_world *w, t_computations *c);
+
+t_color			*get_color(t_world *w, t_ray *r);
+
 #endif
