@@ -215,19 +215,18 @@ MunitResult world_test10(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // the color with an intersection behind the ray
 MunitResult world_test11(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();
 	t_ray *ray = new_ray(new_point(0, 0, .75), new_vector(0, 0, -1));
 	t_shape *outer = world->objects.spheres->content;
-	outer->material->ambient = new_color(1, 1, 1);
+	outer->material->ambient = 1;
 	t_shape *inner = world->objects.spheres->next->content;
-	inner->material->ambient = new_color(1, 1, 1);
+	inner->material->ambient = 1;
 	t_color *expected = inner->material->color;
 
-	t_color *color = color_at(world, ray);
+	t_color *color = get_color(world, ray);
 
 	munit_assert_true(color_equals(color, expected));
 	destroy_ray(ray);
@@ -236,6 +235,7 @@ MunitResult world_test11(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
+/*
 // there is no shadow when nothing is collinear with point and light
 MunitResult world_test12(const MunitParameter params[], void *fixture)
 {

@@ -294,7 +294,6 @@ MunitResult matrix_transform_test13(const MunitParameter params[], void *fixture
 }
 
 // The below content comes from chapter 7 of the book.
-/*
 MunitResult matrix_transform_test14(const MunitParameter params[], void *fixture)
 {
 	t_tuple *from = new_point(0, 0, 0);
@@ -305,13 +304,14 @@ MunitResult matrix_transform_test14(const MunitParameter params[], void *fixture
 	t_matrix *identity = identity_matrix();
 
 	munit_assert_true(matrix_equals(t, identity));
-	free(identity);
-	free(t);
-	free(up);
-	free(to);
 	free(from);
+	free(to);
+	free(up);
+	free(t);
+	free(identity);
 	return (MUNIT_OK);
 }
+
 
 MunitResult matrix_transform_test15(const MunitParameter params[], void *fixture)
 {
@@ -331,6 +331,7 @@ MunitResult matrix_transform_test15(const MunitParameter params[], void *fixture
 	return (MUNIT_OK);
 }
 
+
 MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture)
 {
 	t_tuple *from = new_point(0, 0, 8);
@@ -349,6 +350,7 @@ MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture
 	return (MUNIT_OK);
 }
 
+/*
 MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture)
 {
 	t_tuple *from = new_point(1, 3, 2);

@@ -76,9 +76,9 @@ MunitResult matrix_transform_test10(PARAMS);
 MunitResult matrix_transform_test11(PARAMS);
 MunitResult matrix_transform_test12(PARAMS);
 MunitResult matrix_transform_test13(PARAMS);
-// MunitResult matrix_transform_test14(PARAMS);
-// MunitResult matrix_transform_test15(PARAMS);
-// MunitResult matrix_transform_test16(PARAMS);
+MunitResult matrix_transform_test14(PARAMS);
+MunitResult matrix_transform_test15(PARAMS);
+MunitResult matrix_transform_test16(PARAMS);
 
 MunitResult ray_test1(PARAMS);
 MunitResult ray_test2(PARAMS);
@@ -145,7 +145,7 @@ MunitResult world_test7(PARAMS);
 MunitResult world_test8(PARAMS);
 MunitResult world_test9(PARAMS);
 MunitResult world_test10(PARAMS);
-// MunitResult world_test11(PARAMS);
+MunitResult world_test11(PARAMS);
 
 // MunitResult camera_test1(PARAMS);
 // MunitResult camera_test2(PARAMS);
@@ -248,9 +248,9 @@ int main(int argc, char **argv) {
 		test("/individual transformations", matrix_transform_test11),
 		test("/chained transformations", matrix_transform_test12),
 		test("/chained n transformations", matrix_transform_test13),
-	//	test("/view_transform()", matrix_transform_test14),
-	// 	test("/view_transform() looking to +z", matrix_transform_test15),
-	// 	test("/view_transform() moves the world", matrix_transform_test16),
+		test("/view_transform()", matrix_transform_test14),
+		test("/view_transform() looking to +z", matrix_transform_test15),
+		test("/view_transform() moves the world", matrix_transform_test16),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -314,7 +314,7 @@ int main(int argc, char **argv) {
 		test("/shading an intersection from the inside", world_test8),
 		test("/the color when a ray misses", world_test9),
 		test("/the color when a ray hits", world_test10),
-	// 	test("/the color with an intersection behind the ray", world_test11),
+		test("/the color with an intersection behind the ray", world_test11),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
