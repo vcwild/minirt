@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 11:46:59 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:07:48 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,4 +200,9 @@ t_matrix	*rotation_z(double radians);
  * @return int Radians
  */
 int			radians(double degrees);
+
+t_matrix	*translate_view(t_point *from, t_matrix *orientation);
+
+t_matrix	*view_transform(t_point *from, t_point *to, t_vector *up);
+
 #endif
