@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 20:04:08 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:50:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_camera	*new_camera(double hsize, double vsize, double fov)
 	new->fov = fov;
 	new->transform = identity_matrix();
 	aspect = hsize / vsize;
-	new->half_height = tan(fov / 2);
 	new->half_width = tan(fov / 2);
 	new->half_height = new->half_width / aspect;
 	if (aspect < 1)
