@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/27 20:47:55 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:15:26 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,8 +201,23 @@ t_matrix	*rotation_z(double radians);
  */
 int			radians(double degrees);
 
+/**
+ * @brief Move a matrix from a point changing its coordinates
+ *
+ * @param from The point from which the matrix will be moved
+ * @param orientation The orientation of the matrix
+ * @return t_matrix* A new matrix with the result of the translation
+ */
 t_matrix	*translate_view(t_point *from, t_matrix *orientation);
 
+/**
+ * @brief Create a view transformation matrix
+ *
+ * @param from Where the camera is
+ * @param forward Where the camera wants to look
+ * @param up The up vector
+ * @return t_matrix* A new matrix with the result of the view transformation
+ */
 t_matrix	*view_transform(t_point *from, t_point *forward, t_vector *up);
 
 #endif

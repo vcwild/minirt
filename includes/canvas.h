@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 19:49:19 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:05:29 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,13 @@ t_color			*pixel_at(t_canvas *c,
 					unsigned int width,
 					unsigned int height);
 
+/**
+ * @brief Checks if given colors are equal.
+ *
+ * @param a The first color struct.
+ * @param b The second color struct.
+ * @return true If the colors are equal or false otherwise.
+ */
 bool			color_equals(t_color *a, t_color *b);
 
 #endif

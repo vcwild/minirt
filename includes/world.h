@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:10:04 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/24 22:19:01 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:28:54 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,24 @@ void			destroy_world(t_world *w);
  * @param c The data to destroy.
  */
 void			destroy_computations(t_computations *c);
+
+/**
+ * @brief Checks if a point is in shadow.
+ *
+ * @param w The world to check.
+ * @param c The precomputed intersection data.
+ * @return t_color* The color of the intersection encapsulated in the
+ * precomputed data.
+ */
 t_color			*shade_hit(t_world *w, t_computations *c);
 
+/**
+ * @brief Get the color from a world at a given point.
+ *
+ * @param w The world to get the color from.
+ * @param r The ray to get the color from.
+ * @return t_color* The color at the given point.
+ */
 t_color			*get_color(t_world *w, t_ray *r);
 
 #endif
