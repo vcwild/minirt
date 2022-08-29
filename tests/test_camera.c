@@ -3,16 +3,8 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
 #include "munit/munit.h"
-#include "../sources/structures.h"
-#include "../sources/minirt.h"
-#include "../sources/debug.h"
-#include "ray/ray.h"
-#include "tuple/tuple.h"
-#include "camera/camera.h"
-#include "world/world.h"
-#include "utils.h"
+#include "minirt.h"
 #include <math.h>
 
 // the pixel size for a horizontal canvas
@@ -36,7 +28,7 @@ MunitResult camera_test2(const MunitParameter params[], void *fixture)
 	destroy_camera(camera);
 	return (MUNIT_OK);
 }
-
+/*
 // constructing a ray through the center of the canvas
 MunitResult camera_test3(const MunitParameter params[], void *fixture)
 {
@@ -123,3 +115,4 @@ MunitResult camera_test6(const MunitParameter params[], void *fixture)
 	free(image);
 	return (MUNIT_OK);
 }
+*/
