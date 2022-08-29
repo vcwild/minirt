@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 17:51:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/25 17:52:27 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:02:18 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,37 +49,24 @@ bool	is_shadowed(t_world *w, t_point *p, t_point_light *pl)
 t_color	*sum_colors(t_list *colors)
 {
 	t_color	*sum;
+	t_color	*new;
 
-	sum = add_colors_free_args(new_color(0, 0, 0), colors->content);
-	colors = colors->next;
-	while (colors)
-	{
-		sum = add_colors_free_args(sum, colors->content);
-		colors = colors->next;
-	}
+	new = new_color(0, 0, 0);
+	sum = add_colors(new, colors->content);
+	free(new);
+	ft_lstclear(&colors, free);
 	return (sum);
 }
 
 t_color	*shade_hit(t_world *w, t_computations *c)
 {
-	t_lighting_args	args;
-	t_list			*tmp;
+	t_lighting_args	*args;
+	t_position_args	*pos_args;
 	t_color			*final;
-	t_list			*colors;
 
-	args.material = c->shape->material;
-	args.position = c->point;
-	args.normal_vector = c->normalv;
-	args.eye_vector = c->eyev;
-	tmp = w->lights;
-	colors = NULL;
-	while (tmp)
-	{
-		args.lighting = tmp->content;
-		args.in_shadow = is_shadowed(w, c->point, tmp->content);
-		ft_lstadd_front(&colors, ft_lstnew(lighting(&args)));
-		tmp = tmp->next;
-	}
-	final = sum_colors(colors);
+	pos_args = new_position_args(c->point, c->normalv, c->eyev);
+	args = new_light_args(c->shape->material, w->lights->content, pos_args);
+	final = lighting(args);
+	free(args);
 	return (final);
 }

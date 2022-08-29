@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 17:55:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 14:16:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:06:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_matrix	*view_transform(t_point *from, t_point *forward, t_vector *up)
 {
 	t_matrix	*final;
 	t_matrix	*orientation;
-	t_matrix	*tmp;
+	t_tuple		*tmp;
 	t_tuple		*left;
 	t_tuple		*true_up;
 
