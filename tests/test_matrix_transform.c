@@ -362,7 +362,6 @@ MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture
 	return (MUNIT_OK);
 }
 
-/*
 MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture)
 {
 	t_tuple *from = new_point(1, 3, 2);
@@ -377,7 +376,12 @@ MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture
 		{  0.00000, 0.00000,  0.00000,  1.00000},
 	});
 
-	munit_assert_true(matrix_equals(t, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(t->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
+
 	free(expected);
 	free(t);
 	free(up);
@@ -385,4 +389,3 @@ MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture
 	free(from);
 	return (MUNIT_OK);
 }
-*/

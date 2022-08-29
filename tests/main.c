@@ -79,6 +79,7 @@ MunitResult matrix_transform_test13(PARAMS);
 MunitResult matrix_transform_test14(PARAMS);
 MunitResult matrix_transform_test15(PARAMS);
 MunitResult matrix_transform_test16(PARAMS);
+MunitResult matrix_transform_test17(PARAMS);
 
 MunitResult ray_test1(PARAMS);
 MunitResult ray_test2(PARAMS);
@@ -251,6 +252,7 @@ int main(int argc, char **argv) {
 		test("/view_transform()", matrix_transform_test14),
 		test("/view_transform() looking to +z", matrix_transform_test15),
 		test("/view_transform() moves the world", matrix_transform_test16),
+		test("/view_transform() moves the world arbitrary", matrix_transform_test17),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
