@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/25 18:07:48 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/27 20:47:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,6 @@ int			radians(double degrees);
 
 t_matrix	*translate_view(t_point *from, t_matrix *orientation);
 
-t_matrix	*view_transform(t_point *from, t_point *to, t_vector *up);
+t_matrix	*view_transform(t_point *from, t_point *forward, t_vector *up);
 
 #endif
