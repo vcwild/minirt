@@ -147,8 +147,8 @@ MunitResult world_test9(PARAMS);
 MunitResult world_test10(PARAMS);
 MunitResult world_test11(PARAMS);
 
-// MunitResult camera_test1(PARAMS);
-// MunitResult camera_test2(PARAMS);
+MunitResult camera_test1(PARAMS);
+MunitResult camera_test2(PARAMS);
 // MunitResult camera_test3(PARAMS);
 // MunitResult camera_test4(PARAMS);
 // MunitResult camera_test5(PARAMS);
@@ -318,15 +318,15 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest camera_tests[] = {
-	// 	test("/new_camera() creates a camera", camera_test1),
-	// 	test("/the pixel size for a vertical canvas", camera_test2),
+	MunitTest camera_tests[] = {
+		test("/new_camera() creates a camera", camera_test1),
+		test("/the pixel size for a vertical canvas", camera_test2),
 	// 	test("/ray_to_pixel() at the center of the canvas", camera_test3),
 	// 	test("/ray_to_pixel() at the corner of the canvas", camera_test4),
 	// 	test("/ray_to_pixel() with a transformed camera", camera_test5),
 	// 	test("/render() rendering a world with a camera", camera_test6),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest shape_tests[] = {
 	// 	test("/a shape has a default transformation", shape_test1),
@@ -364,8 +364,8 @@ int main(int argc, char **argv) {
 	MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
 	MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
+	MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
-	// MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
 	// MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
 	// MunitSuite cylinder_suite =         { "/cylinders", cylinder_tests, OPTIONS };
@@ -379,8 +379,8 @@ int main(int argc, char **argv) {
 		sphere_suite,
 		material_suite,
 		world_suite,
+		camera_suite,
 		// light_suite,
-		// camera_suite,
 		// shape_suite,
 		// plane_suite,
 		// cylinder_suite,
