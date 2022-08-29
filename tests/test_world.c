@@ -139,7 +139,7 @@ MunitResult world_test7(const MunitParameter params[], void *fixture)
 {
 	t_world *world = default_world();
 	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 0, 1));
-	t_sphere *sphere = world->objects.spheres->content;
+	t_shape *sphere = world->objects.spheres->content;
 	t_intersection *intersection = new_intersection(4, sphere, OBJ_SPHERE);
 	t_computations *comps = prepare_computations(intersection, ray);
 
@@ -163,7 +163,7 @@ MunitResult world_test8(const MunitParameter params[], void *fixture)
 	destroy_point_light(world->lights->content);
 	world->lights->content = new_point_light(new_point(0, 0.25, 0), new_color(1, 1, 1));
 	t_ray *ray = new_ray(new_point(0, 0, 0), new_vector(0, 0, 1));
-	t_sphere *sphere = world->objects.spheres->next->content;
+	t_shape *sphere = world->objects.spheres->next->content;
 	t_intersection *intersection = new_intersection(0.5, sphere, OBJ_SPHERE);
 
 	t_computations *comps = prepare_computations(intersection, ray);
