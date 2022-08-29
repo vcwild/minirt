@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/27 20:54:56 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/29 19:48:02 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -89,8 +89,12 @@ WORLD = world
 WORLD_NAME = lib$(WORLD).a
 WORLD_PATH = $(LIBS_PATH)/$(WORLD)
 
-ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
-ALL_LIBS += libworld
+# camera
+CAMERA = camera
+CAMERA_NAME = lib$(CAMERA).a
+CAMERA_PATH = $(LIBS_PATH)/$(CAMERA)
+
+ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight libworld libcamera
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -108,7 +112,8 @@ endif
 	libray libray_clean \
 	libmaterial libmaterial_clean \
 	liblight liblight_clean \
-	libworld libworld_clean
+	libworld libworld_clean \
+	libcamera libcamera_clean
 
 all: $(NAME)
 
@@ -180,6 +185,12 @@ libworld: liblight
 libworld_clean:
 	@$(MAKE_EXTERNAL) $(WORLD_PATH) clean
 
+libcamera: libworld
+	@$(MAKE_EXTERNAL) $(CAMERA_PATH)
+
+libcamera_clean:
+	@$(MAKE_EXTERNAL) $(CAMERA_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
@@ -204,6 +215,7 @@ TEST_SRC += tests/test_ray.c
 TEST_SRC += tests/test_sphere.c
 TEST_SRC += tests/test_materials.c
 TEST_SRC += tests/test_world.c
+TEST_SRC += tests/test_camera.c
 
 test: re $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm

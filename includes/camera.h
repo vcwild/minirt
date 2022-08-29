@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 19:50:49 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/29 20:05:01 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/29 20:05:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef CAMERA_H
+# define CAMERA_H
 
-# include <stdio.h>
-# include <math.h>
+# include <world.h>
 
-# include <canvas.h>
-# include <ray.h>
-# include <camera.h>
+typedef struct s_camera
+{
+	double		hsize;
+	double		vsize;
+	double		fov;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
+	t_matrix	*transform;
+}			t_camera;
 
-/* constants */
+t_camera	*new_camera(double hsize, double vsize, double fov);
 
-/* structs */
+void		destroy_camera(t_camera *c);
 
 #endif

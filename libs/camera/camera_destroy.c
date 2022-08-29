@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   camera_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 19:50:49 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/29 19:48:25 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/29 19:59:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <camera.h>
 
-# include <stdio.h>
-# include <math.h>
-
-# include <canvas.h>
-# include <ray.h>
-# include <camera.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+void	destroy_camera(t_camera *c)
+{
+	free(c->transform);
+	free(c);
+}
