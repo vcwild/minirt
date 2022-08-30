@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 20:05:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 20:05:15 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:50:19 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,21 @@ typedef struct s_camera
 	t_matrix	*transform;
 }			t_camera;
 
+/**
+ * @brief Creates a new camera with the given parameters.
+ *
+ * @param hsize The horizontal size of the canvas.
+ * @param vsize The vertical size of the canvas.
+ * @param fov The field of view of the camera.
+ * @return t_camera* The new camera.
+ */
 t_camera	*new_camera(double hsize, double vsize, double fov);
 
+/**
+ * @brief Destroys the given camera.
+ *
+ * @param c The camera to destroy.
+ */
 void		destroy_camera(t_camera *c);
 
 #endif
