@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 16:51:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:04:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,11 @@ t_color			*get_pixel(t_canvas *c,
  */
 bool			color_equals(t_color *a, t_color *b);
 
+/**
+ * @brief Frees the canvas struct.
+ *
+ * @param c The canvas to free.
+ */
 void			destroy_canvas(t_canvas *c);
 
 #endif

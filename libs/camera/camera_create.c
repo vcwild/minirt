@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 14:31:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:01:53 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static t_vector	*resolve_direction(t_point *pixel, t_point *origin)
 	return (new);
 }
 
-t_ray	*ray_to_pixel(t_camera *c, double width, double height)
+t_ray	*ray_for_pixel(t_camera *c, double width, double height)
 {
 	t_ray		*new;
 	t_point		*p;

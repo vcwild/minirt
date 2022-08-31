@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:22:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 15:25:58 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:01:53 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_canvas	*render(t_camera *c, t_world *w)
 		width = 0;
 		while (width < image->width)
 		{
-			ray = ray_to_pixel(c, width, height);
+			ray = ray_for_pixel(c, width, height);
 			color = get_color(w, ray);
 			write_pixel(image, width, height, color);
 			destroy_ray(ray);
