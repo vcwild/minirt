@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/30 00:15:25 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 10:11:06 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_point	*resolve_point(t_matrix *mat, t_point *p)
 
 t_vector	*resolve_direction(t_point *pixel, t_point *origin)
 {
-	t_vector	*tmp;
+	t_tuple		*tmp;
 	t_vector	*new;
 
 	tmp = subtract_tuples(pixel, origin);
@@ -66,8 +66,8 @@ t_ray	*ray_to_pixel(t_camera *c, double px, double py)
 	t_point		*origin;
 	t_vector	*direction;
 
-	p = new_point(c->half_width - ((px + 0.5) * c->pixel_size),
-			c->half_height - ((py + 0.5) * c->pixel_size),
+	p = new_point(c->half_width - (px + 0.5) * c->pixel_size,
+			c->half_height - (py + 0.5) * c->pixel_size,
 			-1);
 	pixel = resolve_point(c->transform, p);
 	free(p);
@@ -77,7 +77,5 @@ t_ray	*ray_to_pixel(t_camera *c, double px, double py)
 	direction = resolve_direction(pixel, origin);
 	new = new_ray(origin, direction);
 	free(pixel);
-	free(origin);
-	free(direction);
 	return (new);
 }
