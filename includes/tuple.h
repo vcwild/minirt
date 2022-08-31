@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 11:40:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:40:24 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:20:39 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ int			is_point(t_tuple *t);
  */
 int			is_vector(t_tuple *t);
 
+/**
+ * @brief Check if the tuple is a tuple
+ *
+ * @param t tuple to be checked
+ * @return int true if tuple is a tuple, false otherwise
+ */
 int			is_tuple(t_tuple *t);
 
 /**
@@ -202,5 +208,13 @@ t_tuple		*reflect(t_tuple *v, t_tuple *n);
  * @return double the rounded value
  */
 double		round_to(double num);
+
+/**
+ * @brief Free the tuple
+ *
+ * @param v the tuple to be freed
+ * @return t_vector* the freed tuple
+ */
+t_vector	*negate_tuple_free(t_vector *v);
 
 #endif

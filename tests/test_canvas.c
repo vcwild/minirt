@@ -43,13 +43,13 @@ MunitResult canvas_test3(const MunitParameter params[], void *fixture)
 
 MunitResult canvas_test4(const MunitParameter params[], void *fixture)
 {
-	//test pixel_at
+	//test get_pixel
 	t_canvas *canvas = new_canvas(10, 10);
 	t_color *color = new_color(1, 0, 0);
 	write_pixel(canvas, 0, 0, color);
-	munit_assert_int(pixel_at(canvas, 0, 0)->r, ==, 1);
-	munit_assert_int(pixel_at(canvas, 0, 0)->g, ==, 0);
-	munit_assert_int(pixel_at(canvas, 0, 0)->b, ==, 0);
+	munit_assert_int(get_pixel(canvas, 0, 0)->r, ==, 1);
+	munit_assert_int(get_pixel(canvas, 0, 0)->g, ==, 0);
+	munit_assert_int(get_pixel(canvas, 0, 0)->b, ==, 0);
 	free(canvas);
 	return (MUNIT_OK);
 }

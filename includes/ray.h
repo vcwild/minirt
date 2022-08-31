@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:51:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:19:11 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ t_shape			*new_shape(void);
  * @return t_ray* returns a new ray.
  */
 t_ray			*new_ray(t_point *origin, t_vector *direction);
+
+t_intersections	*new_intersections_list(void);
 
 /**
  * @brief Get the position object
@@ -258,4 +260,11 @@ void			destroy_ray(t_ray *r);
  */
 t_ray			*transform(t_ray *r, t_matrix *mat);
 
+/**
+ * @brief Check the hit from the intersections array
+ *
+ * @param xs The array of intersections to check.
+ * @return t_intersection* returns the hit from the array.
+ */
+t_intersection	*hit(t_intersections *xs);
 #endif

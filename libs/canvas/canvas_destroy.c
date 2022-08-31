@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   canvas_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 19:50:49 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/31 15:27:10 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/31 15:57:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <canvas.h>
 
-# include <stdio.h>
-# include <math.h>
+void	destroy_canvas(t_canvas *c)
+{
+	unsigned int	width;
+	unsigned int	height;
 
-# include <canvas.h>
-# include <ray.h>
-# include <camera.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+	height = 0;
+	while (height < c->height)
+	{
+		width = 0;
+		while (width < c->width)
+		{
+			free(c->pixels[height][width]);
+			width++;
+		}
+		free(c->pixels[height]);
+		height++;
+	}
+	free(c->pixels);
+	free(c);
+}

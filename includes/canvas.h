@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 17:54:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:04:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # include <tuple.h>
 # include <libft.h>
@@ -177,8 +178,24 @@ int				write_pixel(t_canvas *c,
  * @param height height position of pixel
  * @return t_color* color of pixel or NULL if unsuccessful
  */
-t_color			*pixel_at(t_canvas *c,
+t_color			*get_pixel(t_canvas *c,
 					unsigned int width,
 					unsigned int height);
+
+/**
+ * @brief Checks if given colors are equal.
+ *
+ * @param a The first color struct.
+ * @param b The second color struct.
+ * @return true If the colors are equal or false otherwise.
+ */
+bool			color_equals(t_color *a, t_color *b);
+
+/**
+ * @brief Frees the canvas struct.
+ *
+ * @param c The canvas to free.
+ */
+void			destroy_canvas(t_canvas *c);
 
 #endif

@@ -76,9 +76,10 @@ MunitResult matrix_transform_test10(PARAMS);
 MunitResult matrix_transform_test11(PARAMS);
 MunitResult matrix_transform_test12(PARAMS);
 MunitResult matrix_transform_test13(PARAMS);
-// MunitResult matrix_transform_test14(PARAMS);
-// MunitResult matrix_transform_test15(PARAMS);
-// MunitResult matrix_transform_test16(PARAMS);
+MunitResult matrix_transform_test14(PARAMS);
+MunitResult matrix_transform_test15(PARAMS);
+MunitResult matrix_transform_test16(PARAMS);
+MunitResult matrix_transform_test17(PARAMS);
 
 MunitResult ray_test1(PARAMS);
 MunitResult ray_test2(PARAMS);
@@ -135,24 +136,24 @@ MunitResult material_test5(PARAMS);
 MunitResult material_test6(PARAMS);
 // MunitResult material_test7(PARAMS);
 
-// MunitResult world_test1(PARAMS);
-// MunitResult world_test2(PARAMS);
-// MunitResult world_test3(PARAMS);
-// MunitResult world_test4(PARAMS);
-// MunitResult world_test5(PARAMS);
-// MunitResult world_test6(PARAMS);
-// MunitResult world_test7(PARAMS);
-// MunitResult world_test8(PARAMS);
-// MunitResult world_test9(PARAMS);
-// MunitResult world_test10(PARAMS);
-// MunitResult world_test11(PARAMS);
+MunitResult world_test1(PARAMS);
+MunitResult world_test2(PARAMS);
+MunitResult world_test3(PARAMS);
+MunitResult world_test4(PARAMS);
+MunitResult world_test5(PARAMS);
+MunitResult world_test6(PARAMS);
+MunitResult world_test7(PARAMS);
+MunitResult world_test8(PARAMS);
+MunitResult world_test9(PARAMS);
+MunitResult world_test10(PARAMS);
+MunitResult world_test11(PARAMS);
 
-// MunitResult camera_test1(PARAMS);
-// MunitResult camera_test2(PARAMS);
-// MunitResult camera_test3(PARAMS);
-// MunitResult camera_test4(PARAMS);
-// MunitResult camera_test5(PARAMS);
-// MunitResult camera_test6(PARAMS);
+MunitResult camera_test1(PARAMS);
+MunitResult camera_test2(PARAMS);
+MunitResult camera_test3(PARAMS);
+MunitResult camera_test4(PARAMS);
+MunitResult camera_test5(PARAMS);
+MunitResult camera_test6(PARAMS);
 
 MunitTest test(char *desc, MunitTestFunc the_test)
 {
@@ -230,7 +231,7 @@ int main(int argc, char **argv) {
 		test("/new_canvas", canvas_test1),
 		test("/new_canvas", canvas_test2),
 		test("/new_canvas and write_pixel()", canvas_test3),
-		test("/new_canvas and pixel_at()", canvas_test4),
+		test("/new_canvas and get_pixel()", canvas_test4),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -248,9 +249,10 @@ int main(int argc, char **argv) {
 		test("/individual transformations", matrix_transform_test11),
 		test("/chained transformations", matrix_transform_test12),
 		test("/chained n transformations", matrix_transform_test13),
-	//	test("/view_transform()", matrix_transform_test14),
-	// 	test("/view_transform() looking to +z", matrix_transform_test15),
-	// 	test("/view_transform() moves the world", matrix_transform_test16),
+		test("/view_transform()", matrix_transform_test14),
+		test("/view_transform() looking to +z", matrix_transform_test15),
+		test("/view_transform() moves the world", matrix_transform_test16),
+		test("/view_transform() moves the world arbitrary", matrix_transform_test17),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -303,30 +305,30 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest world_tests[] = {
-	// 	test("/new_world() creates a world", world_test1),
-	// 	test("/default_world() might be a useless function", world_test2),
-	// 	test("/intersect_world() intersect a world with a ray", world_test3),
-	// 	test("/precomputing the state of an intersection", world_test4),
-	// 	test("/the hit, eye outside", world_test5),
-	// 	test("/the hit, eye inside", world_test6),
-	// 	test("/shading an intersection", world_test7),
-	// 	test("/shading an intersection from the inside", world_test8),
-	// 	test("/the color when a ray misses", world_test9),
-	// 	test("/the color when a ray hits", world_test10),
-	// 	test("/the color with an intersection behind the ray", world_test11),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+	MunitTest world_tests[] = {
+		test("/new_world() creates a world", world_test1),
+		test("/default_world() might be a useless function", world_test2),
+		test("/intersect_world() intersect a world with a ray", world_test3),
+		test("/precomputing the state of an intersection", world_test4),
+		test("/the hit, eye outside", world_test5),
+		test("/the hit, eye inside", world_test6),
+		test("/shading an intersection", world_test7),
+		test("/shading an intersection from the inside", world_test8),
+		test("/the color when a ray misses", world_test9),
+		test("/the color when a ray hits", world_test10),
+		test("/the color with an intersection behind the ray", world_test11),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
-	// MunitTest camera_tests[] = {
-	// 	test("/new_camera() creates a camera", camera_test1),
-	// 	test("/the pixel size for a vertical canvas", camera_test2),
-	// 	test("/ray_to_pixel() at the center of the canvas", camera_test3),
-	// 	test("/ray_to_pixel() at the corner of the canvas", camera_test4),
-	// 	test("/ray_to_pixel() with a transformed camera", camera_test5),
-	// 	test("/render() rendering a world with a camera", camera_test6),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+	MunitTest camera_tests[] = {
+		test("/new_camera() creates a camera", camera_test1),
+		test("/the pixel size for a vertical canvas", camera_test2),
+		test("/ray_to_pixel() at the center of the canvas", camera_test3),
+		test("/ray_to_pixel() at the corner of the canvas", camera_test4),
+		test("/ray_to_pixel() with a transformed camera", camera_test5),
+		test("/render() rendering a world with a camera", camera_test6),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest shape_tests[] = {
 	// 	test("/a shape has a default transformation", shape_test1),
@@ -363,9 +365,9 @@ int main(int argc, char **argv) {
 	MunitSuite ray_suite =              { "/rays", ray_tests, OPTIONS };
 	MunitSuite sphere_suite =           { "/spheres", sphere_tests, OPTIONS };
 	MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
+	MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
+	MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
-	// MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
-	// MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
 	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
 	// MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
 	// MunitSuite cylinder_suite =         { "/cylinders", cylinder_tests, OPTIONS };
@@ -378,9 +380,9 @@ int main(int argc, char **argv) {
 		ray_suite,
 		sphere_suite,
 		material_suite,
+		world_suite,
+		camera_suite,
 		// light_suite,
-		// world_suite,
-		// camera_suite,
 		// shape_suite,
 		// plane_suite,
 		// cylinder_suite,

@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/20 05:12:48 by vwildner         ###   ########.fr        #
+#    Updated: 2022/08/29 19:48:02 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -64,7 +64,7 @@ CANVAS = canvas
 CANVAS_NAME = lib$(CANVAS).a
 CANVAS_PATH = $(LIBS_PATH)/$(CANVAS)
 
-# matrix
+# world
 MATRIX = matrix
 MATRIX_NAME = lib$(MATRIX).a
 MATRIX_PATH = $(LIBS_PATH)/$(MATRIX)
@@ -84,7 +84,17 @@ LIGHT = light
 LIGHT_NAME = lib$(LIGHT).a
 LIGHT_PATH = $(LIBS_PATH)/$(LIGHT)
 
-ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight
+# world
+WORLD = world
+WORLD_NAME = lib$(WORLD).a
+WORLD_PATH = $(LIBS_PATH)/$(WORLD)
+
+# camera
+CAMERA = camera
+CAMERA_NAME = lib$(CAMERA).a
+CAMERA_PATH = $(LIBS_PATH)/$(CAMERA)
+
+ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight libworld libcamera
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -98,7 +108,12 @@ endif
 	libmlx libmlx_clean \
 	libtuple libtuple_clean \
 	libcanvas libcanvas_clean \
-	libmatrix libmatrix_clean
+	libmatrix libmatrix_clean \
+	libray libray_clean \
+	libmaterial libmaterial_clean \
+	liblight liblight_clean \
+	libworld libworld_clean \
+	libcamera libcamera_clean
 
 all: $(NAME)
 
@@ -164,12 +179,24 @@ liblight: libray
 liblight_clean:
 	@$(MAKE_EXTERNAL) $(LIGHT_PATH) clean
 
+libworld: liblight
+	@$(MAKE_EXTERNAL) $(WORLD_PATH)
+
+libworld_clean:
+	@$(MAKE_EXTERNAL) $(WORLD_PATH) clean
+
+libcamera: libworld
+	@$(MAKE_EXTERNAL) $(CAMERA_PATH)
+
+libcamera_clean:
+	@$(MAKE_EXTERNAL) $(CAMERA_PATH) clean
+
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
 
 re:	fclean all
 
-clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean
+clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean libworld_clean
 	@$(REMOVE) $(OBJECTS_PATH)
 
 archives_clean:
@@ -187,7 +214,9 @@ TEST_SRC += tests/test_matrix_transform.c
 TEST_SRC += tests/test_ray.c
 TEST_SRC += tests/test_sphere.c
 TEST_SRC += tests/test_materials.c
+TEST_SRC += tests/test_world.c
+TEST_SRC += tests/test_camera.c
 
-test: $(ALL_LIBS)
+test: re $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
 	./test_bin # || ./test_bin --no-fork

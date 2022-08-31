@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   canvas_compare.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 19:50:49 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/21 17:49:36 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/21 17:50:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <canvas.h>
 
-# include <stdio.h>
-# include <math.h>
-
-# include <canvas.h>
-# include <ray.h>
-# include <camera.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+bool	color_equals(t_color *a, t_color *b)
+{
+	return (a->r == b->r && a->g == b->g && a->b == b->b);
+}

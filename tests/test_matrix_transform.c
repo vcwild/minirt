@@ -294,7 +294,6 @@ MunitResult matrix_transform_test13(const MunitParameter params[], void *fixture
 }
 
 // The below content comes from chapter 7 of the book.
-/*
 MunitResult matrix_transform_test14(const MunitParameter params[], void *fixture)
 {
 	t_tuple *from = new_point(0, 0, 0);
@@ -302,16 +301,21 @@ MunitResult matrix_transform_test14(const MunitParameter params[], void *fixture
 	t_tuple *up = new_vector(0, 1, 0);
 	t_matrix *t = view_transform(from, to, up);
 
-	t_matrix *identity = identity_matrix();
+	t_matrix *expected = identity_matrix();
 
-	munit_assert_true(matrix_equals(t, identity));
-	free(identity);
-	free(t);
-	free(up);
-	free(to);
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(t->data[i][j], ==, expected->data[i][j]);
+		}
+	}
 	free(from);
+	free(to);
+	free(up);
+	free(t);
+	free(expected);
 	return (MUNIT_OK);
 }
+
 
 MunitResult matrix_transform_test15(const MunitParameter params[], void *fixture)
 {
@@ -322,7 +326,11 @@ MunitResult matrix_transform_test15(const MunitParameter params[], void *fixture
 
 	t_matrix *expected = scaling(-1, 1, -1);
 
-	munit_assert_true(matrix_equals(t, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(t->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
 	free(expected);
 	free(t);
 	free(up);
@@ -330,6 +338,7 @@ MunitResult matrix_transform_test15(const MunitParameter params[], void *fixture
 	free(from);
 	return (MUNIT_OK);
 }
+
 
 MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture)
 {
@@ -340,7 +349,11 @@ MunitResult matrix_transform_test16(const MunitParameter params[], void *fixture
 
 	t_matrix *expected = translation(0, 0, -8);
 
-	munit_assert_true(matrix_equals(t, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(t->data[i][j], ==, expected->data[i][j]);
+		}
+	}
 	free(expected);
 	free(t);
 	free(up);
@@ -363,7 +376,12 @@ MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture
 		{  0.00000, 0.00000,  0.00000,  1.00000},
 	});
 
-	munit_assert_true(matrix_equals(t, expected));
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			munit_assert_float(round_to(t->data[i][j]), ==, expected->data[i][j]);
+		}
+	}
+
 	free(expected);
 	free(t);
 	free(up);
@@ -371,4 +389,3 @@ MunitResult matrix_transform_test17(const MunitParameter params[], void *fixture
 	free(from);
 	return (MUNIT_OK);
 }
-*/

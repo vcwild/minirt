@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:55:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:36:49 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:47:57 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,16 @@ int	write_pixel(t_canvas *c,
 		fprintf(stderr, "Error: write_pixel out of bounds\n");
 		return (1);
 	}
+	free(c->pixels[height][width]);
 	c->pixels[height][width] = color;
 	return (0);
 }
 
-t_color	*pixel_at(t_canvas *c, unsigned int width, unsigned int height)
+t_color	*get_pixel(t_canvas *c, unsigned int width, unsigned int height)
 {
 	if (width > c->width || height > c->height)
 	{
-		fprintf(stderr, "Error: pixel_at out of bounds\n");
+		fprintf(stderr, "Error: get_pixel out of bounds\n");
 		return (NULL);
 	}
 	return (c->pixels[height][width]);

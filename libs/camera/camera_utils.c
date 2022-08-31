@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   camera_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 19:50:49 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/31 14:01:03 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/31 14:11:01 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <camera.h>
 
-# include <stdio.h>
-# include <math.h>
-
-# include <canvas.h>
-# include <ray.h>
-# include <camera.h>
-
-/* constants */
-
-/* structs */
-
-#endif
+void	set_camera_transform(t_camera *c, t_matrix *transform)
+{
+	free(c->transform);
+	c->transform = transform;
+}
