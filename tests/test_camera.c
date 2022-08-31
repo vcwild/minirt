@@ -127,14 +127,13 @@ MunitResult camera_test6(const MunitParameter params[], void *fixture)
 	munit_assert_float(round_to(color->g), ==, expected_color->g);
 	munit_assert_float(round_to(color->b), ==, expected_color->b);
 
-	free(color);
 	free(expected_color);
 	free(from);
 	free(to);
 	free(up);
 	destroy_camera(camera);
 	destroy_world(world);
-	free(image);
+	destroy_canvas(image);
 	return (MUNIT_OK);
 }
 
