@@ -38,8 +38,14 @@ MunitResult camera_test3(const MunitParameter params[], void *fixture)
 	t_tuple *expected_origin = new_point(0, 0, 0);
 	t_tuple *expected_direction = new_vector(0, 0, -1);
 
-	munit_assert_true(tuple_equals(ray->origin, expected_origin));
-	munit_assert_true(tuple_equals(ray->direction, expected_direction));
+	munit_assert_float(round_to(ray->origin->x), ==, expected_origin->x);
+	munit_assert_float(round_to(ray->origin->y), ==, expected_origin->y);
+	munit_assert_float(round_to(ray->origin->z), ==, expected_origin->z);
+	munit_assert_float(round_to(ray->origin->w), ==, expected_origin->w);
+	munit_assert_float(round_to(ray->direction->x), ==, expected_direction->x);
+	munit_assert_float(round_to(ray->direction->y), ==, expected_direction->y);
+	munit_assert_float(round_to(ray->direction->z), ==, expected_direction->z);
+	munit_assert_float(round_to(ray->direction->w), ==, expected_direction->w);
 
 	destroy_camera(camera);
 	destroy_ray(ray);
@@ -57,8 +63,15 @@ MunitResult camera_test4(const MunitParameter params[], void *fixture)
 	t_tuple *expected_origin = new_point(0, 0, 0);
 	t_tuple *expected_direction = new_vector(0.66519, 0.33259, -0.66851);
 
-	munit_assert_true(tuple_equals(ray->origin, expected_origin));
-	munit_assert_true(tuple_equals(ray->direction, expected_direction));
+	munit_assert_float(round_to(ray->origin->x), ==, expected_origin->x);
+	munit_assert_float(round_to(ray->origin->y), ==, expected_origin->y);
+	munit_assert_float(round_to(ray->origin->z), ==, expected_origin->z);
+	munit_assert_float(round_to(ray->origin->w), ==, expected_origin->w);
+	munit_assert_float(round_to(ray->direction->x), ==, expected_direction->x);
+	munit_assert_float(round_to(ray->direction->y), ==, expected_direction->y);
+	munit_assert_float(round_to(ray->direction->z), ==, expected_direction->z);
+	munit_assert_float(round_to(ray->direction->w), ==, expected_direction->w);
+
 	destroy_camera(camera);
 	destroy_ray(ray);
 	free(expected_direction);
