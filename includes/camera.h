@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 20:05:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 22:15:23 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:20:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ t_camera	*new_camera(double hsize, double vsize, double fov);
 void		destroy_camera(t_camera *c);
 
 t_ray		*ray_to_pixel(t_camera *c, double px, double py);
+
+t_canvas	*render(t_camera *c, t_world *w);
+
+void		set_camera_transform(t_camera *c, t_matrix *transform);
 
 #endif

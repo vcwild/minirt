@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:19:12 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/25 08:54:43 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:45:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ t_color	*get_color(t_world *w, t_ray *r)
 	comps = prepare_computations(x, r);
 	color = shade_hit(w, comps);
 	destroy_intersections_list(xs);
-	free(comps->eyev);
-	free(comps->normalv);
-	free(comps);
+	destroy_computations(comps);
 	return (color);
 }

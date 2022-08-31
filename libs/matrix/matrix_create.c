@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:20:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/12 12:26:13 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:43:13 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ t_matrix	*submatrix(t_matrix *a, int row, int col)
 
 	new = new_matrix(a->size - 1, NULL);
 	i = -1;
-	while (++i < a->size)
+	while (++i < a->size - 1)
 	{
 		j = -1;
-		while (++j < a->size)
+		while (++j < a->size - 1)
 			new->data[i][j] = a->data[i + (i >= row)][j + (j >= col)];
 	}
 	return (new);

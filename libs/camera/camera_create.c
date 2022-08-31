@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 10:11:06 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:31:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_camera	*new_camera(double hsize, double vsize, double fov)
 	return (new);
 }
 
-t_point	*resolve_point(t_matrix *mat, t_point *p)
+static t_point	*resolve_point(t_matrix *mat, t_point *p)
 {
 	t_matrix		*inverse;
 	t_vector		*new;
@@ -47,7 +47,7 @@ t_point	*resolve_point(t_matrix *mat, t_point *p)
 	return (new);
 }
 
-t_vector	*resolve_direction(t_point *pixel, t_point *origin)
+static t_vector	*resolve_direction(t_point *pixel, t_point *origin)
 {
 	t_tuple		*tmp;
 	t_vector	*new;
@@ -58,7 +58,7 @@ t_vector	*resolve_direction(t_point *pixel, t_point *origin)
 	return (new);
 }
 
-t_ray	*ray_to_pixel(t_camera *c, double px, double py)
+t_ray	*ray_to_pixel(t_camera *c, double width, double height)
 {
 	t_ray		*new;
 	t_point		*p;
@@ -66,8 +66,8 @@ t_ray	*ray_to_pixel(t_camera *c, double px, double py)
 	t_point		*origin;
 	t_vector	*direction;
 
-	p = new_point(c->half_width - (px + 0.5) * c->pixel_size,
-			c->half_height - (py + 0.5) * c->pixel_size,
+	p = new_point(c->half_width - (width + 0.5) * c->pixel_size,
+			c->half_height - (height + 0.5) * c->pixel_size,
 			-1);
 	pixel = resolve_point(c->transform, p);
 	free(p);

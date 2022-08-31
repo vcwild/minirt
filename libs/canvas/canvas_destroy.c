@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera_render.c                                    :+:      :+:    :+:   */
+/*   canvas_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 18:22:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 15:25:58 by vwildner         ###   ########.fr       */
+/*   Created: 2022/08/31 15:27:10 by vwildner          #+#    #+#             */
+/*   Updated: 2022/08/31 15:57:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <camera.h>
+#include <canvas.h>
 
-t_canvas	*render(t_camera *c, t_world *w)
+void	destroy_canvas(t_canvas *c)
 {
-	t_canvas		*image;
-	t_ray			*ray;
-	t_color			*color;
 	unsigned int	width;
 	unsigned int	height;
 
-	image = new_canvas(c->hsize, c->vsize);
 	height = 0;
-	while (height < image->height)
+	while (height < c->height)
 	{
 		width = 0;
-		while (width < image->width)
+		while (width < c->width)
 		{
-			ray = ray_to_pixel(c, width, height);
-			color = get_color(w, ray);
-			write_pixel(image, width, height, color);
-			destroy_ray(ray);
+			free(c->pixels[height][width]);
 			width++;
 		}
+		free(c->pixels[height]);
 		height++;
 	}
-	return (image);
+	free(c->pixels);
+	free(c);
 }

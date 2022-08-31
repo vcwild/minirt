@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 20:05:29 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:51:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ int				write_pixel(t_canvas *c,
  * @param height height position of pixel
  * @return t_color* color of pixel or NULL if unsuccessful
  */
-t_color			*pixel_at(t_canvas *c,
+t_color			*get_pixel(t_canvas *c,
 					unsigned int width,
 					unsigned int height);
 
@@ -190,5 +190,7 @@ t_color			*pixel_at(t_canvas *c,
  * @return true If the colors are equal or false otherwise.
  */
 bool			color_equals(t_color *a, t_color *b);
+
+void			destroy_canvas(t_canvas *c);
 
 #endif
