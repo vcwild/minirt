@@ -153,7 +153,7 @@ MunitResult camera_test2(PARAMS);
 MunitResult camera_test3(PARAMS);
 MunitResult camera_test4(PARAMS);
 MunitResult camera_test5(PARAMS);
-// MunitResult camera_test6(PARAMS);
+MunitResult camera_test6(PARAMS);
 
 MunitTest test(char *desc, MunitTestFunc the_test)
 {
@@ -231,7 +231,7 @@ int main(int argc, char **argv) {
 		test("/new_canvas", canvas_test1),
 		test("/new_canvas", canvas_test2),
 		test("/new_canvas and write_pixel()", canvas_test3),
-		test("/new_canvas and pixel_at()", canvas_test4),
+		test("/new_canvas and get_pixel()", canvas_test4),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -325,8 +325,8 @@ int main(int argc, char **argv) {
 		test("/the pixel size for a vertical canvas", camera_test2),
 		test("/ray_to_pixel() at the center of the canvas", camera_test3),
 		test("/ray_to_pixel() at the corner of the canvas", camera_test4),
-		// test("/ray_to_pixel() with a transformed camera", camera_test5),
-		// test("/render() rendering a world with a camera", camera_test6),
+		test("/ray_to_pixel() with a transformed camera", camera_test5),
+		test("/render() rendering a world with a camera", camera_test6),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
