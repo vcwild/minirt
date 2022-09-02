@@ -235,7 +235,6 @@ MunitResult world_test11(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // there is no shadow when nothing is collinear with point and light
 MunitResult world_test12(const MunitParameter params[], void *fixture)
 {
@@ -244,7 +243,6 @@ MunitResult world_test12(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -256,7 +254,6 @@ MunitResult world_test13(const MunitParameter params[], void *fixture)
 
 	munit_assert_true(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -268,7 +265,6 @@ MunitResult world_test14(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -280,7 +276,5 @@ MunitResult world_test15(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
-*/
