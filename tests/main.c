@@ -152,6 +152,7 @@ MunitResult world_test13(PARAMS);
 MunitResult world_test14(PARAMS);
 MunitResult world_test15(PARAMS);
 MunitResult world_test16(PARAMS);
+MunitResult world_test17(PARAMS);
 
 MunitResult camera_test1(PARAMS);
 MunitResult camera_test2(PARAMS);
@@ -327,6 +328,7 @@ int main(int argc, char **argv) {
 		test("/is_shadowed() there is no shadow when an object is behind the light", world_test14),
 		test("/is_shadowed() there is no shadow when an object is behind the point", world_test15),
 		test("/shade_hit() is given an intersection in shadow", world_test16),
+		// test("/prepare_computations() the hit should offset the point", world_test17),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 

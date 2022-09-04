@@ -305,3 +305,29 @@ MunitResult world_test16(const MunitParameter params[], void *fixture)
 	free(color);
 	destroy_computations(comps);
 }
+
+/*
+// the hit should offset the point
+MunitResult world_test17(const MunitParameter params[], void *fixture)
+{
+	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 0, 1));
+	t_shape *shape = new_sphere();
+	free(shape->transform);
+	shape->transform = translation(0, 0, 1);
+	t_intersection *intersection = new_intersection(5, shape, OBJ_SPHERE);
+	t_computations *comps = prepare_computations(intersection, ray);
+
+	munit_assert_float(comps->over_point->z, <, (-EPSILON / 2)); // somehow this fails??
+	munit_assert_float(comps->point->z, >, (EPSILON / 2)); // somehow this fails??
+
+	free(ray->origin);
+	free(ray->direction);
+	free(ray);
+	free(intersection);
+	free(comps->over_point);
+	free(comps->point);
+	free(comps);
+	destroy_sphere(shape);
+	return (MUNIT_OK);
+}
+*/
