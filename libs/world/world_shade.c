@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 17:51:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/03 12:11:05 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 10:43:35 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_color	*shade_hit(t_world *w, t_computations *c)
 
 	pos_args = new_position_args(c->point, c->normalv, c->eyev);
 	args = new_light_args(c->shape->material, w->lights->content, pos_args);
-	args->in_shadow = is_shadowed(w, c->point, w->lights->content);
+	args->in_shadow = is_shadowed(w, c->over_point, w->lights->content);
 	final = lighting(args);
 	free(args);
 	return (final);
