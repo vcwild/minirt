@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:25:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 18:28:55 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 10:09:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ static t_color	*_lighting(t_lighting_args *args,
 	specular = get_specular(args, light_vector, dot_normal);
 	free(eff);
 	free(light_vector);
+	if (args->in_shadow)
+	{
+		free(diffuse);
+		free(specular);
+		return (ambient);
+	}
 	return (sum_light_components(diffuse, specular, ambient));
 }
 
