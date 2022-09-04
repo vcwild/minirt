@@ -278,3 +278,30 @@ MunitResult world_test15(const MunitParameter params[], void *fixture)
 	destroy_world(world);
 	return (MUNIT_OK);
 }
+
+// shade_hit() is given an intersection in shadow
+MunitResult world_test16(const MunitParameter params[], void *fixture)
+{
+	t_world *world = new_world();
+	add_light(world, new_point_light(new_point(0, 0, -10), new_color(1, 1, 1)));
+	t_shape *s1 = new_sphere();
+	add_sphere(world, s1);
+	t_shape *s2 = new_sphere();
+	free(s2->transform);
+	s2->transform = translation(0, 0, 10);
+	add_sphere(world, s2);
+	t_ray *ray = new_ray(new_point(0, 0, 5), new_vector(0, 0, 1));
+	t_intersection *x = new_intersection(4, s2, OBJ_SPHERE);
+	t_computations *comps = prepare_computations(x, ray);
+
+	t_color *color = shade_hit(world, comps);
+
+	munit_assert_float(round_to(color->r), ==, 0.1);
+	munit_assert_float(round_to(color->g), ==, 0.1);
+	munit_assert_float(round_to(color->b), ==, 0.1);
+
+	destroy_ray(ray);
+	destroy_world(world);
+	free(color);
+	destroy_computations(comps);
+}
