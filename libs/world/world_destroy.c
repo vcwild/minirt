@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:35:40 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 15:42:25 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 10:25:17 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	destroy_computations(t_computations *c)
 	free(c->eyev);
 	free(c->normalv);
 	free(c->point);
+	free(c->over_point);
 	free(c);
 }

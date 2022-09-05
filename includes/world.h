@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:10:04 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/29 20:28:54 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/04 10:18:40 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_computations {
 	t_object_type	object_type;
 	t_shape			*shape;
 	t_point			*point;
+	t_point			*over_point;
 	t_vector		*eyev;
 	t_vector		*normalv;
 	bool			inside;
@@ -141,5 +142,15 @@ t_color			*shade_hit(t_world *w, t_computations *c);
  * @return t_color* The color at the given point.
  */
 t_color			*get_color(t_world *w, t_ray *r);
+
+/**
+ * @brief Check if a point is in shadow.
+ *
+ * @param w The world to check.
+ * @param p The point to check.
+ * @param pl The light to check.
+ * @return true if the point is in shadow.
+ */
+bool			is_shadowed(t_world *w, t_point *p, t_point_light *pl);
 
 #endif

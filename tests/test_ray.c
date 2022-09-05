@@ -302,4 +302,3 @@ MunitResult ray_test15(const MunitParameter params[], void *fixture)
 	free(expected_origin);
 	return (MUNIT_OK);
 }
-

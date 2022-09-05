@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 15:26:12 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 17:47:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 10:20:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_computations	*prepare_computations(t_intersection *x, t_ray *r)
 {
 	t_computations	*new;
+	t_vector		*tmp;
 
 	new = (t_computations *)malloc(sizeof(t_computations));
 	new->t = x->t;
@@ -29,5 +30,8 @@ t_computations	*prepare_computations(t_intersection *x, t_ray *r)
 		new->normalv = negate_tuple_free(new->normalv);
 		new->inside = true;
 	}
+	tmp = multiply_scalar(new->normalv, EPSILON);
+	new->over_point = add_tuples(new->point, tmp);
+	free(tmp);
 	return (new);
 }

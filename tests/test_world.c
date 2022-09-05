@@ -235,7 +235,6 @@ MunitResult world_test11(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // there is no shadow when nothing is collinear with point and light
 MunitResult world_test12(const MunitParameter params[], void *fixture)
 {
@@ -244,7 +243,6 @@ MunitResult world_test12(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -256,7 +254,6 @@ MunitResult world_test13(const MunitParameter params[], void *fixture)
 
 	munit_assert_true(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -268,7 +265,6 @@ MunitResult world_test14(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
 	return (MUNIT_OK);
 }
 
@@ -280,7 +276,58 @@ MunitResult world_test15(const MunitParameter params[], void *fixture)
 
 	munit_assert_false(is_shadowed(world, point, world->lights->content));
 	destroy_world(world);
-	free(point);
+	return (MUNIT_OK);
+}
+
+// shade_hit() is given an intersection in shadow
+MunitResult world_test16(const MunitParameter params[], void *fixture)
+{
+	t_world *world = new_world();
+	add_light(world, new_point_light(new_point(0, 0, -10), new_color(1, 1, 1)));
+	t_shape *s1 = new_sphere();
+	add_sphere(world, s1);
+	t_shape *s2 = new_sphere();
+	free(s2->transform);
+	s2->transform = translation(0, 0, 10);
+	add_sphere(world, s2);
+	t_ray *ray = new_ray(new_point(0, 0, 5), new_vector(0, 0, 1));
+	t_intersection *x = new_intersection(4, s2, OBJ_SPHERE);
+	t_computations *comps = prepare_computations(x, ray);
+
+	t_color *color = shade_hit(world, comps);
+
+	munit_assert_float(round_to(color->r), ==, 0.1);
+	munit_assert_float(round_to(color->g), ==, 0.1);
+	munit_assert_float(round_to(color->b), ==, 0.1);
+
+	destroy_ray(ray);
+	destroy_world(world);
+	free(color);
+	destroy_computations(comps);
+}
+
+/*
+// the hit should offset the point
+MunitResult world_test17(const MunitParameter params[], void *fixture)
+{
+	t_ray *ray = new_ray(new_point(0, 0, -5), new_vector(0, 0, 1));
+	t_shape *shape = new_sphere();
+	free(shape->transform);
+	shape->transform = translation(0, 0, 1);
+	t_intersection *intersection = new_intersection(5, shape, OBJ_SPHERE);
+	t_computations *comps = prepare_computations(intersection, ray);
+
+	munit_assert_float(comps->over_point->z, <, (-EPSILON / 2)); // somehow this fails??
+	munit_assert_float(comps->point->z, >, (EPSILON / 2)); // somehow this fails??
+
+	free(ray->origin);
+	free(ray->direction);
+	free(ray);
+	free(intersection);
+	free(comps->over_point);
+	free(comps->point);
+	free(comps);
+	destroy_sphere(shape);
 	return (MUNIT_OK);
 }
 */
