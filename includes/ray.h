@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 20:19:11 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:40:33 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
  */
 typedef enum object_type {
 	OBJ_SPHERE,
+	OBJ_PLANE,
 	OBJ_SIZE,
 }	t_object_type;
 
@@ -45,6 +46,10 @@ typedef struct s_sphere {
 	t_point	center;
 	double	radius;
 }			t_sphere;
+
+typedef struct s_plane {
+	t_point		position;
+}				t_plane;
 
 /**
  * @brief Shape struct declaration only
@@ -84,6 +89,7 @@ struct s_shape {
 	t_material		*material;
 	union {
 		t_sphere	sphere;
+		t_plane		plane;
 	};
 	t_vector		*(*get_normal)(t_shape *, t_point *);
 	void			(*intersect)(t_shape *, t_ray *, t_intersections *);
@@ -235,6 +241,8 @@ double			rand_double(void);
  */
 void			destroy_sphere(t_shape *s);
 
+void			destroy_shape(t_shape *s);
+
 /**
  * @brief Destroy intersection list
  *
@@ -267,4 +275,9 @@ t_ray			*transform(t_ray *r, t_matrix *mat);
  * @return t_intersection* returns the hit from the array.
  */
 t_intersection	*hit(t_intersections *xs);
+
+t_shape			*new_plane(void);
+
+void			set_material(t_shape *s, t_material *mat);
+
 #endif

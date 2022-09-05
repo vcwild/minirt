@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/29 19:48:02 by vwildner         ###   ########.fr        #
+#    Updated: 2022/09/04 22:25:23 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -216,6 +216,8 @@ TEST_SRC += tests/test_sphere.c
 TEST_SRC += tests/test_materials.c
 TEST_SRC += tests/test_world.c
 TEST_SRC += tests/test_camera.c
+TEST_SRC += tests/test_shapes.c
+TEST_SRC += tests/test_planes.c
 
 test: re $(ALL_LIBS)
 	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm

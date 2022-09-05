@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material_create.c                                  :+:      :+:    :+:   */
+/*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 20:25:35 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/04 22:39:53 by vwildner         ###   ########.fr       */
+/*   Created: 2022/09/04 11:26:21 by vwildner          #+#    #+#             */
+/*   Updated: 2022/09/04 23:03:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <material.h>
+#ifndef SHAPE_H
+# define SHAPE_H
 
-t_material	*new_material(void)
-{
-	t_material	*material;
+# include <light.h>
 
-	material = (t_material *)malloc(sizeof(t_material));
-	material->color = new_color(1, 1, 1);
-	material->ambient = 0.1;
-	material->diffuse = 0.9;
-	material->specular = 0.9;
-	material->shininess = 200.0;
-	return (material);
-}
+typedef struct s_point3 {
+	t_point		*p1;
+	t_point		*p2;
+	t_point		*p3;
+}				t_point3;
+
+typedef struct s_vector3 {
+	t_vector	*n1;
+	t_vector	*n2;
+	t_vector	*n3;
+}				t_vector3;
+
+typedef struct s_plane {
+	t_point3	points;
+	t_vector3	vectors;
+}				t_plane;
+
+#endif

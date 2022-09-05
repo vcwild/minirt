@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:29:22 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/20 04:50:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:40:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,12 @@ t_shape	*new_shape(void)
 	shape->transform = identity_matrix();
 	shape->inverse_transform = identity_matrix();
 	shape->material = new_material();
+	shape->destroy = destroy_shape;
 	return (shape);
+}
+
+void	set_material(t_shape *s, t_material *mat)
+{
+	destroy_material(s->material);
+	s->material = mat;
 }
