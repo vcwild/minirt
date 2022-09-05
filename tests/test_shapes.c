@@ -3,22 +3,26 @@ Authored by paulo-santana <psergio-@student.42sp.org.br>
 Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permission.
 */
 
-#include "matrix/matrix.h"
 #include "munit/munit.h"
-#include "shapes/shapes.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include "ray/ray.h"
+#include "minirt.h"
 #include <math.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
-#include "utils.h"
 
 t_tuple *test_get_normal(t_shape *shape, t_tuple *p)
 {
 	return (new_vector(p->x, p->y, p->z));
+}
+
+int material_equals(t_material *m1, t_material *m2)
+{
+	if (m1 == NULL || m2 == NULL)
+		if (m1 != m2)
+			return (0);
+	return (dequals(m1->ambient, m2->ambient)
+		&& dequals(m1->diffuse, m2->diffuse)
+		&& dequals(m1->shininess, m2->shininess)
+		&& dequals(m1->specular, m2->specular)
+		&& color_equals(m1->color, m2->color)
+		);
 }
 
 t_shape *new_test_shape(void)
@@ -26,17 +30,6 @@ t_shape *new_test_shape(void)
 	t_shape *shape = new_shape();
 	shape->get_normal = test_get_normal;
 	return (shape);
-}
-
-void destroy_shape(void *data)
-{
-	t_shape	*shape;
-
-	shape = data;
-	free(shape->transform);
-	free(shape->inverse_transform);
-	destroy_material(shape->material);
-	free(shape);
 }
 
 // the default transformation
@@ -80,8 +73,7 @@ MunitResult shape_test4(const MunitParameter params[], void *fixture)
 	t_shape *shape = new_test_shape();
 
 	t_material *m = new_material();
-	free(m->ambient);
-	m->ambient = new_color(1, 1, 1);
+	m->ambient = 1.0;
 	set_material(shape, m);
 	munit_assert_true(material_equals(shape->material, m));
 	destroy_shape(shape);

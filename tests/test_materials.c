@@ -132,7 +132,6 @@ MunitResult material_test6(const MunitParameter params[], void *fixture)
 	return (MUNIT_OK);
 }
 
-/*
 // lighting with the eye in the path of the reflection vector
 MunitResult material_test7(const MunitParameter params[], void *fixture)
 {
@@ -146,7 +145,7 @@ MunitResult material_test7(const MunitParameter params[], void *fixture)
 	t_lighting_args args;
 
 	args.material = m;
-	args.light = light;
+	args.lighting = light;
 	args.position = position;
 	args.eye_vector = eyev;
 	args.normal_vector = normalv;
@@ -154,9 +153,9 @@ MunitResult material_test7(const MunitParameter params[], void *fixture)
 
 	t_color *result = lighting(&args);
 
-	munit_assert_true(dequals(result->red, 0.1));
-	munit_assert_true(dequals(result->green, 0.1));
-	munit_assert_true(dequals(result->blue, 0.1));
+	munit_assert_true(dequals(result->r, 0.1));
+	munit_assert_true(dequals(result->g, 0.1));
+	munit_assert_true(dequals(result->b, 0.1));
 
 	free(m->color);
 	free(m);
@@ -169,4 +168,3 @@ MunitResult material_test7(const MunitParameter params[], void *fixture)
 	free(result);
 	return (MUNIT_OK);
 }
-*/
