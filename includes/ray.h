@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/04 22:40:33 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:27:33 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ typedef struct s_sphere {
 	double	radius;
 }			t_sphere;
 
+/**
+ * @brief Plane struct with a point position
+ *
+ */
 typedef struct s_plane {
 	t_point		position;
 }				t_plane;
@@ -124,6 +128,11 @@ t_shape			*new_shape(void);
  */
 t_ray			*new_ray(t_point *origin, t_vector *direction);
 
+/**
+ * @brief Create a list of intersections
+ *
+ * @return t_intersections* returns a new list of intersections
+ */
 t_intersections	*new_intersections_list(void);
 
 /**
@@ -241,6 +250,10 @@ double			rand_double(void);
  */
 void			destroy_sphere(t_shape *s);
 
+/**
+ * @brief Destroy shape
+ *
+ */
 void			destroy_shape(t_shape *s);
 
 /**
@@ -276,8 +289,20 @@ t_ray			*transform(t_ray *r, t_matrix *mat);
  */
 t_intersection	*hit(t_intersections *xs);
 
+/**
+ * @brief Create a new plane shape, a flat surface that extends infinitely in
+ * two dimensions xz.
+ *
+ * @return t_shape* returns a new plane shape.
+ */
 t_shape			*new_plane(void);
 
+/**
+ * @brief Set the material object
+ *
+ * @param s The shape to set the material to.
+ * @param mat The material to set to the shape.
+ */
 void			set_material(t_shape *s, t_material *mat);
 
 #endif
