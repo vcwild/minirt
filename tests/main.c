@@ -108,18 +108,18 @@ MunitResult sphere_test8(PARAMS);
 MunitResult sphere_test9(PARAMS);
 MunitResult sphere_test10(PARAMS);
 
-// MunitResult plane_test1(PARAMS);
-// MunitResult plane_test2(PARAMS);
-// MunitResult plane_test3(PARAMS);
-// MunitResult plane_test4(PARAMS);
-// MunitResult plane_test5(PARAMS);
+MunitResult plane_test1(PARAMS);
+MunitResult plane_test2(PARAMS);
+MunitResult plane_test3(PARAMS);
+MunitResult plane_test4(PARAMS);
+MunitResult plane_test5(PARAMS);
 
-// MunitResult shape_test1(PARAMS);
-// MunitResult shape_test2(PARAMS);
-// MunitResult shape_test3(PARAMS);
-// MunitResult shape_test4(PARAMS);
-// MunitResult shape_test5(PARAMS);
-// MunitResult shape_test6(PARAMS);
+MunitResult shape_test1(PARAMS);
+MunitResult shape_test2(PARAMS);
+MunitResult shape_test3(PARAMS);
+MunitResult shape_test4(PARAMS);
+MunitResult shape_test5(PARAMS);
+MunitResult shape_test6(PARAMS);
 
 // MunitResult cylinder_test1(PARAMS);
 // MunitResult cylinder_test2(PARAMS);
@@ -134,7 +134,7 @@ MunitResult material_test3(PARAMS);
 MunitResult material_test4(PARAMS);
 MunitResult material_test5(PARAMS);
 MunitResult material_test6(PARAMS);
-// MunitResult material_test7(PARAMS);
+MunitResult material_test7(PARAMS);
 
 MunitResult world_test1(PARAMS);
 MunitResult world_test2(PARAMS);
@@ -307,7 +307,7 @@ int main(int argc, char **argv) {
 		test("/lighting() with the light offseted 45º", material_test4),
 		test("/lighting() with the eye in the path of the reflection", material_test5),
 		test("/lighting() with the light behind the surface", material_test6),
-	// 	test("/lighting() with shadows", material_test7),
+		test("/lighting() with shadows", material_test7),
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
@@ -342,24 +342,24 @@ int main(int argc, char **argv) {
 		{ NULL, NULL, NULL, NULL, 0, NULL },
 	};
 
-	// MunitTest shape_tests[] = {
-	// 	test("/a shape has a default transformation", shape_test1),
-	// 	test("/assign a tranformation to a shape", shape_test2),
-	// 	test("/a shape has a default material", shape_test3),
-	// 	test("/assigning a material", shape_test4),
-	// 	test("/computing the normal on a translated shape", shape_test5),
-	// 	test("/computing the normal on a transformed shape", shape_test6),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+	MunitTest shape_tests[] = {
+		test("/a shape has a default transformation", shape_test1),
+		test("/assign a tranformation to a shape", shape_test2),
+		test("/a shape has a default material", shape_test3),
+		test("/assigning a material", shape_test4),
+		test("/computing the normal on a translated shape", shape_test5),
+		test("/computing the normal on a transformed shape", shape_test6),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
-	// MunitTest plane_tests[] = {
-	// 	test("/the normal of a plane is constant everywhere", plane_test1),
-	// 	test("/intersect with a ray parallel to the plane", plane_test2),
-	// 	test("/intersect with a coplanar ray", plane_test3),
-	// 	test("/intersecting a plane from above", plane_test4),
-	// 	test("/intersecting a plane from below", plane_test5),
-	// 	{ NULL, NULL, NULL, NULL, 0, NULL },
-	// };
+	MunitTest plane_tests[] = {
+		test("/the normal of a plane is constant everywhere", plane_test1),
+		test("/intersect with a ray parallel to the plane", plane_test2),
+		test("/intersect with a coplanar ray", plane_test3),
+		test("/intersecting a plane from above", plane_test4),
+		test("/intersecting a plane from below", plane_test5),
+		{ NULL, NULL, NULL, NULL, 0, NULL },
+	};
 
 	// MunitTest cylinder_tests[] = {
 	// 	test("/a ray misses a cylinder", cylinder_test1),
@@ -379,9 +379,9 @@ int main(int argc, char **argv) {
 	MunitSuite material_suite =         { "/materials", material_tests, OPTIONS };
 	MunitSuite world_suite =            { "/world", world_tests, OPTIONS };
 	MunitSuite camera_suite =           { "/camera", camera_tests, OPTIONS };
+	MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
+	MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
 	// MunitSuite light_suite =            { "/lights", light_tests, OPTIONS };
-	// MunitSuite shape_suite =            { "/shapes", shape_tests, OPTIONS };
-	// MunitSuite plane_suite =            { "/planes", plane_tests, OPTIONS };
 	// MunitSuite cylinder_suite =         { "/cylinders", cylinder_tests, OPTIONS };
 
 	MunitSuite suites[] = {
@@ -394,9 +394,9 @@ int main(int argc, char **argv) {
 		material_suite,
 		world_suite,
 		camera_suite,
+		plane_suite,
 		// light_suite,
 		// shape_suite,
-		// plane_suite,
 		// cylinder_suite,
 		NULL,
 	};

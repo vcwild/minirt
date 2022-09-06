@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:55:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/21 13:53:55 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/04 16:24:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_shape	*new_sphere(void)
 	shape->sphere.radius = 1.0;
 	shape->get_normal = get_sphere_normal;
 	shape->intersect = sphere_intersect;
+	shape->destroy = destroy_sphere;
 	return (shape);
 }
 

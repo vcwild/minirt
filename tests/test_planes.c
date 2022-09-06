@@ -4,12 +4,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 */
 
 #include "munit/munit.h"
-#include "ray/ray.h"
-#include "shapes/shapes.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include <math.h>
-
+#include "minirt.h"
 
 // the normal of a plane is constant everywhere
 MunitResult plane_test1(const MunitParameter params[], void *fixture)
@@ -22,9 +17,9 @@ MunitResult plane_test1(const MunitParameter params[], void *fixture)
 
 	t_tuple *expected = new_vector(0, 1, 0);
 
-	t_tuple *n1 = plane->normal_at(plane, p1);
-	t_tuple *n2 = plane->normal_at(plane, p2);
-	t_tuple *n3 = plane->normal_at(plane, p3);
+	t_tuple *n1 = plane->get_normal(plane, p1);
+	t_tuple *n2 = plane->get_normal(plane, p2);
+	t_tuple *n3 = plane->get_normal(plane, p3);
 
 	munit_assert_true(tuple_equals(n1, expected));
 	munit_assert_true(tuple_equals(n2, expected));
@@ -36,7 +31,7 @@ MunitResult plane_test1(const MunitParameter params[], void *fixture)
 	free(p2);
 	free(p3);
 	free(expected);
-	plane->destroy_fn(plane);
+	plane->destroy(plane);
 	return MUNIT_OK;
 }
 
@@ -86,7 +81,7 @@ MunitResult plane_test4(const MunitParameter params[], void *fixture)
 
 	munit_assert_int(xs->count, ==, 1);
 	munit_assert_double(xs->intersections[0]->t, ==, 1);
-	munit_assert_ptr(xs->intersections[0]->object, ==, pl);
+	munit_assert_ptr(xs->intersections[0]->shape, ==, pl);
 	return MUNIT_OK;
 }
 
@@ -104,6 +99,6 @@ MunitResult plane_test5(const MunitParameter params[], void *fixture)
 
 	munit_assert_int(xs->count, ==, 1);
 	munit_assert_double(xs->intersections[0]->t, ==, 1);
-	munit_assert_ptr(xs->intersections[0]->object, ==, pl);
+	munit_assert_ptr(xs->intersections[0]->shape, ==, pl);
 	return MUNIT_OK;
 }
