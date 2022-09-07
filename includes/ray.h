@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/05 21:27:33 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:44:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef enum object_type {
 	OBJ_SPHERE,
 	OBJ_PLANE,
+	OBJ_CYLINDER,
 	OBJ_SIZE,
 }	t_object_type;
 
@@ -54,6 +55,15 @@ typedef struct s_sphere {
 typedef struct s_plane {
 	t_point		position;
 }				t_plane;
+
+typedef struct s_cylinder {
+	t_point		position;
+	t_vector	*direction;
+	double		radius;
+	double		min;
+	double		max;
+	bool		closed;
+}				t_cylinder;
 
 /**
  * @brief Shape struct declaration only
@@ -94,6 +104,7 @@ struct s_shape {
 	union {
 		t_sphere	sphere;
 		t_plane		plane;
+		t_cylinder	cylinder;
 	};
 	t_vector		*(*get_normal)(t_shape *, t_point *);
 	void			(*intersect)(t_shape *, t_ray *, t_intersections *);
@@ -304,5 +315,9 @@ t_shape			*new_plane(void);
  * @param mat The material to set to the shape.
  */
 void			set_material(t_shape *s, t_material *mat);
+
+void			intersect_caps(t_shape *s, t_ray *r, t_intersections *xs);
+void			cylinder_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+t_vector		*get_cylinder_normal(t_shape *s, t_point *p);
 
 #endif
