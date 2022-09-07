@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/06 22:57:03 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:53:31 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ typedef struct s_plane {
 	t_point		position;
 }				t_plane;
 
+/**
+ * @brief Cylinder struct with a point position, direction, a radius, a closed
+ * a min and a max
+ *
+ */
 typedef struct s_cylinder {
 	t_point		position;
 	t_vector	*direction;
