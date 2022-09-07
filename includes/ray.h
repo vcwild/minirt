@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/05 21:27:33 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:53:31 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef enum object_type {
 	OBJ_SPHERE,
 	OBJ_PLANE,
+	OBJ_CYLINDER,
 	OBJ_SIZE,
 }	t_object_type;
 
@@ -54,6 +55,20 @@ typedef struct s_sphere {
 typedef struct s_plane {
 	t_point		position;
 }				t_plane;
+
+/**
+ * @brief Cylinder struct with a point position, direction, a radius, a closed
+ * a min and a max
+ *
+ */
+typedef struct s_cylinder {
+	t_point		position;
+	t_vector	*direction;
+	double		radius;
+	double		min;
+	double		max;
+	bool		closed;
+}				t_cylinder;
 
 /**
  * @brief Shape struct declaration only
@@ -94,6 +109,7 @@ struct s_shape {
 	union {
 		t_sphere	sphere;
 		t_plane		plane;
+		t_cylinder	cylinder;
 	};
 	t_vector		*(*get_normal)(t_shape *, t_point *);
 	void			(*intersect)(t_shape *, t_ray *, t_intersections *);
@@ -304,5 +320,42 @@ t_shape			*new_plane(void);
  * @param mat The material to set to the shape.
  */
 void			set_material(t_shape *s, t_material *mat);
+
+/**
+ * @brief Creates a new cylinder
+ *
+ * @return t_shape* Retuns a dynamically allocated cylinder
+ */
+t_shape			*new_cylinder(void);
+
+/**
+ * @brief Intersects a ray with a cylinder with a given minimum and maximum
+ *
+ * @param s The cylinder to intersect with.
+ * @param r The ray to intersect with.
+ * @param xs The list of intersections to map.
+ */
+void			cylinder_intersect_caps(t_shape *s,
+					t_ray *r,
+					t_intersections *xs);
+
+/**
+ * @brief Intersects a ray with a cylinder with any height.
+ * Can handle an unbouded cylinder (no maximum or minimum height)
+ *
+ * @param s The cylinder to intersect with.
+ * @param r The ray to intersect with.
+ * @param xs The list of intersections to map.
+ */
+void			cylinder_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+
+/**
+ * @brief Get the cylinder normal object
+ *
+ * @param s The cylinder to get the normal from.
+ * @param p The point to get the normal from.
+ * @return t_vector* The normal of the cylinder at the given point.
+ */
+t_vector		*get_cylinder_normal(t_shape *s, t_point *p);
 
 #endif

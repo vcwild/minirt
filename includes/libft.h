@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/07 17:18:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/06 21:39:37 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -494,5 +494,14 @@ void		*ft_realloc(void *ptr, size_t size);
  * @param matrix The matrix to be freed.
  */
 void		free_matrix(char **matrix);
+
+/**
+ * @brief Swaps the values of two pointers.
+ *
+ * @param a The first pointer.
+ * @param b The second pointer.
+ * @param size The size of bytes to swap.
+ */
+void		ft_swap(void *a, void *b, size_t size);
 
 #endif

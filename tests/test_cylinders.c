@@ -4,14 +4,7 @@ Copied and modified by vcwild <vcwild@gmail.com> without strict licensing permis
 */
 
 #include "munit/munit.h"
-#include "ray/ray.h"
-#include "shapes/shapes.h"
-#include "structures.h"
-#include "tuple/tuple.h"
-#include "utils/utils.h"
-
-void	cylinder_intersect(t_shape *cylinder, t_ray *ray, t_intersections *xs);
-t_tuple	*cylinder_normal_at(t_shape *cylinder, t_tuple *point);
+#include "minirt.h"
 
 // a ray misses a cylinder
 MunitResult cylinder_test1(const MunitParameter params[], void *fixture)
@@ -101,25 +94,25 @@ MunitResult cylinder_test3(const MunitParameter params[], void *fixture)
 	t_shape *cyl = new_cylinder();
 
 	t_tuple point1 = (t_tuple){1, 0, 0, 1};
-	t_tuple *normal = cylinder_normal_at(cyl, &point1);
+	t_tuple *normal = get_cylinder_normal(cyl, &point1);
 	t_tuple expected = (t_tuple){1, 0, 0, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
 
 	point1 = (t_tuple){0, 5, -1, 1};
-	normal = cylinder_normal_at(cyl, &point1);
+	normal = get_cylinder_normal(cyl, &point1);
 	expected = (t_tuple){0, 0, -1, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
 
 	point1 = (t_tuple){0, -2, 1, 1};
-	normal = cylinder_normal_at(cyl, &point1);
+	normal = get_cylinder_normal(cyl, &point1);
 	expected = (t_tuple){0, 0, 1, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
 
 	point1 = (t_tuple){-1, 1, 0, 1};
-	normal = cylinder_normal_at(cyl, &point1);
+	normal = get_cylinder_normal(cyl, &point1);
 	expected = (t_tuple){-1, 0, 0, 0};
 	munit_assert_true(tuple_equals(normal, &expected));
 	free(normal);
@@ -133,8 +126,8 @@ MunitResult cylinder_test4(const MunitParameter params[], void *fixture)
 	t_shape *cyl = new_cylinder();
 	t_intersections *xs;
 
-	cyl->cylinder_props.min = 1;
-	cyl->cylinder_props.max = 2;
+	cyl->cylinder.min = 1;
+	cyl->cylinder.max = 2;
 
 	t_tuple points[] = {
 		{0, 1.5, 0, 1}, // from inside, escaping without hitting
@@ -166,7 +159,6 @@ MunitResult cylinder_test4(const MunitParameter params[], void *fixture)
 		free(ray->direction);
 		free(ray);
 	}
-
 
 	return (MUNIT_OK);
 }
