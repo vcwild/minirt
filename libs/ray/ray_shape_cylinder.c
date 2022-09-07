@@ -12,7 +12,7 @@
 
 #include <ray.h>
 
-static void	_intersect(t_intersections *xs, double t[2], t_shape *s, t_ray *r)
+static void	_intersect(t_shape *s, t_ray *r, t_intersections *xs, double t[2])
 {
 	double	y;
 
@@ -28,25 +28,23 @@ static void	_intersect(t_intersections *xs, double t[2], t_shape *s, t_ray *r)
 
 void	cylinder_intersect(t_shape *s, t_ray *r, t_intersections *xs)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	double	t[2];
+	t_disc_coef	coef;
+	double		disc;
+	double		t[2];
 
 	cylinder_intersect_caps(s, r, xs);
-	a = pow(r->direction->x, 2) + pow(r->direction->z, 2);
-	if (dequals(a, 0))
+	coef.a = pow(r->direction->x, 2) + pow(r->direction->z, 2);
+	if (dequals(coef.a, 0))
 		return ;
-	b = 2 * r->origin->x * r->direction->x
+	coef.b = 2 * r->origin->x * r->direction->x
 		+ 2 * r->origin->z * r->direction->z;
-	c = pow(r->origin->x, 2) + pow(r->origin->z, 2) - 1;
-	discriminant = b * b - 4 * a * c;
-	if (discriminant < 0)
+	coef.c = pow(r->origin->x, 2) + pow(r->origin->z, 2) - 1;
+	disc = coef.b * coef.b - 4 * coef.a * coef.c;
+	if (disc < 0)
 		return ;
-	t[0] = (-b - sqrt(discriminant)) / (2 * a);
-	t[1] = (-b + sqrt(discriminant)) / (2 * a);
-	_intersect(xs, t, s, r);
+	t[0] = (-coef.b - sqrt(disc)) / (2 * coef.a);
+	t[1] = (-coef.b + sqrt(disc)) / (2 * coef.a);
+	_intersect(s, r, xs, t);
 }
 
 t_vector	*get_cylinder_normal(t_shape *s, t_point *p)
