@@ -82,9 +82,13 @@ MunitResult cylinder_test2(const MunitParameter params[], void *fixture)
 	munit_assert_int(xs->count, ==, 2);
 	destroy_intersections_list(xs);
 
+	cylinder->destroy(cylinder);
 	free(direction3);
 	free(direction2);
 	free(direction1);
+	free(ray1);
+	free(ray2);
+	free(ray3);
 	return (MUNIT_OK);
 }
 
