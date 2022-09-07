@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:44:56 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/06 21:17:10 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:53:42 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	check_cap(t_ray *r, double t)
 	return (pow(x, 2) + pow(z, 2) <= 1);
 }
 
-void	intersect_caps(t_shape *s, t_ray *r, t_intersections *xs)
+void	cylinder_intersect_caps(t_shape *s, t_ray *r, t_intersections *xs)
 {
 	double			t;
 	t_intersection	*x;

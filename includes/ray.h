@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/06 22:44:15 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:57:03 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,8 +316,41 @@ t_shape			*new_plane(void);
  */
 void			set_material(t_shape *s, t_material *mat);
 
-void			intersect_caps(t_shape *s, t_ray *r, t_intersections *xs);
+/**
+ * @brief Creates a new cylinder
+ *
+ * @return t_shape* Retuns a dynamically allocated cylinder
+ */
+t_shape			*new_cylinder(void);
+
+/**
+ * @brief Intersects a ray with a cylinder with a given minimum and maximum
+ *
+ * @param s The cylinder to intersect with.
+ * @param r The ray to intersect with.
+ * @param xs The list of intersections to map.
+ */
+void			cylinder_intersect_caps(t_shape *s,
+					t_ray *r,
+					t_intersections *xs);
+
+/**
+ * @brief Intersects a ray with a cylinder with any height.
+ * Can handle an unbouded cylinder (no maximum or minimum height)
+ *
+ * @param s The cylinder to intersect with.
+ * @param r The ray to intersect with.
+ * @param xs The list of intersections to map.
+ */
 void			cylinder_intersect(t_shape *s, t_ray *r, t_intersections *xs);
+
+/**
+ * @brief Get the cylinder normal object
+ *
+ * @param s The cylinder to get the normal from.
+ * @param p The point to get the normal from.
+ * @return t_vector* The normal of the cylinder at the given point.
+ */
 t_vector		*get_cylinder_normal(t_shape *s, t_point *p);
 
 #endif

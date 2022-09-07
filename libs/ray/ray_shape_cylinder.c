@@ -34,7 +34,7 @@ void	cylinder_intersect(t_shape *s, t_ray *r, t_intersections *xs)
 	double	discriminant;
 	double	t[2];
 
-	intersect_caps(s, r, xs);
+	cylinder_intersect_caps(s, r, xs);
 	a = pow(r->direction->x, 2) + pow(r->direction->z, 2);
 	if (dequals(a, 0))
 		return ;
