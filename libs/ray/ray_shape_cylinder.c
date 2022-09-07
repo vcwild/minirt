@@ -17,7 +17,7 @@ static void	_intersect(t_intersections *xs, double t[2], t_shape *s, t_ray *r)
 	double	y;
 
 	if (t[0] > t[1])
-		ft_swap((void *)&t, (void *)&t[1], sizeof(double));
+		ft_swap((void *)t, (void *)&t[1], sizeof(double));
 	y = r->origin->y + t[0] * r->direction->y;
 	if (s->cylinder.min < y && y < s->cylinder.max)
 		add_intersection(xs, new_intersection(t[0], s, OBJ_CYLINDER));
