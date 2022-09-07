@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/09 21:32:38 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:13:42 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(void)
+int	main(int argc)
 {
-	t_tuple	*a;
+	t_rt	*rt;
 
-	a = new_vector(1, 2, 3);
-	printf("%f %f %f\n", a->x, a->y, a->z);
+	if (argc != 2)
+		return (ft_putstr_fd("Error: Wrong nb arguments", STDERR_FILENO), 1);
+	rt = new_ray_tracer();
+	destroy_ray_tracer(rt);
 	return (0);
 }
