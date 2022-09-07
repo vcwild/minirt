@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 21:30:19 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/07 11:41:22 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:37:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,11 @@
 
 void	ft_swap(void *a, void *b, size_t size)
 {
-	char	temp;
-	char	*pa;
-	char	*pb;
+	char	*buf;
 
-	pa = malloc(size);
-	pb = malloc(size);
-	if (pa == NULL || pb == NULL)
-		return ;
-	*pa = *(char *)a;
-	*pb = *(char *)b;
-	while (size--)
-	{
-		temp = pa[size];
-		pa[size] = pb[size];
-		pb[size] = temp;
-	}
+	buf = (char *) malloc(sizeof(char) * size);
+	ft_memcpy(buf, a, size);
+	ft_memcpy(a, b, size);
+	ft_memcpy(b, buf, size);
+	free(buf);
 }
