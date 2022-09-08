@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/06 21:39:37 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:09:09 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -503,5 +503,7 @@ void		free_matrix(char **matrix);
  * @param size The size of bytes to swap.
  */
 void		ft_swap(void *a, void *b, size_t size);
+
+double		ft_atof(const char *str);
 
 #endif
