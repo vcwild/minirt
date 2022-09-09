@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/07 21:09:09 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:11:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -505,5 +505,7 @@ void		free_matrix(char **matrix);
 void		ft_swap(void *a, void *b, size_t size);
 
 double		ft_atof(const char *str);
+
+int			ft_isspace(char c);
 
 #endif
