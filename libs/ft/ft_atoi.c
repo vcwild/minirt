@@ -6,13 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:11:40 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:41:41 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:11:01 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == '\t'
 		|| c == '\v'
