@@ -22,8 +22,11 @@
 # include <camera.h>
 
 /* constants */
-# define RT_WIDTH 100
-# define RT_HEIGHT 100
+# define RT_WIDTH 300
+# define RT_HEIGHT 300
+# define KEY_ESC 65307
+# define EVENT_KEY_PRESS	2
+# define EVENT_X_WIN_PRESS	17
 
 /* structs */
 typedef struct s_image {
