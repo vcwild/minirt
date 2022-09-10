@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:08:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 15:48:57 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:55:12 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 static int	handle_caps(const char *line)
 {
 	if (!ft_strncmp(line, "A ", 2))
-		return (P_A);
+		return (P_AMBIENT);
 	if (!ft_strncmp(line, "C ", 2))
-		return (P_C);
+		return (P_CAMERA);
 	if (!ft_strncmp(line, "L ", 2))
-		return (P_L);
+		return (P_LIGHT);
 	return (P_SIZE);
 }
 
 static int	handle_lower(const char *line)
 {
 	if (!ft_strncmp(line, "pl ", 3))
-		return (P_pl);
+		return (P_PLANE);
 	if (!ft_strncmp(line, "sp ", 3))
-		return (P_sp);
+		return (P_SPHERE);
 	if (!ft_strncmp(line, "cy ", 3))
-		return (P_cy);
+		return (P_CYLINDER);
 	return (P_SIZE);
 }
 
-int	translate_startswith(const char *line)
+t_prop_id	get_prop_id(const char *line)
 {
 	if (*line >= 'A' && *line <= 'Z')
 		return (handle_caps(line));

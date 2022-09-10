@@ -6,42 +6,83 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 15:38:59 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:49:25 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include <libft.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <canvas.h>
+# include <camera.h>
 
+/* constants */
 # define PARSER_BUFFER_SIZE 99
 
-typedef enum prop_name {
-	P_A,
-	P_C,
-	P_L,
-	P_pl,
-	P_sp,
-	P_cy,
+/* types */
+typedef enum e_prop_id {
+	P_AMBIENT,
+	P_CAMERA,
+	P_LIGHT,
+	P_PLANE,
+	P_SPHERE,
+	P_CYLINDER,
 	P_SIZE
-}	t_prop_name;
+}	t_prop_id;
 
-typedef int	t_dispatcher(t_rt_props *cmd);
+typedef struct s_ambient_props {
+	double	ratio;
+	t_color	color;
+}	t_ambient_props;
+
+typedef struct s_camera_props {
+	t_point		origin;
+	t_vector	direction;
+	t_camera	camera;
+}	t_camera_props;
+
+typedef struct s_light_props {
+	t_point_light	pl;
+	double			brightness;
+}	t_light_props;
+
+typedef struct s_shape_props {
+	t_shape	sp;
+	t_shape	pl;
+	t_shape	cy;
+}	t_shape_props;
 
 typedef struct s_rt_props {
-	int			argc;
-	int			fd;
-	char		**argv;
-	t_list		**envp;
-	t_prop_name	prop_name;
-	int			status;
+	t_prop_id			id;
+	char				*line;
+	t_ambient_props		*a;
+	t_camera_props		*c;
+	t_light_props		*l;
+	t_shape_props		*s;
+	int					status;
 }	t_rt_props;
 
-char	**readlines(const char *file);
-int		strip_extra_spaces(char *str);
-int		borrow_line(char *line, char **acc, int index);
+typedef int	t_dispatcher(t_rt_props *props);
+
+/* read file */
+char		**readlines(const char *file);
+int			strip_extra_spaces(char *str);
+
+/* dispatcher */
+int			load(t_rt_props *props);
+t_prop_id	get_prop_id(const char *line);
+
+/* entities */
+t_rt_props	*new_rt_props(void);
+
+/* parsers */
+int			parse_ambient(t_rt_props *props);
+int			parse_camera(t_rt_props *props);
+int			parse_light(t_rt_props *props);
+int			parse_plane(t_rt_props *props);
+int			parse_sphere(t_rt_props *props);
+int			parse_cylinder(t_rt_props *props);
 
 #endif
