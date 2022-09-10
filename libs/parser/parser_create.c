@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 22:11:34 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 23:47:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_rt_props	*new_rt_props(void)
 		return (NULL);
 	new->id = P_SIZE;
 	new->line = NULL;
-	new->a = NULL;
+	new->a = malloc(sizeof(t_ambient_props));
 	new->c = NULL;
 	new->l = NULL;
 	new->s = NULL;

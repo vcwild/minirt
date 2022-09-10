@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:55:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 15:48:02 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 23:02:04 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,14 @@ int	borrow_line(char *line, char **acc, int index)
 		return (-1);
 	free(line);
 	return (0);
+}
+
+size_t	count_args(const char **str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

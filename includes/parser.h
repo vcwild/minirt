@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 22:47:58 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 23:53:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum e_prop_id {
 
 typedef struct s_ambient_props {
 	double	ratio;
-	t_color	color;
+	t_color	*color;
 }	t_ambient_props;
 
 typedef struct s_camera_props {
@@ -85,5 +85,8 @@ int			parse_cylinder(t_rt_props *props);
 
 /* destroy */
 void		destroy_rt_props(t_rt_props *props);
+
+/* utils */
+size_t		count_args(const char **str);
 
 #endif
