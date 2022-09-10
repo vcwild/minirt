@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/09 11:58:28 by vwildner         ###   ########.fr        #
+#    Updated: 2022/09/09 23:59:17 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lparser -lft
+INTERNAL_LIBS = -lparser -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -196,7 +196,7 @@ libcamera: libworld
 libcamera_clean:
 	@$(MAKE_EXTERNAL) $(CAMERA_PATH) clean
 
-libparser: libft
+libparser: libworld libcanvas
 	@$(MAKE_EXTERNAL) $(PARSER_PATH)
 
 libparser_clean:
