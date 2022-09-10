@@ -40,7 +40,7 @@ typedef struct s_image {
 typedef struct s_rt {
 	t_camera		*camera;
 	t_canvas		*canvas;
-	t_image			*image;
+	t_image			image;
 	t_point			*cam_position;
 	t_vector		*cam_direction;
 	t_world			*world;
