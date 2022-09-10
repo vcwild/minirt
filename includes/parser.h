@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 21:49:25 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 22:47:58 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ typedef struct s_light_props {
 }	t_light_props;
 
 typedef struct s_shape_props {
-	t_shape	sp;
-	t_shape	pl;
-	t_shape	cy;
+	t_list	*shape;
 }	t_shape_props;
 
 typedef struct s_rt_props {
@@ -71,10 +69,10 @@ char		**readlines(const char *file);
 int			strip_extra_spaces(char *str);
 
 /* dispatcher */
-int			load(t_rt_props *props);
+int			load_scene(const char *file, t_rt_props *props);
 t_prop_id	get_prop_id(const char *line);
 
-/* entities */
+/* create */
 t_rt_props	*new_rt_props(void);
 
 /* parsers */
@@ -84,5 +82,8 @@ int			parse_light(t_rt_props *props);
 int			parse_plane(t_rt_props *props);
 int			parse_sphere(t_rt_props *props);
 int			parse_cylinder(t_rt_props *props);
+
+/* destroy */
+void		destroy_rt_props(t_rt_props *props);
 
 #endif

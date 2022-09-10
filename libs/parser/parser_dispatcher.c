@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:48:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 20:54:45 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/09 22:48:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,7 @@ static t_dispatcher	*get_parser(t_prop_id id)
 	return (table[id]);
 }
 
-t_rt_props	*new_rt_props(void)
-{
-	t_rt_props	*new;
-
-	new = malloc(sizeof(t_rt_props));
-	if (!new)
-		return (NULL);
-	new->id = P_SIZE;
-	new->line = NULL;
-	new->a = NULL;
-	new->c = NULL;
-	new->l = NULL;
-	new->s = NULL;
-	new->status = 0;
-	return (new);
-}
-
-int	load(t_rt_props *p)
+static int	load(t_rt_props *p)
 {
 	int				status;
 	t_dispatcher	*parse;
@@ -58,5 +41,28 @@ int	load(t_rt_props *p)
 	p->id = get_prop_id(p->line);
 	parse = get_parser(p->id);
 	status = (*parse)(p);
+	return (status);
+}
+
+int	load_scene(const char *file, t_rt_props *props)
+{
+	int		i;
+	int		status;
+	char	**lines;
+
+	i = -1;
+	lines = readlines(file);
+	status = 0;
+	while (lines[++i])
+	{
+		props->line = lines[i];
+		if (load(props))
+		{
+			fprintf(stderr, "Error: Invalid scene file\n");
+			status = 1;
+			break ;
+		}
+	}
+	free_matrix(lines);
 	return (status);
 }
