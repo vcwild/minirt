@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 07:08:29 by itaureli          #+#    #+#             */
-/*   Updated: 2022/09/10 07:08:46 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:36:57 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	close_window(t_rt *rt)
 
 static int	key_hook(int keycode, t_rt *rt)
 {
-	printf("get hook");
 	if (keycode == KEY_ESC)
 		close_window(rt);
 	return (0);
