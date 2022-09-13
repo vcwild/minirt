@@ -20,6 +20,8 @@
 # include <canvas.h>
 # include <ray.h>
 # include <camera.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 /* constants */
 # define RT_WIDTH 300
