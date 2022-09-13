@@ -29,6 +29,7 @@
 # define KEY_ESC 65307
 # define EVENT_KEY_PRESS	2
 # define EVENT_X_WIN_PRESS	17
+# define NAME				"miniRT"
 
 /* structs */
 typedef struct s_image {
