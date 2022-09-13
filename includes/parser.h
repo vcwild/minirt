@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 19:29:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:52:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct s_camera_props {
 }	t_camera_props;
 
 typedef struct s_light_props {
-	t_point_light	pl;
+	t_point_light	*pl;
+	t_color			*color;
 	double			brightness;
 }	t_light_props;
 
@@ -89,5 +90,6 @@ void		destroy_rt_props(t_rt_props *props);
 /* utils */
 size_t		count_args(char **str);
 int			parse_float(double *dest, char **origin, size_t nargs);
+void		print_args(char **args);
 
 #endif
