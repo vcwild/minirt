@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/08 20:20:22 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:44:22 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc)
 		return (ft_putstr_fd("Error \n Wrong number of arguments",
 				STDERR_FILENO), 1);
 	rt = new_ray_tracer();
-	destroy_ray_tracer(rt);
+	render_canvas(rt);
+	run_mlx_window(rt);
+	mlx_loop(rt->mlx);
 	return (0);
 }
