@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:55:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 23:02:04 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:35:17 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	borrow_line(char *line, char **acc, int index)
 	return (0);
 }
 
-size_t	count_args(const char **str)
+size_t	count_args(char **str)
 {
 	size_t	i;
 
@@ -49,4 +49,33 @@ size_t	count_args(const char **str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int	parse_float(double *dest, char **origin, size_t nargs)
+{
+	size_t	i;
+
+	if (count_args(origin) != nargs)
+		return (1);
+	i = 0;
+	while (i < nargs)
+	{
+		if (!ft_isfloat(origin[i]))
+			return (1);
+		dest[i] = ft_atof(origin[i]);
+		i++;
+	}
+	return (0);
+}
+
+void	print_args(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+	{
+		printf("%s\n", args[i]);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:33:50 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 00:12:03 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:16:17 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*read_fd(int fd)
 	char	*buf;
 	char	*acc;
 
-	buf = (char *) malloc(PARSER_BUFFER_SIZE);
+	buf = (char *) malloc(PARSER_BUFFER_SIZE + 1);
 	acc = ft_calloc(1, 1);
 	size = read(fd, buf, PARSER_BUFFER_SIZE);
 	while (size)

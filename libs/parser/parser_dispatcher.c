@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:48:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 22:48:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:34:47 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,17 @@ int	load_scene(const char *file, t_rt_props *props)
 
 	i = -1;
 	lines = readlines(file);
+	if (!lines)
+		return (fprintf(stderr, "Error: Could not read file\n"),
+			free_matrix(lines), -1);
 	status = 0;
 	while (lines[++i])
 	{
 		props->line = lines[i];
-		if (load(props))
+		status = load(props);
+		if (status)
 		{
 			fprintf(stderr, "Error: Invalid scene file\n");
-			status = 1;
 			break ;
 		}
 	}

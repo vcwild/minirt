@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/09 23:53:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:29:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct s_ambient_props {
 }	t_ambient_props;
 
 typedef struct s_camera_props {
-	t_point		origin;
-	t_vector	direction;
-	t_camera	camera;
+	t_point		*origin;
+	t_vector	*direction;
+	double		fov;
 }	t_camera_props;
 
 typedef struct s_light_props {
@@ -87,6 +87,7 @@ int			parse_cylinder(t_rt_props *props);
 void		destroy_rt_props(t_rt_props *props);
 
 /* utils */
-size_t		count_args(const char **str);
+size_t		count_args(char **str);
+int			parse_float(double *dest, char **origin, size_t nargs);
 
 #endif
