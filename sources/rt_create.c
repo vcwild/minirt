@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:19:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/12 20:32:32 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/14 21:46:44 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_rt	*new_ray_tracer(void)
 	new->image.img = mlx_new_image(new->mlx, RT_WIDTH, RT_HEIGHT);
 	new->image.addr = mlx_get_data_addr(new->image.img, &new->image.bpp,
 			&new->image.line_length, &new->image.endian);
-	new->world = new_world();
+	new->world = default_world();
 	new->camera = new_camera(RT_HEIGHT, RT_WIDTH, M_PI_2);
 	return (new);
 }
