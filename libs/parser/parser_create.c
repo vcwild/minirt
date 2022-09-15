@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 17:58:35 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:16:57 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_rt_props	*new_rt_props(void)
 	new->line = NULL;
 	new->a = malloc(sizeof(t_ambient_props));
 	new->c = malloc(sizeof(t_camera_props));
-	new->l = NULL;
+	new->l = malloc(sizeof(t_light_props));
 	new->s = NULL;
 	new->status = 0;
 	return (new);

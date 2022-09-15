@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/13 11:34:01 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:15:49 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	set_view_point(t_rt_props *props, char **buf)
 {
-	int		i;
 	double	args[3];
 	int		status;
 
@@ -42,7 +41,6 @@ int	set_direction(t_rt_props *props, char **buf)
 
 int	set_fov(t_rt_props *props, char **buf)
 {
-	int		i;
 	double	args[1];
 	int		status;
 

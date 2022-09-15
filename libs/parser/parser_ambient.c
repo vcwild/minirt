@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 19:31:53 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:58:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	set_color(t_rt_props *props, char **buf)
 {
 	int		i;
 	int		rgb[3];
+	t_color	*tmp;
+	double	normalized[3];
 
 	i = -1;
 	while (++i < 3)
@@ -32,7 +34,9 @@ static int	set_color(t_rt_props *props, char **buf)
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (1);
 	}
-	props->a->color = new_color(rgb[0], rgb[1], rgb[2]);
+	tmp = new_color(rgb[0], rgb[1], rgb[2]);
+	props->a->color = color_normalize(tmp);
+	free(tmp);
 	return (0);
 }
 
@@ -41,7 +45,6 @@ int	parse_ambient(t_rt_props *props)
 	char		**args;
 	char		**tmp;
 	int			status;
-	int			i;
 
 	status = 0;
 	args = ft_split(props->line, ' ');

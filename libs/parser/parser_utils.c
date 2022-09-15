@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:55:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/13 11:35:17 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:25:02 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	parse_float(double *dest, char **origin, size_t nargs)
 {
 	size_t	i;
 
-	if (count_args(origin) != nargs)
+	if (count_args(origin) < nargs)
 		return (1);
 	i = 0;
 	while (i < nargs)
