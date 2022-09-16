@@ -6,13 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:14 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 15:56:24 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 16:01:45 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
 
-static int	set_plane_coordiantes(t_shape *shape, char **buf)
+static int	set_plane_coords(t_shape *shape, char **buf)
 {
 	double	args[3];
 	int		status;
@@ -35,7 +35,7 @@ int	parse_plane(t_rt_props *props)
 	args = ft_split(props->line, ' ');
 	tmp = ft_split(args[1], ',');
 	plane = new_plane();
-	status = set_plane_coordiantes(plane, tmp);
+	status = set_plane_coords(plane, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
 	status = set_shape_orientation(plane, tmp);
