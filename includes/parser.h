@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 11:37:22 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:57:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,9 @@ void		destroy_rt_props(t_rt_props *props);
 size_t		count_args(char **str);
 int			parse_float(double *dest, char **origin, size_t nargs);
 void		print_args(char **args);
+
+/* setters */
+int			set_shape_color(t_shape *shape, char **buf);
+int			set_shape_orientation(t_shape *shape, char **buf);
 
 #endif
