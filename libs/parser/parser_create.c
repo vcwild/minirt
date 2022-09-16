@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 19:57:25 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:26:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ t_rt_props	*new_rt_props(void)
 	new->a->ratio = 0;
 	new->a->color = NULL;
 	new->c = malloc(sizeof(t_camera_props));
+	new->c->fov = 0;
+	new->c->origin = NULL;
+	new->c->direction = NULL;
 	new->l = malloc(sizeof(t_light_props));
 	new->s = malloc(sizeof(t_shape_props));
 	new->s->shapes = NULL;

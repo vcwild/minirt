@@ -6,11 +6,20 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 20:01:08 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:31:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
+
+static int	check_camera_props(t_rt_props *props)
+{
+	if (props->c->fov == 0
+		&& props->c->origin == NULL
+		&& props->c->direction == NULL)
+		return (0);
+	return (1);
+}
 
 int	set_view_point(t_rt_props *props, char **buf)
 {
@@ -57,6 +66,8 @@ int	parse_camera(t_rt_props *props)
 	char	**tmp;
 	int		status;
 
+	if (check_camera_props(props))
+		return (ft_err("Error: Camera was already defined\n"), 1);
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
 		return (free_matrix(args), 1);
