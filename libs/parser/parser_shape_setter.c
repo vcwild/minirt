@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:56:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 15:56:27 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:29:47 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	set_shape_color(t_shape *shape, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (fprintf(stderr, "Error: Invalid color\n"), status);
+		return (ft_putstr_fd("Error: Invalid color\n", STDERR_FILENO),
+			status);
 	tmp = new_color(args[0], args[1], args[2]);
 	free(shape->material->color);
 	shape->material->color = color_normalize(tmp);
@@ -36,7 +37,9 @@ int	set_shape_orientation(t_shape *shape, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (fprintf(stderr, "Error: Invalid orientation vector\n"), status);
+		return (ft_putstr_fd("Error: Invalid orientation vector\n",
+				STDERR_FILENO),
+			status);
 	tmp = new_point(args[0], args[1], args[2]);
 	shape->normalv = shape->get_normal(shape, tmp);
 	free(tmp);

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:33:50 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 19:16:17 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:25:51 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ char	**readlines(const char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (fprintf(stderr, "Error: Could not open file\n"), NULL);
+		return (ft_putstr_fd("Error: Could not open file\n", STDERR_FILENO),
+			NULL);
 	acc = read_fd(fd);
 	if (!acc)
-		return (fprintf(stderr, "Error: Invalid read size\n"), free(acc), NULL);
+		return (ft_putstr_fd("Error: Invalid read size\n", STDERR_FILENO),
+			free(acc), NULL);
 	strip_extra_spaces(acc);
 	final = ft_split(acc, '\n');
 	free(acc);

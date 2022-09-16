@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:56 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 16:12:30 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:27:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static int	set_sphere_coords(t_shape *sphere, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (fprintf(stderr, "Error: Invalid coordinates\n"), status);
+		return (ft_putstr_fd("Error: Invalid coordinates\n", STDERR_FILENO),
+			status);
 	sphere->sphere.center = (t_point){args[0], args[1], args[2], 1};
 	return (status);
 }
@@ -31,7 +32,8 @@ int	set_sphere_diameter(t_shape *sphere, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (fprintf(stderr, "Error: Invalid diameter\n"), status);
+		return (ft_putstr_fd("Error: Invalid diameter\n", STDERR_FILENO),
+			status);
 	sphere->sphere.radius = *args / 2;
 	return (status);
 }
