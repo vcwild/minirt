@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 19:29:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:33:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -510,4 +510,10 @@ int			ft_isspace(char c);
 
 int			ft_isfloat(char *str);
 
+/**
+ * @brief Sends the string ’s’ to the standard error fd.
+ *
+ * @param s The string to output
+ */
+void		ft_err(char *s);
 #endif
