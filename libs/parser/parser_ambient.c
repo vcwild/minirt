@@ -6,36 +6,58 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:43:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:59:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
 
-static int	set_ratio(t_rt_props *props, char **buf)
+static int	check_ambient_props(t_rt_props *props)
 {
-	if (count_args(buf) != 3)
-		return (1);
-	props->a->ratio = ft_atof(buf[1]);
-	return (0);
+	if (props->a->ratio == 0 && props->a->color == NULL)
+		return (0);
+	return (1);
 }
 
-static int	set_color(t_rt_props *props, char **buf)
+t_color	*get_normalized_color(char **buf)
 {
-	int		i;
-	int		rgb[3];
+	int		status;
+	double	args[3];
+	t_color	*final;
 	t_color	*tmp;
 
-	i = -1;
-	while (++i < 3)
-	{
-		rgb[i] = ft_atoi(buf[i]);
-		if (rgb[i] < 0 || rgb[i] > 255)
-			return (1);
-	}
-	tmp = new_color(rgb[0], rgb[1], rgb[2]);
-	props->a->color = color_normalize(tmp);
+	status = parse_float(args, buf, 3);
+	if (status)
+		return (ft_err("Error: Invalid color params\n"), NULL);
+	status = check_color_range(args);
+	if (status)
+		return (ft_err("Error: Invalid color range\n"), NULL);
+	tmp = new_color(args[0], args[1], args[2]);
+	final = color_normalize(tmp);
 	free(tmp);
+	return (final);
+}
+
+static int	set_ambient_ratio(t_rt_props *props, char **buf)
+{
+	double	args[1];
+	int		status;
+
+	status = parse_float(args, buf, 1);
+	if (status)
+		return (ft_err("Error: Invalid ratio\n"), status);
+	props->a->ratio = *args;
+	return (status);
+}
+
+static int	set_ambient_color(t_rt_props *props, char **buf)
+{
+	t_color	*color;
+
+	color = get_normalized_color(buf);
+	if (!color)
+		return (1);
+	props->a->color = color;
 	return (0);
 }
 
@@ -43,16 +65,18 @@ int	parse_ambient(t_rt_props *props)
 {
 	char		**args;
 	char		**tmp;
-	int			status;
 
-	status = 0;
+	if (check_ambient_props(props))
+		return (ft_err("Error: Ambient was already set\n"), 1);
 	args = ft_split(props->line, ' ');
-	status = set_ratio(props, args);
-	if (status)
-		return (free_matrix(args), 1);
+	if (count_args(args) != 3)
+		return (free_matrix(args), 2);
+	if (set_ambient_ratio(props, &args[1]))
+		return (free_matrix(args), 3);
 	tmp = ft_split(args[2], ',');
 	free_matrix(args);
-	status = set_color(props, tmp);
+	if (set_ambient_color(props, tmp))
+		return (free_matrix(tmp), 4);
 	free_matrix(tmp);
-	return (status);
+	return (0);
 }
