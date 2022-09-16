@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:38:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:48:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	parse_light(t_rt_props *props)
 
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
-		return (ft_err("Error: Invalid light arguments\n"),
-			free_matrix(args), 1);
+		return (free_matrix(args), 1);
 	status = 0;
 	tmp = ft_split(args[1], ',');
 	status = set_point_light(props, tmp);

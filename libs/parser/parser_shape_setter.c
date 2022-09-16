@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:56:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:39:22 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:44:02 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	set_shape_color(t_shape *shape, char **buf)
 	status = parse_float(args, buf, 3);
 	if (status)
 		return (ft_err("Error: Invalid color\n"), status);
+	status = check_color_range(args);
+	if (status)
+		return (ft_err("Error: Invalid color range\n"), status);
 	tmp = new_color(args[0], args[1], args[2]);
 	free(shape->material->color);
 	shape->material->color = color_normalize(tmp);

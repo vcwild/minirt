@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:36:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:01:08 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ int	parse_camera(t_rt_props *props)
 
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
-		return (ft_err("Error: Invalid camera arguments\n"),
-			free_matrix(args), 1);
+		return (free_matrix(args), 1);
 	status = 0;
 	tmp = ft_split(args[1], ',');
 	status = set_view_point(props, tmp);

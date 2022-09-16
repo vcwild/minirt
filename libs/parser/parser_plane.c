@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:14 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:38:45 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:49:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	parse_plane(t_rt_props *props)
 	t_list	*new;
 
 	args = ft_split(props->line, ' ');
+	if (count_args(args) != 4)
+		return (free_matrix(args), 1);
 	tmp = ft_split(args[1], ',');
 	plane = new_plane();
 	status = set_plane_coords(plane, tmp);

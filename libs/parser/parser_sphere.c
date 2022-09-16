@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:56 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:39:12 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:49:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	parse_sphere(t_rt_props *props)
 	t_shape	*sphere;
 
 	args = ft_split(props->line, ' ');
+	if (count_args(args) != 4)
+		return (free_matrix(args), 1);
 	tmp = ft_split(args[1], ',');
 	sphere = new_sphere();
 	status = set_sphere_coords(sphere, tmp);

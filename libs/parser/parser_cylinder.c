@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:37:07 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:48:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	parse_cylinder(t_rt_props *props)
 	t_shape	*cylinder;
 
 	args = ft_split(props->line, ' ');
+	if (count_args(args) != 6)
+		return (free_matrix(args), 1);
 	tmp = ft_split(args[1], ',');
 	cylinder = new_cylinder();
 	status = set_cylinder_coords(cylinder, tmp);
