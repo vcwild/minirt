@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/15 19:58:20 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:43:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	set_color(t_rt_props *props, char **buf)
 	int		i;
 	int		rgb[3];
 	t_color	*tmp;
-	double	normalized[3];
 
 	i = -1;
 	while (++i < 3)

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:33:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:43:04 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -515,5 +515,5 @@ int			ft_isfloat(char *str);
  *
  * @param s The string to output
  */
-void		ft_err(char *s);
+void		ft_err(char const *s);
 #endif

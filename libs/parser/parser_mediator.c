@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:08:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:25:03 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:38:33 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_prop_id	get_prop_id(const char *line)
 		return (handle_caps(line));
 	if (*line >= 'a' && *line <= 'z')
 		return (handle_lower(line));
-	ft_putstr_fd("Error: Invalid line start ", STDERR_FILENO);
-	ft_putstr_fd(line, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
+	ft_err("Error: Invalid line start ");
+	ft_err(line);
+	ft_err("\n");
 	return (-1);
 }

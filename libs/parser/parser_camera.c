@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:27:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:36:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	set_view_point(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_putstr_fd("Error: Invalid view point\n", STDERR_FILENO),
-			status);
+		return (ft_err("Error: Invalid view point\n"), status);
 	props->c->origin = new_point(args[0], args[1], args[2]);
 	return (status);
 }
@@ -33,8 +32,7 @@ int	set_direction(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_putstr_fd("Error: Invalid camera direction\n", STDERR_FILENO),
-			1);
+		return (ft_err("Error: Invalid camera direction\n"), 1);
 	tmp = new_vector(args[0], args[1], args[2]);
 	props->c->direction = normalize(tmp);
 	free(tmp);
@@ -48,7 +46,7 @@ int	set_fov(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_putstr_fd("Error: Invalid camera fov\n", STDERR_FILENO), 1);
+		return (ft_err("Error: Invalid camera fov\n"), 1);
 	props->c->fov = *args;
 	return (status);
 }
@@ -61,7 +59,7 @@ int	parse_camera(t_rt_props *props)
 
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
-		return (ft_putstr_fd("Error: Invalid camera arguments\n", STDERR_FILENO),
+		return (ft_err("Error: Invalid camera arguments\n"),
 			free_matrix(args), 1);
 	status = 0;
 	tmp = ft_split(args[1], ',');
