@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 15:57:11 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:11:15 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,8 @@ void		print_args(char **args);
 /* setters */
 int			set_shape_color(t_shape *shape, char **buf);
 int			set_shape_orientation(t_shape *shape, char **buf);
+
+/* checkers */
+int			check_color_range(double *args);
 
 #endif
