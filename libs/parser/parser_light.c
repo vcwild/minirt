@@ -6,13 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/15 19:48:41 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:10:09 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
 
-int	set_point_light(t_rt_props *props, char **buf)
+static int	set_point_light(t_rt_props *props, char **buf)
 {
 	double	args[3];
 	t_point	*p;
@@ -28,7 +28,7 @@ int	set_point_light(t_rt_props *props, char **buf)
 	return (status);
 }
 
-int	set_brightness(t_rt_props *props, char **buf)
+static int	set_brightness(t_rt_props *props, char **buf)
 {
 	double	args[1];
 	int		status;
@@ -40,21 +40,18 @@ int	set_brightness(t_rt_props *props, char **buf)
 	return (status);
 }
 
-int	set_color(t_rt_props *props, char **buf)
+static int	set_color(t_rt_props *props, char **buf)
 {
 	double	args[3];
 	int		status;
 	t_color	*tmp;
-	t_color	*normalized;
 
 	status = parse_float(args, buf, 3);
 	if (status)
 		return (fprintf(stderr, "Error: Invalid light color\n"), 1);
 	tmp = new_color(args[0], args[1], args[2]);
-	normalized = color_normalize(tmp);
-	props->l->color = new_color(normalized->r, normalized->g, normalized->b);
+	props->l->color = color_normalize(tmp);
 	free(tmp);
-	free(normalized);
 	return (status);
 }
 

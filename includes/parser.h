@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/13 14:52:11 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:37:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_light_props {
 }	t_light_props;
 
 typedef struct s_shape_props {
-	t_list	*shape;
+	t_list	*shapes;
 }	t_shape_props;
 
 typedef struct s_rt_props {

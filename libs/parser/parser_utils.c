@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:55:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/15 19:25:02 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:04:11 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ int	strip_extra_spaces(char *str)
 	tmp[j] = '\0';
 	ft_memcpy(str, tmp, j + 1);
 	free(tmp);
-	return (0);
-}
-
-int	borrow_line(char *line, char **acc, int index)
-{
-	acc[index] = ft_strdup(line);
-	if (!acc[index])
-		return (-1);
-	free(line);
 	return (0);
 }
 

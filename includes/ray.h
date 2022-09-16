@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/07 11:53:31 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:29:25 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ struct s_shape {
 		t_cylinder	cylinder;
 	};
 	t_vector		*(*get_normal)(t_shape *, t_point *);
+	t_vector		*normalv;
 	void			(*intersect)(t_shape *, t_ray *, t_intersections *);
 	void			(*destroy)(t_shape *);
 };
