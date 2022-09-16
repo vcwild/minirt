@@ -10,7 +10,9 @@
 /*																			*/
 /* ************************************************************************** */
 
-static double	raw_atof(const char *str, double acc)
+#include <float.h>
+
+static long double	raw_atof(const char *str, long double acc)
 {
 	double	scale;
 
@@ -36,8 +38,8 @@ static double	raw_atof(const char *str, double acc)
 
 double	ft_atof(const char *str)
 {
-	double	final;
-	int		neg;
+	long double	final;
+	int			neg;
 
 	neg = 1;
 	if (*str == '-')
@@ -46,5 +48,9 @@ double	ft_atof(const char *str)
 		neg = -1;
 	}
 	final = raw_atof(str, 0);
-	return (final * neg);
+	if (final > FLT_MAX)
+		return (FLT_MAX);
+	if (final < FLT_MIN)
+		return (FLT_MIN);
+	return ((double)final * neg);
 }
