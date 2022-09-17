@@ -6,11 +6,16 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 07:08:29 by itaureli          #+#    #+#             */
-/*   Updated: 2022/09/12 20:36:57 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/17 15:08:25 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	run_mlx_window(t_rt *rt)
+{
+	key_hooks(rt);
+}
 
 int	close_window(t_rt *rt)
 {
