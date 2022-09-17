@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/06 22:21:27 by vwildner         ###   ########.fr        #
+#    Updated: 2022/09/10 07:15:25 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ ARCHIVES_PATH = $(PWD)/archives
 HEADER_FILE = $(NAME).h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES =	main.c
+SOURCE_FILES =	$(shell ls ./sources | grep .c$)
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
