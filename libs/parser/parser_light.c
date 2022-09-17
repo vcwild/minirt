@@ -6,11 +6,20 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:48:52 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 22:12:54 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
+
+static int	check_light_props(t_rt_props *props)
+{
+	if (props->l->pl == NULL
+		&& props->l->brightness == 0
+		&& props->l->color == NULL)
+		return (0);
+	return (1);
+}
 
 static int	set_point_light(t_rt_props *props, char **buf)
 {
@@ -59,19 +68,20 @@ int	parse_light(t_rt_props *props)
 {
 	char	**args;
 	char	**tmp;
-	int		status;
 
+	if (check_light_props(props))
+		return (ft_err("Error: Light already defined\n"), 1);
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
-		return (free_matrix(args), 1);
-	status = 0;
+		return (free_matrix(args), 2);
 	tmp = ft_split(args[1], ',');
-	status = set_point_light(props, tmp);
+	if (set_point_light(props, tmp))
+		return (free_matrix(tmp), free_matrix(args), 3);
 	free_matrix(tmp);
-	status = set_brightness(props, &args[2]);
+	if (set_brightness(props, &args[2]))
+		return (free_matrix(args), 4);
 	tmp = ft_split(args[3], ',');
-	status = set_color(props, tmp);
-	free_matrix(tmp);
-	free_matrix(args);
-	return (status);
+	if (set_color(props, tmp))
+		return (free_matrix(tmp), free_matrix(args), 5);
+	return (free_matrix(tmp), free_matrix(args), 0);
 }
