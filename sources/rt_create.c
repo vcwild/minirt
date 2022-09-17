@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:19:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/17 16:29:47 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/17 18:17:51 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_rt	*new_ray_tracer(void)
 			&new->image.line_length, &new->image.endian);
 	new->world = default_world();
 	new->camera = new_camera(RT_HEIGHT, RT_WIDTH, M_PI_2);
-	*from = new_point(0, 0, -5);
-	*to = new_point(0, 0, 0);
-	*up = new_vector(0, 1, 0);
+	from = new_point(0, 0, -5);
+	to = new_point(0, 0, 0);
+	up = new_vector(0, 1, 0);
 	set_camera_transform(new->camera, view_transform(from, to, up));
 	return (new);
 }
