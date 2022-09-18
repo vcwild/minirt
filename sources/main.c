@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/17 15:08:53 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:41:12 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc)
+int	main(void)
 {
-	t_rt	*rt;
+	t_rt_props		*props;
+	t_rt			*rt;
 
-	if (argc != 2)
-		return (ft_putstr_fd("Error \n Wrong number of arguments",
-				STDERR_FILENO), 1);
-	rt = new_ray_tracer();
-	run_mlx_window(rt);
-	mlx_loop(rt->mlx);
+	props = new_rt_props();
+	if (load_scene("./test.rt", props))
+		return (1);
+	rt = new_ray_tracer(props);
+	destroy_rt_props(props);
 	return (0);
 }
