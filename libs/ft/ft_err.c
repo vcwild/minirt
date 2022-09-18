@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_err.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:41:12 by vwildner         ###   ########.fr       */
+/*   Created: 2022/09/16 17:31:37 by vwildner          #+#    #+#             */
+/*   Updated: 2022/09/16 17:42:43 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include <libft.h>
 
-int	main(void)
+void	ft_err(char const *s)
 {
-	t_rt_props		*props;
-	t_rt			*rt;
-
-	props = new_rt_props();
-	if (load_scene("./test.rt", props))
-		return (1);
-	rt = new_ray_tracer(props);
-	destroy_rt_props(props);
-	return (0);
+	return (ft_putstr_fd(s, STDERR_FILENO));
 }

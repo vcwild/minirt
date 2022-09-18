@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:41:12 by vwildner         ###   ########.fr       */
+/*   Created: 2022/09/16 18:10:18 by vwildner          #+#    #+#             */
+/*   Updated: 2022/09/16 18:10:32 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include <parser.h>
 
-int	main(void)
+int	check_color_range(double *args)
 {
-	t_rt_props		*props;
-	t_rt			*rt;
+	int	i;
 
-	props = new_rt_props();
-	if (load_scene("./test.rt", props))
-		return (1);
-	rt = new_ray_tracer(props);
-	destroy_rt_props(props);
+	i = -1;
+	while (++i < 3)
+	{
+		if (args[i] < 0 || args[i] > 255)
+			return (1);
+	}
 	return (0);
 }

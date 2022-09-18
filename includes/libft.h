@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:26:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/06 21:39:37 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:43:04 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,4 +504,16 @@ void		free_matrix(char **matrix);
  */
 void		ft_swap(void *a, void *b, size_t size);
 
+double		ft_atof(const char *str);
+
+int			ft_isspace(char c);
+
+int			ft_isfloat(char *str);
+
+/**
+ * @brief Sends the string ’s’ to the standard error fd.
+ *
+ * @param s The string to output
+ */
+void		ft_err(char const *s);
 #endif

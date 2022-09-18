@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rt_create.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:19:23 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/17 15:09:10 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:27:36 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_rt	*new_ray_tracer(void)
+t_rt	*new_ray_tracer(t_rt_props *props)
 {
 	t_rt	*new;
+	double	radians;
 
 	new = malloc(sizeof(t_rt));
 	if (!new)
@@ -25,7 +26,8 @@ t_rt	*new_ray_tracer(void)
 	new->image.addr = mlx_get_data_addr(new->image.img, &new->image.bpp,
 			&new->image.line_length, &new->image.endian);
 	new->world = new_world();
-	new->camera = new_camera(RT_HEIGHT, RT_WIDTH, M_PI_2);
+	radians = to_radians(props->c->fov);
+	new->camera = new_camera(RT_HEIGHT, RT_WIDTH, radians);
 	return (new);
 }
 

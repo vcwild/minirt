@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isfloat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:41:12 by vwildner         ###   ########.fr       */
+/*   Created: 2022/09/10 18:21:11 by vwildner          #+#    #+#             */
+/*   Updated: 2022/09/10 19:29:39 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include <libft.h>
 
-int	main(void)
+int	ft_isfloat(char *str)
 {
-	t_rt_props		*props;
-	t_rt			*rt;
+	int	i;
+	int	dot;
 
-	props = new_rt_props();
-	if (load_scene("./test.rt", props))
-		return (1);
-	rt = new_ray_tracer(props);
-	destroy_rt_props(props);
-	return (0);
+	i = 0;
+	dot = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			dot++;
+		else if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	if (dot > 1)
+		return (0);
+	return (1);
 }

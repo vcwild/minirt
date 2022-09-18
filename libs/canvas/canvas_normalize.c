@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   canvas_normalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:41:12 by vwildner         ###   ########.fr       */
+/*   Created: 2022/09/15 17:31:23 by vwildner          #+#    #+#             */
+/*   Updated: 2022/09/16 17:43:41 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include <canvas.h>
 
-int	main(void)
+t_color	*color_normalize(t_color *a)
 {
-	t_rt_props		*props;
-	t_rt			*rt;
+	double	r;
+	double	g;
+	double	b;
 
-	props = new_rt_props();
-	if (load_scene("./test.rt", props))
-		return (1);
-	rt = new_ray_tracer(props);
-	destroy_rt_props(props);
-	return (0);
+	if (a->r > 0)
+		r = a->r / 255;
+	else
+		r = 0;
+	if (a->g > 0)
+		g = a->g / 255;
+	else
+		g = 0;
+	if (a->b > 0)
+		b = a->b / 255;
+	else
+		b = 0;
+	return (new_color(r, g, b));
 }

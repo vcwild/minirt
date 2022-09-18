@@ -6,7 +6,7 @@
 #    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/10 07:15:25 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/09 23:59:17 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = $(shell $(SET_COMPILER))
 CFLAGS = -Wall -Wextra
 
 EXTERNAL_LIBS = -lm -lmlx_Linux -lXext -lX11
-INTERNAL_LIBS = -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
+INTERNAL_LIBS = -lparser -lcamera -lworld -llight -lray -lmaterial -lmatrix -lcanvas -ltuple -lft
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
 
@@ -94,7 +94,12 @@ CAMERA = camera
 CAMERA_NAME = lib$(CAMERA).a
 CAMERA_PATH = $(LIBS_PATH)/$(CAMERA)
 
-ALL_LIBS = libft libmlx libtuple libcanvas libmatrix libray libmaterial liblight libworld libcamera
+# parser
+PARSER = parser
+PARSER_NAME = lib$(PARSER).a
+PARSER_PATH = $(LIBS_PATH)/$(PARSER)
+
+ALL_LIBS = libft libparser libmlx libtuple libcanvas libmatrix libray libmaterial liblight libworld libcamera
 
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "run"
@@ -190,6 +195,12 @@ libcamera: libworld
 
 libcamera_clean:
 	@$(MAKE_EXTERNAL) $(CAMERA_PATH) clean
+
+libparser: libworld libcanvas
+	@$(MAKE_EXTERNAL) $(PARSER_PATH)
+
+libparser_clean:
+	@$(MAKE_EXTERNAL) $(PARSER_PATH) clean
 
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
