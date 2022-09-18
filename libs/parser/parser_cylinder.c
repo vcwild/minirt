@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cylinder.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:48:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	set_cylinder_coords(t_shape *cyl, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid coordinates\n"), status);
+		return (ft_err("Error\n Invalid coordinates\n"), status);
 	cyl->cylinder.position = (t_point){args[0], args[1], args[2], 1};
 	return (status);
 }
@@ -31,7 +31,7 @@ static int	set_cylinder_diameter(t_shape *cyl, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_err("Error: Invalid diameter\n"), status);
+		return (ft_err("Error\n Invalid diameter\n"), status);
 	cyl->cylinder.radius = args[0] / 2;
 	return (status);
 }
@@ -44,7 +44,7 @@ static int	set_cylinder_height(t_shape *cyl, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_err("Error: Invalid height\n"), status);
+		return (ft_err("Error\n Invalid height\n"), status);
 	half_height = *args / 2;
 	cyl->cylinder.min = -half_height;
 	cyl->cylinder.max = half_height;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:14 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:49:10 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	set_plane_coords(t_shape *shape, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid coordinates\n"), status);
+		return (ft_err("Error\n Invalid coordinates\n"), status);
 	shape->plane.position = (t_point){args[0], args[1], args[2], 1};
 	return (status);
 }

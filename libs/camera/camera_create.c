@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 17:01:53 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:48:02 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_camera	*new_camera(double hsize, double vsize, double fov)
 
 	new = (t_camera *)malloc(sizeof(t_camera));
 	if (!new)
-		return (fprintf(stderr, "Error: Failed creating a camera!"), NULL);
+		return (ft_err("Error\n Failed creating a camera!\n"), NULL);
 	new->hsize = hsize;
 	new->vsize = vsize;
 	new->fov = fov;

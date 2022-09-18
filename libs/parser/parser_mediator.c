@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_mediator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:08:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:38:33 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_prop_id	get_prop_id(const char *line)
 		return (handle_caps(line));
 	if (*line >= 'a' && *line <= 'z')
 		return (handle_lower(line));
-	ft_err("Error: Invalid line start ");
+	ft_err("Error\n Invalid line start ");
 	ft_err(line);
 	ft_err("\n");
 	return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas_export.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:37:52 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/10 19:23:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:49:24 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	write_ppm(t_canvas *c, char *filename)
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (!fd)
 	{
-		fprintf(stderr, "Error: Could not open file `%s`\n", filename);
+		ft_err("Error\n Could not open file\n");
 		return (1);
 	}
 	ppm = canvas_to_ppm(c);

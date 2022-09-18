@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:20:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 15:43:13 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:49:50 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_matrix	*new_matrix(int size, double (*mat)[MAT_INI_DIM])
 
 	new = (t_matrix *) malloc(sizeof(t_matrix));
 	if (!new)
-		return (fprintf(stderr, "Error: matrix allocation failed\n"), NULL);
+		return (ft_err("Error\n matrix allocation failed\n", NULL));
 	new->size = size;
 	if (!mat)
 		return (new);
