@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:50:14 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:55:34 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 	t_matrix	*tmp;
 
 	if (a->size != b->size || a->size != c->size || b->size != c->size)
-		return (ft_err("Error\n matrix sizes do not match\n", NULL));
+		return (ft_err("Error\n matrix sizes do not match\n"), NULL);
 	new = matrix_multiply(a, b);
 	tmp = new;
 	new = matrix_multiply(c, tmp);
