@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:20:43 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 19:34:18 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_light_props {
 }	t_light_props;
 
 typedef struct s_shape_props {
-	t_list	*shapes;
+	t_objects	objects;
 }	t_shape_props;
 
 typedef struct s_rt_props {
@@ -221,5 +221,7 @@ int			set_shape_orientation(t_shape *shape, char **buf);
 int			check_color_range(double *args);
 
 double		to_radians(double degrees);
+
+int			add_shape(t_shape_props *s, t_shape *shape);
 
 #endif

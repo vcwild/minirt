@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 19:59:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:02:36 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int	set_ambient_ratio(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 1);
 	if (status)
 		return (ft_err("Error: Invalid ratio\n"), status);
+	if (*args > 1 || *args < 0)
+		return (ft_err("Error: Invalid ratio range\n"), 1);
 	props->a->ratio = *args;
 	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:47 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 15:06:49 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 19:42:54 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	destroy_light_props(t_light_props *l)
 
 static void	destroy_shape_props(t_shape_props *s)
 {
-	ft_lstclear(&s->shapes, (void (*)(void *))destroy_shape);
+	ft_lstclear(&s->objects.spheres, (void (*)(void *))destroy_shape);
 	free(s);
 }
 

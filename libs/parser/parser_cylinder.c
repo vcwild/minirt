@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:48:14 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:01:53 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	parse_cylinder(t_rt_props *props)
 	char	**args;
 	char	**tmp;
 	int		status;
-	t_list	*new;
 	t_shape	*cylinder;
 
 	args = ft_split(props->line, ' ');
@@ -65,6 +64,7 @@ int	parse_cylinder(t_rt_props *props)
 		return (free_matrix(args), 1);
 	tmp = ft_split(args[1], ',');
 	cylinder = new_cylinder();
+	cylinder->material->ambient = props->a->ratio;
 	status = set_cylinder_coords(cylinder, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
@@ -75,8 +75,7 @@ int	parse_cylinder(t_rt_props *props)
 	tmp = ft_split(args[5], ',');
 	status = set_shape_color(cylinder, tmp);
 	free_matrix(tmp);
-	new = ft_lstnew(cylinder);
-	ft_lstadd_back(&props->s->shapes, new);
+	add_shape(props->s, cylinder);
 	free_matrix(args);
 	return (status);
 }

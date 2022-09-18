@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:56 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:49:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:41:13 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	parse_sphere(t_rt_props *props)
 	char	**args;
 	char	**tmp;
 	int		status;
-	t_list	*new;
 	t_shape	*sphere;
 
 	args = ft_split(props->line, ' ');
@@ -49,14 +48,16 @@ int	parse_sphere(t_rt_props *props)
 		return (free_matrix(args), 1);
 	tmp = ft_split(args[1], ',');
 	sphere = new_sphere();
+	sphere->material->ambient = props->a->ratio;
+	sphere->material->diffuse = props->l->brightness;
+	sphere->material->specular = props->l->brightness;
 	status = set_sphere_coords(sphere, tmp);
 	free_matrix(tmp);
 	status = set_sphere_diameter(sphere, &args[2]);
 	tmp = ft_split(args[3], ',');
 	status = set_shape_color(sphere, tmp);
 	free_matrix(tmp);
-	new = ft_lstnew(sphere);
-	ft_lstadd_back(&props->s->shapes, new);
+	add_shape(props->s, sphere);
 	free_matrix(args);
 	return (status);
 }

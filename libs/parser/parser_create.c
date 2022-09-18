@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 22:12:06 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 18:39:36 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ t_shape_props	*new_shape_props(void)
 	new = malloc(sizeof(t_shape_props));
 	if (!new)
 		return (NULL);
-	new->shapes = NULL;
+	new->objects.spheres = NULL;
+	new->objects.sphere_count = 0;
+	new->objects.total = 0;
 	return (new);
 }
 
