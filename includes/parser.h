@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 22:31:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:20:43 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,5 +219,7 @@ int			set_shape_orientation(t_shape *shape, char **buf);
  * @return int Returns 0 if successful, != 0 if not
  */
 int			check_color_range(double *args);
+
+double		to_radians(double degrees);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:55:13 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 14:04:11 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:13:00 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,9 @@ void	print_args(char **args)
 		printf("%s\n", args[i]);
 		i++;
 	}
+}
+
+double	to_radians(double degrees)
+{
+	return (degrees * M_PI / 180);
 }

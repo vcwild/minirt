@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 12:29:03 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:11:57 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_rt {
 	void			*window;
 }					t_rt;
 
-t_rt	*new_ray_tracer(void);
+t_rt	*new_ray_tracer(t_rt_props *props);
 void	destroy_ray_tracer(t_rt *rt);
 
 /* Hooks */
