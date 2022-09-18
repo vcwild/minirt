@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:29:22 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/04 22:40:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:36:28 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_shape	*new_shape(void)
 	shape->inverse_transform = identity_matrix();
 	shape->material = new_material();
 	shape->destroy = destroy_shape;
+	shape->normalv = NULL;
 	return (shape);
 }
 

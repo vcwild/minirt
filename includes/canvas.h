@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/31 17:04:15 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:09:50 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,7 @@ bool			color_equals(t_color *a, t_color *b);
  * @param c The canvas to free.
  */
 void			destroy_canvas(t_canvas *c);
+
+t_color			*color_normalize(t_color *a);
 
 #endif
