@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/10 12:29:03 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 09:51:38 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ int		key_hooks(t_rt *rt);
 
 void	run_mlx_window(t_rt *rt);
 void	render_canvas(t_rt *rt);
+int		print_error(char *message);
 #endif

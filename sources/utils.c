@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/17 15:15:04 by itaureli         ###   ########.fr       */
+/*   Created: 2022/09/18 09:45:04 by itaureli          #+#    #+#             */
+/*   Updated: 2022/09/18 09:58:19 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc)
+int	print_error(char *message)
 {
-	t_rt	*rt;
-
-	if (argc != 2)
-		return (print_error("Wrong number of arguments"));
-	rt = new_ray_tracer();
-	render_canvas(rt);
-	run_mlx_window(rt);
-	mlx_loop(rt->mlx);
-	return (0);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	ft_putstr_fd(message, STDERR_FILENO);
+	return (1);
 }
