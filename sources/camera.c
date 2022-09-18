@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 10:28:18 by itaureli         ###   ########.fr       */
+/*   Created: 2022/09/18 10:26:30 by itaureli          #+#    #+#             */
+/*   Updated: 2022/09/18 10:28:38 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+// TODO: Get values from, to, up from parser and place camera in the scene
+void	put_camera(t_rt *rt)
 {
-	t_rt	*rt;
+	t_tuple	*from;
+	t_tuple	*to;
+	t_tuple	*up;
 
-	if (argc != 2)
-		return (print_error("Wrong number of arguments"));
-	if (!is_valid_extension(argv[1]))
-		return (1);
-	rt = new_ray_tracer();
-	put_camera(rt);
-	render_canvas(rt);
-	run_mlx_window(rt);
-	mlx_loop(rt->mlx);
-	return (1);
+	from = new_point(0, 0, -5);
+	to = new_point(0, 0, 0);
+	up = new_vector(0, 1, 0);
+	set_camera_transform(rt->camera, view_transform(from, to, up));
+	free(from);
+	free(to);
+	free(up);
+	return ;
 }
