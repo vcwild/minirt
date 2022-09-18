@@ -61,4 +61,9 @@ int		key_hooks(t_rt *rt);
 
 void	run_mlx_window(t_rt *rt);
 void	render_canvas(t_rt *rt);
+void	put_camera(t_rt *rt);
+
+int		print_error(char *message);
+int		is_valid_extension(char *render_file);
+
 #endif

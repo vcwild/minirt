@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minirt
+NAME = miniRT
 
 SET_COMPILER = $(PWD)/scripts/set_compiler.sh
 CC = $(shell $(SET_COMPILER))
@@ -33,7 +33,7 @@ INCLUDES_PATH = $(PWD)/includes
 LIBS_PATH = $(PWD)/libs
 ARCHIVES_PATH = $(PWD)/archives
 
-HEADER_FILE = $(NAME).h
+HEADER_FILE = minirt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
 SOURCE_FILES =	$(shell ls ./sources | grep .c$)

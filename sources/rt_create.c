@@ -25,7 +25,7 @@ t_rt	*new_ray_tracer(t_rt_props *props)
 	new->image.img = mlx_new_image(new->mlx, RT_WIDTH, RT_HEIGHT);
 	new->image.addr = mlx_get_data_addr(new->image.img, &new->image.bpp,
 			&new->image.line_length, &new->image.endian);
-	new->world = new_world();
+	new->world = default_world();
 	radians = to_radians(props->c->fov);
 	new->camera = new_camera(RT_HEIGHT, RT_WIDTH, radians);
 	return (new);
