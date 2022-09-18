@@ -6,11 +6,11 @@
 #    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/10 07:15:25 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/18 09:38:50 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minirt
+NAME = miniRT
 
 SET_COMPILER = $(PWD)/scripts/set_compiler.sh
 CC = $(shell $(SET_COMPILER))
@@ -33,7 +33,7 @@ INCLUDES_PATH = $(PWD)/includes
 LIBS_PATH = $(PWD)/libs
 ARCHIVES_PATH = $(PWD)/archives
 
-HEADER_FILE = $(NAME).h
+HEADER_FILE = minirt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
 SOURCE_FILES =	$(shell ls ./sources | grep .c$)
