@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/17 15:08:53 by itaureli         ###   ########.fr       */
+/*   Created: 2022/09/10 07:08:29 by itaureli          #+#    #+#             */
+/*   Updated: 2022/09/17 15:08:25 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc)
+void	run_mlx_window(t_rt *rt)
 {
-	t_rt	*rt;
+	key_hooks(rt);
+}
 
-	if (argc != 2)
-		return (ft_putstr_fd("Error \n Wrong number of arguments",
-				STDERR_FILENO), 1);
-	rt = new_ray_tracer();
-	run_mlx_window(rt);
-	mlx_loop(rt->mlx);
+int	close_window(t_rt *rt)
+{
+	destroy_ray_tracer(rt);
+	exit(0);
+	return (0);
+}
+
+static int	key_hook(int keycode, t_rt *rt)
+{
+	if (keycode == KEY_ESC)
+		close_window(rt);
+	return (0);
+}
+
+int	key_hooks(t_rt *rt)
+{
+	mlx_hook(rt->window, EVENT_KEY_PRESS, 1L << 0, &key_hook, rt);
+	mlx_hook(rt->window, EVENT_X_WIN_PRESS, 1L << 2, &close_window, rt);
 	return (0);
 }
