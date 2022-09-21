@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 20:02:36 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:20:07 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int	parse_ambient(t_rt_props *props)
 	if (set_ambient_color(props, tmp))
 		return (free_matrix(tmp), 4);
 	free_matrix(tmp);
+	props->state |= P_AMBIENT;
 	return (0);
 }

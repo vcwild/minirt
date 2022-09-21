@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 21:19:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 20:15:26 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:43:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,5 +219,7 @@ t_matrix	*translate_view(t_point *from, t_matrix *orientation);
  * @return t_matrix* A new matrix with the result of the view transformation
  */
 t_matrix	*view_transform(t_point *from, t_point *forward, t_vector *up);
+
+t_matrix	*get_rotation_matrix(t_point *p);
 
 #endif

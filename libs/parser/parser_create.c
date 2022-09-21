@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:11:30 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 18:39:36 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:18:39 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_rt_props	*new_rt_props(void)
 	if (!new)
 		return (NULL);
 	new->id = P_SIZE;
+	new->state = 0;
 	new->line = NULL;
 	new->a = new_ambient_props();
 	if (!new->a)
