@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 20:31:21 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:19:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int	parse_camera(t_rt_props *props)
 	free_matrix(tmp);
 	status = set_fov(props, &args[3]);
 	free_matrix(args);
+	props->state |= P_CAMERA;
 	return (status);
 }

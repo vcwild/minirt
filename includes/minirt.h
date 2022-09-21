@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 19:54:19 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:08:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include <X11/keysym.h>
 
 /* constants */
-# define RT_WIDTH 500
-# define RT_HEIGHT 500
+# define RT_WIDTH 300
+# define RT_HEIGHT 300
 # define KEY_ESC 65307
 # define EVENT_KEY_PRESS	2
 # define EVENT_X_WIN_PRESS	17

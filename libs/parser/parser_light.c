@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 20:57:37 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:19:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int	parse_light(t_rt_props *props)
 	tmp = ft_split(args[3], ',');
 	if (set_color(props, tmp))
 		return (free_matrix(tmp), free_matrix(args), 5);
+	props->state |= P_LIGHT;
 	return (free_matrix(tmp), free_matrix(args), 0);
 }
