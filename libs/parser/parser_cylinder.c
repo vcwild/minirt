@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:35:43 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:39:46 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ int	parse_cylinder(t_rt_props *props)
 	status = set_cylinder_coords(cylinder, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
-	status = set_shape_orientation(cylinder, tmp);
+	status += set_shape_orientation(cylinder, tmp);
 	free_matrix(tmp);
-	status = set_cylinder_diameter(cylinder, &args[3]);
-	status = set_cylinder_height(cylinder, &args[4]);
+	status += set_cylinder_diameter(cylinder, &args[3]);
+	status += set_cylinder_height(cylinder, &args[4]);
 	tmp = ft_split(args[5], ',');
-	status = set_shape_color(cylinder, tmp);
+	status += set_shape_color(cylinder, tmp);
 	set_cylinder_translation(cylinder);
 	free_matrix(tmp);
 	add_shape(props->s, cylinder);

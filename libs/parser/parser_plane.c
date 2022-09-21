@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:14 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:28:57 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:40:27 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int	parse_plane(t_rt_props *props)
 	tmp = ft_split(args[1], ',');
 	plane = new_plane();
 	status = set_material_props(plane, props);
-	status = set_plane_coords(plane, tmp);
+	status += set_plane_coords(plane, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
-	status = set_shape_orientation(plane, tmp);
+	status += set_shape_orientation(plane, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[3], ',');
-	status = set_shape_color(plane, tmp);
-	status = set_plane_translation(plane);
+	status += set_shape_color(plane, tmp);
+	status += set_plane_translation(plane);
 	free_matrix(tmp);
 	add_shape(props->s, plane);
 	free_matrix(args);

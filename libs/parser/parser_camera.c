@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:19:44 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:39:58 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ int	parse_camera(t_rt_props *props)
 		return (free_matrix(args), 1);
 	status = 0;
 	tmp = ft_split(args[1], ',');
-	status = set_view_point(props, tmp);
+	status += set_view_point(props, tmp);
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
-	status = set_direction(props, tmp);
+	status += set_direction(props, tmp);
 	free_matrix(tmp);
-	status = set_fov(props, &args[3]);
+	status += set_fov(props, &args[3]);
 	free_matrix(args);
 	props->state |= P_CAMERA;
 	return (status);
