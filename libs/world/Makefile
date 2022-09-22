@@ -6,7 +6,7 @@
 #    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 09:09:47 by itaureli          #+#    #+#              #
-#    Updated: 2022/08/21 09:09:48 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/21 21:54:20 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = lib$(FOLDER_NAME).a
 
 SET_COMPILER = $(PWD)/scripts/set_compiler.sh
 CC = $(shell $(SET_COMPILER))
-CFLAGS = -Wall -Wextra
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)

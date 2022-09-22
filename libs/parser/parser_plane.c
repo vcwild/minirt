@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:14 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:40:27 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:39 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ static int	set_plane_translation(t_shape *plane)
 	tr = translation(plane->plane.position.x, plane->plane.position.y,
 			plane->plane.position.z);
 	if (!tr)
-		return (free(tr), ft_err("Error: Invalid matrix translation\n"), 1);
+		return (free(tr), ft_err("Error\n Invalid matrix translation\n"), 1);
 	rot = get_rotation_matrix(plane->normalv);
 	if (!rot)
 		return (free(tr), free(rot),
-			ft_err("Error: Invalid orientation vector\n"), 2);
+			ft_err("Error\n Invalid orientation vector\n"), 2);
 	product = matrix_multiply(tr, rot);
 	if (!product)
 		return (free(tr), free(rot),
-			ft_err("Error: Invalid matrix product\n"), 3);
+			ft_err("Error\n Invalid matrix product\n"), 3);
 	set_transform(plane, product);
 	free(tr);
 	free(rot);

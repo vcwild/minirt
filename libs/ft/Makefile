@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 17:31:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/08/10 20:05:00 by vwildner         ###   ########.fr        #
+#    Updated: 2022/09/21 21:53:39 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = lib$(FOLDER_NAME).a
 
 SET_COMPILER = $(PWD)/scripts/set_compiler.sh
 CC = $(shell $(SET_COMPILER))
-CFLAGS = -Wall -Wextra
 
 SOURCES_PATH = .
 SOURCES = $(shell ls . | grep .c$)
