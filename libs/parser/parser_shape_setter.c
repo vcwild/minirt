@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:56:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 20:50:36 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:46 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	set_shape_orientation(t_shape *shape, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid orientation vector\n"), status);
+		return (ft_err("Error\n Invalid orientation vector\n"), status);
 	shape->normalv = new_point(args[0], args[1], args[2]);
 	return (status);
 }
@@ -46,7 +46,7 @@ int	set_shape_orientation(t_shape *shape, char **buf)
 int	set_material_props(t_shape *shape, t_rt_props *props)
 {
 	if (!props->a->ratio || !props->l->brightness)
-		return (ft_err("Error: Invalid ambient or diffuse ratio\n"), 1);
+		return (ft_err("Error\n Invalid ambient or diffuse ratio\n"), 1);
 	shape->material->ambient = props->a->ratio;
 	shape->material->diffuse = props->l->brightness;
 	shape->material->specular = props->l->brightness;

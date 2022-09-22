@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 19:31:06 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 19:34:00 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:06 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	add_shape(t_shape_props *s, t_shape *shape)
 	new = ft_lstnew(shape);
 	if (!new)
 	{
-		fprintf(stderr, "Error: There was an error adding shape!");
+		fprintf(stderr, "Error\n There was an error adding shape!");
 		return (1);
 	}
 	ft_lstadd_back(&s->objects.spheres, new);

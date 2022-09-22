@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:56 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:40:41 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:55 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ static int	set_sphere_translation(t_shape *sphere)
 	tr = translation(sphere->sphere.center.x, sphere->sphere.center.y,
 			sphere->sphere.center.z);
 	if (!tr)
-		return (free(tr), ft_err("Error: Invalid matrix translation\n"), 1);
+		return (free(tr), ft_err("Error\n Invalid matrix translation\n"), 1);
 	scale = scaling(sphere->sphere.radius, sphere->sphere.radius,
 			sphere->sphere.radius);
 	if (!scale)
 		return (free(tr), free(scale),
-			ft_err("Error: Invalid matrix scale\n"), 2);
+			ft_err("Error\n Invalid matrix scale\n"), 2);
 	product = matrix_multiply(tr, scale);
 	if (!product)
 		return (free(tr), free(scale),
-			ft_err("Error: Invalid matrix product\n"), 3);
+			ft_err("Error\n Invalid matrix product\n"), 3);
 	set_transform(sphere, product);
 	free(tr);
 	free(scale);

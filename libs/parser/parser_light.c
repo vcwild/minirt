@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:19:22 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:23 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	set_brightness(t_rt_props *props, char **buf)
 	if (status)
 		return (ft_err("Error\n Invalid light brightness\n"), 1);
 	if (*args > 1 || *args < 0)
-		return (ft_err("Error: Invalid light brightness range\n"), 1);
+		return (ft_err("Error\n Invalid light brightness range\n"), 1);
 	props->l->brightness = *args;
 	return (status);
 }

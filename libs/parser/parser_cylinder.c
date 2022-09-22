@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:13:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:39:46 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:23:17 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	set_cylinder_translation(t_shape *cyl)
 	product = matrix_multiply_3(tr, rot, scale);
 	if (!product)
 		return (free(tr), free(rot), free(scale), free(product),
-			ft_err("Error: Invalid matrix product\n"), 4);
+			ft_err("Error\n Invalid matrix product\n"), 4);
 	set_transform(cyl, product);
 	free(tr);
 	free(rot);
