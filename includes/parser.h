@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:20:43 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:33:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef enum e_prop_id {
 	P_SIZE
 }	t_prop_id;
 
+# define P_PROPS_OK 3
+
 typedef struct s_ambient_props {
 	double	ratio;
 	t_color	*color;
@@ -50,7 +52,7 @@ typedef struct s_light_props {
 }	t_light_props;
 
 typedef struct s_shape_props {
-	t_list	*shapes;
+	t_objects	objects;
 }	t_shape_props;
 
 typedef struct s_rt_props {
@@ -61,6 +63,7 @@ typedef struct s_rt_props {
 	t_light_props		*l;
 	t_shape_props		*s;
 	int					status;
+	unsigned long int	state;
 }	t_rt_props;
 
 typedef int	t_dispatcher(t_rt_props *props);
@@ -221,5 +224,9 @@ int			set_shape_orientation(t_shape *shape, char **buf);
 int			check_color_range(double *args);
 
 double		to_radians(double degrees);
+
+int			add_shape(t_shape_props *s, t_shape *shape);
+
+int			set_material_props(t_shape *shape, t_rt_props *props);
 
 #endif

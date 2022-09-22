@@ -46,6 +46,8 @@ static int	set_ambient_ratio(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 1);
 	if (status)
 		return (ft_err("Error\n Invalid ratio\n"), status);
+	if (*args > 1 || *args < 0)
+		return (ft_err("Error: Invalid ratio range\n"), 1);
 	props->a->ratio = *args;
 	return (status);
 }
@@ -78,5 +80,6 @@ int	parse_ambient(t_rt_props *props)
 	if (set_ambient_color(props, tmp))
 		return (free_matrix(tmp), 4);
 	free_matrix(tmp);
+	props->state |= P_AMBIENT;
 	return (0);
 }

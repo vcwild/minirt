@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:19:22 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ static int	set_point_light(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 3);
 	if (status)
 		return (ft_err("Error\n Invalid light point\n"), status);
+	if (!props->a->color)
+		c = new_color(1, 1, 1);
+	else
+		c = new_color(props->a->color->r,
+				props->a->color->g, props->a->color->b);
 	p = new_point(args[0], args[1], args[2]);
-	c = new_color(props->a->color->r, props->a->color->g, props->a->color->b);
 	props->l->pl = new_point_light(p, c);
 	return (status);
 }
@@ -45,6 +49,8 @@ static int	set_brightness(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 1);
 	if (status)
 		return (ft_err("Error\n Invalid light brightness\n"), 1);
+	if (*args > 1 || *args < 0)
+		return (ft_err("Error: Invalid light brightness range\n"), 1);
 	props->l->brightness = *args;
 	return (status);
 }
@@ -83,5 +89,6 @@ int	parse_light(t_rt_props *props)
 	tmp = ft_split(args[3], ',');
 	if (set_color(props, tmp))
 		return (free_matrix(tmp), free_matrix(args), 5);
+	props->state |= P_LIGHT;
 	return (free_matrix(tmp), free_matrix(args), 0);
 }

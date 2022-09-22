@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:05 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 14:11:57 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:08:14 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		key_hooks(t_rt *rt);
 
 void	run_mlx_window(t_rt *rt);
 void	render_canvas(t_rt *rt);
-void	put_camera(t_rt *rt);
+void	put_camera(t_rt *rt, t_rt_props *props);
 
 int		print_error(char *message);
 int		is_valid_extension(char *render_file);

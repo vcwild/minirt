@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:08:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:22:13 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ t_prop_id	get_prop_id(const char *line)
 	ft_err("Error\n Invalid line start ");
 	ft_err(line);
 	ft_err("\n");
-	return (-1);
+	return (P_SIZE);
 }
