@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_multiply.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:27:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:55:34 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:57:31 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ t_matrix	*matrix_multiply_3(t_matrix *a, t_matrix *b, t_matrix *c)
 
 	if (a->size != b->size || a->size != c->size || b->size != c->size)
 		return (ft_err("Error\n matrix sizes do not match\n"), NULL);
-	new = matrix_multiply(a, b);
-	tmp = new;
+	tmp = matrix_multiply(a, b);
 	new = matrix_multiply(c, tmp);
+	free(tmp);
 	return (new);
 }
 

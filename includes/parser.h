@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:29:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:33:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:47:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,5 +228,7 @@ double		to_radians(double degrees);
 int			add_shape(t_shape_props *s, t_shape *shape);
 
 int			set_material_props(t_shape *shape, t_rt_props *props);
+
+int			check_within_range(double *args, double min, double max);
 
 #endif

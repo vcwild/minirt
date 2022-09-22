@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:56:01 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/21 21:20:39 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:19:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	main(int argc, char **argv)
 		return (1);
 	props = new_rt_props();
 	if (load_scene(argv[1], props))
-		return (1);
+		return (destroy_rt_props(props), 1);
 	rt = new_ray_tracer(props);
 	put_camera(rt, props);
 	render_canvas(rt);
 	run_mlx_window(rt);
 	mlx_loop(rt->mlx);
-	destroy_rt_props(props);
 	return (0);
 }
