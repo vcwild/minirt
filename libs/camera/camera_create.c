@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:21:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:48:02 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:37:18 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ static t_point	*resolve_point(t_matrix *mat, t_point *p)
 	t_vector		*new;
 
 	inverse = invert(mat);
+	if (!inverse)
+		return (ft_err("Error\n Matrix with no determinant!\n"),
+			new_vector(0, 0, 0));
 	new = matrix_multiply_tuple(inverse, p);
 	free(inverse);
 	return (new);

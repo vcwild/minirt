@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:39:58 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:16:48 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	set_direction(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 3);
 	if (status)
 		return (ft_err("Error\n Invalid camera direction\n"), 1);
+	if (check_within_range(args, -1, 1))
+		return (ft_err("Error\n Invalid camera direction range\n"), 1);
 	tmp = new_vector(args[0], args[1], args[2]);
 	props->c->direction = normalize(tmp);
 	free(tmp);
@@ -56,6 +58,8 @@ int	set_fov(t_rt_props *props, char **buf)
 	status = parse_float(args, buf, 1);
 	if (status)
 		return (ft_err("Error\n Invalid camera fov\n"), 1);
+	if (check_within_range(args, 0, 180))
+		return (ft_err("Error\n Invalid camera fov range\n"), 1);
 	props->c->fov = *args;
 	return (status);
 }
@@ -80,6 +84,8 @@ int	parse_camera(t_rt_props *props)
 	free_matrix(tmp);
 	status += set_fov(props, &args[3]);
 	free_matrix(args);
+	if (props->c->origin->z == -1 && props->c->direction->z == -1)
+		return (ft_err("Error\n Invalid camera provided\n"), 2);
 	props->state |= P_CAMERA;
 	return (status);
 }

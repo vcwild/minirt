@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_dispatcher.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:48:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:28:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	load_scene(const char *file, t_rt_props *props)
 	lines = readlines(file);
 	if (!lines)
 		return (ft_err("Error\n Could not read file\n"),
+			free_matrix(lines), -1);
+	if (count_args(lines) < 3)
+		return (ft_err("Error\n Invalid file\n"),
 			free_matrix(lines), -1);
 	status = 0;
 	while (lines[++i])
