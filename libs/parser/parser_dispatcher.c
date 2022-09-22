@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_dispatcher.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:48:17 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:37:42 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	parse_error(t_rt_props *props)
 {
 	(void)props;
-	ft_err("Error: Invalid file\n");
+	ft_err("Error\n Invalid file\n");
 	return (-1);
 }
 
@@ -53,7 +53,7 @@ int	load_scene(const char *file, t_rt_props *props)
 	i = -1;
 	lines = readlines(file);
 	if (!lines)
-		return (ft_err("Error: Could not read file\n"),
+		return (ft_err("Error\n Could not read file\n"),
 			free_matrix(lines), -1);
 	status = 0;
 	while (lines[++i])
@@ -62,7 +62,7 @@ int	load_scene(const char *file, t_rt_props *props)
 		status = load(props);
 		if (status)
 		{
-			ft_err("Error: Invalid scene file\n");
+			ft_err("Error\n Invalid scene file\n");
 			break ;
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_ambient.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:11:28 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/20 21:20:07 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ t_color	*get_normalized_color(char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid color params\n"), NULL);
+		return (ft_err("Error\n Invalid color params\n"), NULL);
 	status = check_color_range(args);
 	if (status)
-		return (ft_err("Error: Invalid color range\n"), NULL);
+		return (ft_err("Error\n Invalid color range\n"), NULL);
 	tmp = new_color(args[0], args[1], args[2]);
 	final = color_normalize(tmp);
 	free(tmp);
@@ -45,7 +45,7 @@ static int	set_ambient_ratio(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_err("Error: Invalid ratio\n"), status);
+		return (ft_err("Error\n Invalid ratio\n"), status);
 	if (*args > 1 || *args < 0)
 		return (ft_err("Error: Invalid ratio range\n"), 1);
 	props->a->ratio = *args;
@@ -69,7 +69,7 @@ int	parse_ambient(t_rt_props *props)
 	char		**tmp;
 
 	if (check_ambient_props(props))
-		return (ft_err("Error: Ambient was already set\n"), 1);
+		return (ft_err("Error\n Ambient was already set\n"), 1);
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 3)
 		return (free_matrix(args), 2);

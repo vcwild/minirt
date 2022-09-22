@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_read.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:33:50 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 17:34:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:45:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	**readlines(const char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (ft_err("Error: Could not open file\n"), NULL);
+		return (ft_err("Error\n Could not open file\n"), NULL);
 	acc = read_fd(fd);
 	if (!acc)
-		return (ft_err("Error: Invalid read size\n"), free(acc), NULL);
+		return (ft_err("Error\n Invalid read size\n"), free(acc), NULL);
 	strip_extra_spaces(acc);
 	final = ft_split(acc, '\n');
 	free(acc);

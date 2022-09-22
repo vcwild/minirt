@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_shape_create.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:29:22 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/16 14:36:28 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:51:45 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_shape	*new_shape(void)
 
 	shape = (t_shape *)malloc(sizeof(t_shape));
 	if (!shape)
-		return (fprintf(stderr, "Error: new_shape failed"), NULL);
+		return (ft_err("Error\n new_shape malloc failed\n"), NULL);
 	shape->transform = identity_matrix();
 	shape->inverse_transform = identity_matrix();
 	shape->material = new_material();

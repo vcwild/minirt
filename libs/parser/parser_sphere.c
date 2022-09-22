@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parser_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:56 by vwildner          #+#    #+#             */
 /*   Updated: 2022/09/20 21:40:41 by vwildner         ###   ########.fr       */
@@ -19,7 +19,7 @@ static int	set_sphere_coords(t_shape *sphere, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid coordinates\n"), status);
+		return (ft_err("Error\n Invalid coordinates\n"), status);
 	sphere->sphere.center = (t_point){args[0], args[1], args[2], 1};
 	return (status);
 }
@@ -31,7 +31,7 @@ int	set_sphere_diameter(t_shape *sphere, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_err("Error: Invalid diameter\n"), status);
+		return (ft_err("Error\n Invalid diameter\n"), status);
 	sphere->sphere.radius = *args / 2;
 	return (status);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parser_shape_setter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:56:07 by vwildner          #+#    #+#             */
 /*   Updated: 2022/09/20 20:50:36 by vwildner         ###   ########.fr       */
@@ -20,10 +20,10 @@ int	set_shape_color(t_shape *shape, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid color\n"), status);
+		return (ft_err("Error\n Invalid color\n"), status);
 	status = check_color_range(args);
 	if (status)
-		return (ft_err("Error: Invalid color range\n"), status);
+		return (ft_err("Error\n Invalid color range\n"), status);
 	tmp = new_color(args[0], args[1], args[2]);
 	free(shape->material->color);
 	shape->material->color = color_normalize(tmp);

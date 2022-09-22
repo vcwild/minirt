@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parser_light.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:36 by vwildner          #+#    #+#             */
 /*   Updated: 2022/09/20 21:19:22 by vwildner         ###   ########.fr       */
@@ -30,7 +30,7 @@ static int	set_point_light(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid light point\n"), status);
+		return (ft_err("Error\n Invalid light point\n"), status);
 	if (!props->a->color)
 		c = new_color(1, 1, 1);
 	else
@@ -48,7 +48,7 @@ static int	set_brightness(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 1);
 	if (status)
-		return (ft_err("Error: Invalid light brightness\n"), 1);
+		return (ft_err("Error\n Invalid light brightness\n"), 1);
 	if (*args > 1 || *args < 0)
 		return (ft_err("Error: Invalid light brightness range\n"), 1);
 	props->l->brightness = *args;
@@ -63,7 +63,7 @@ static int	set_color(t_rt_props *props, char **buf)
 
 	status = parse_float(args, buf, 3);
 	if (status)
-		return (ft_err("Error: Invalid light color\n"), 1);
+		return (ft_err("Error\n Invalid light color\n"), 1);
 	tmp = new_color(args[0], args[1], args[2]);
 	props->l->color = color_normalize(tmp);
 	free(tmp);
@@ -76,7 +76,7 @@ int	parse_light(t_rt_props *props)
 	char	**tmp;
 
 	if (check_light_props(props))
-		return (ft_err("Error: Light already defined\n"), 1);
+		return (ft_err("Error\n Light already defined\n"), 1);
 	args = ft_split(props->line, ' ');
 	if (count_args(args) != 4)
 		return (free_matrix(args), 2);

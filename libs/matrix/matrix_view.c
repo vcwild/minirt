@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_view.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 17:55:27 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/29 16:06:56 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:50:48 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_matrix	*translate_view(t_point *from, t_matrix *orientation)
 	new = matrix_multiply(orientation, tmp);
 	free(tmp);
 	if (!new)
-		fprintf(stderr, "Error when translating view");
+		ft_err("Error\n when translating view\n");
 	return (new);
 }
 

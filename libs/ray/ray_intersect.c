@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_intersect.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:17:39 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/15 16:14:40 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:51:24 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_intersection	*new_intersection( double t, t_shape *obj, t_object_type type)
 
 	x = (t_intersection *)malloc(sizeof(t_intersection));
 	if (!x)
-		return (fprintf(stderr, "Error: new_intersection failed\n"), NULL);
+		return (ft_err("Error\n new_intersection malloc failed\\n"), NULL);
 	x->t = t;
 	x->shape = obj;
 	x->object_type = type;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:09:30 by itaureli          #+#    #+#             */
-/*   Updated: 2022/08/21 14:14:44 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:52:22 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	add_light(t_world *w, t_point_light *pl)
 	new = ft_lstnew(pl);
 	if (!new)
 	{
-		fprintf(stderr, "Error: There was an error adding a light source!");
+		ft_err("Error\n There was an error adding a light source\n");
 		return (1);
 	}
 	ft_lstadd_back(&w->lights, new);
@@ -57,7 +57,7 @@ int	add_sphere(t_world *w, t_shape *sphere)
 	new = ft_lstnew(sphere);
 	if (!new)
 	{
-		fprintf(stderr, "Error: There was an error adding a sphere!");
+		ft_err("Error\n There was an error adding a sphere\n");
 		return (1);
 	}
 	ft_lstadd_back(&w->objects.spheres, new);
@@ -76,7 +76,7 @@ t_world	*default_world(void)
 	new = new_world();
 	if (!new)
 	{
-		fprintf(stderr, "Error: There was an error creating the world!");
+		ft_err("Error\n There was an error creating a new world\n");
 		return (NULL);
 	}
 	add_light(new,

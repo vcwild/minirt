@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:47:11 by vwildner          #+#    #+#             */
-/*   Updated: 2022/08/13 16:45:06 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:51:09 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_ray	*new_ray(t_point *origin, t_vector *direction)
 
 	ray = (t_ray *)malloc(sizeof(t_ray));
 	if (!ray)
-		return (fprintf(stderr, "Error: new_ray malloc failed\n"), NULL);
+		return (ft_err("Error\n new_ray malloc failed\\n"), NULL);
 	ray->origin = origin;
 	ray->direction = direction;
 	return (ray);
