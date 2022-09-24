@@ -1,3 +1,0 @@
-[submodule "tests/munit"]
-	path = tests/munit
-	url = git@github.com:nemequ/munit.git

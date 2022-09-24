@@ -6,7 +6,7 @@
 #    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/21 21:34:54 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/24 20:05:36 by itaureli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -202,9 +202,6 @@ libparser: libworld libcanvas
 libparser_clean:
 	@$(MAKE_EXTERNAL) $(PARSER_PATH) clean
 
-valgrind: $(NAME)
-	$(VALGRIND) ./$(NAME) $(RUN_ARGS)
-
 re:	fclean all
 
 clean: libft_clean libmlx_clean libtuple_clean libcanvas_clean libmatrix_clean libray_clean libmaterial_clean liblight_clean libworld_clean
@@ -215,22 +212,3 @@ archives_clean:
 
 fclean: clean archives_clean
 	@$(REMOVE) $(NAME)
-
-TEST_SRC += tests/munit/munit.c
-TEST_SRC += tests/main.c
-TEST_SRC += tests/test_tuples.c
-TEST_SRC += tests/test_matrix.c
-TEST_SRC += tests/test_canvas.c
-TEST_SRC += tests/test_matrix_transform.c
-TEST_SRC += tests/test_ray.c
-TEST_SRC += tests/test_sphere.c
-TEST_SRC += tests/test_materials.c
-TEST_SRC += tests/test_world.c
-TEST_SRC += tests/test_camera.c
-TEST_SRC += tests/test_shapes.c
-TEST_SRC += tests/test_planes.c
-TEST_SRC += tests/test_cylinders.c
-
-test: re $(ALL_LIBS)
-	$(CC) -w -g $(TEST_SRC) -L$(ARCHIVES_PATH) -I$(INCLUDES_PATH) -o ./test_bin $(INTERNAL_LIBS) -lm
-	./test_bin # || ./test_bin --no-fork
