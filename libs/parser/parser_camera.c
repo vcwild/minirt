@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:12:20 by vwildner          #+#    #+#             */
-/*   Updated: 2022/09/21 23:16:48 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:28:30 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,14 @@ int	parse_camera(t_rt_props *props)
 	free_matrix(tmp);
 	tmp = ft_split(args[2], ',');
 	status += set_direction(props, tmp);
+	if (status)
+		return (free_matrix(args), free_matrix(tmp), status);
 	free_matrix(tmp);
 	status += set_fov(props, &args[3]);
 	free_matrix(args);
-	if (props->c->origin->z == -1 && props->c->direction->z == -1)
-		return (ft_err("Error\n Invalid camera provided\n"), 2);
+	if ((props->c->origin->z == -1 && props->c->direction->z == -1)
+		|| (props->c->origin->z == 1 && props->c->direction->z == 1))
+		return (ft_err("Error\n Parameters set invalid determinant\n"), 2);
 	props->state |= P_CAMERA;
 	return (status);
 }
