@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 17:23:23 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/21 21:54:09 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/26 21:23:14 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(ARCHIVE_SOURCE): $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
-	$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
+	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
 
 clean:
 	@$(RM) $(OBJECTS)

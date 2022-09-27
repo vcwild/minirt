@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:19:40 by vwildner          #+#    #+#              #
-#    Updated: 2022/09/24 20:05:36 by itaureli         ###   ########.fr        #
+#    Updated: 2022/09/26 21:22:22 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,14 +124,14 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(HEADER) $(ALL_LIBS)
 	@$(CC) $(CFLAGS) \
-	-w -g $(OBJECTS) \
+	-w  $(OBJECTS) \
 	-o $(NAME) \
 	-L $(ARCHIVES_PATH) \
 	-I $(INCLUDES_PATH) $(INTERNAL_LIBS) $(EXTERNAL_LIBS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	@$(SAFE_MKDIR) $(OBJECTS_PATH)
-	@$(CC) $(CFLAGS) -g -I $(INCLUDES_PATH) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
 
 libft:
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)
