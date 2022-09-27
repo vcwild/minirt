@@ -30,6 +30,7 @@
 # define KEY_ESC 65307
 # define EVENT_KEY_PRESS	2
 # define EVENT_X_WIN_PRESS	17
+# define EVENT_FOCUS_WIN	9
 # define NAME				"miniRT"
 
 /* structs */

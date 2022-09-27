@@ -35,5 +35,6 @@ int	key_hooks(t_rt *rt)
 {
 	mlx_hook(rt->window, EVENT_KEY_PRESS, 1L << 0, &key_hook, rt);
 	mlx_hook(rt->window, EVENT_X_WIN_PRESS, 1L << 2, &close_window, rt);
+	mlx_hook(rt->window, EVENT_FOCUS_WIN, 1L << 21, &render_canvas, rt);
 	return (0);
 }
