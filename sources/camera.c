@@ -12,7 +12,6 @@
 
 #include "minirt.h"
 
-// TODO: Get values from, to, up from parser and place camera in the scene
 void	put_camera(t_rt *rt, t_rt_props *props)
 {
 	t_tuple		*up;
