@@ -12,9 +12,9 @@
 
 #include <parser.h>
 
-int add_shape(t_shape_props *s, t_shape *shape)
+int	add_shape(t_shape_props *s, t_shape *shape)
 {
-	t_list *new;
+	t_list	*new;
 
 	new = ft_lstnew(shape);
 	if (!new)
