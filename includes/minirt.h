@@ -61,7 +61,7 @@ int		close_window(t_rt *rt);
 int		key_hooks(t_rt *rt);
 
 void	run_mlx_window(t_rt *rt);
-void	render_canvas(t_rt *rt);
+int		render_canvas(t_rt *rt);
 void	put_camera(t_rt *rt, t_rt_props *props);
 
 int		print_error(char *message);

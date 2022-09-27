@@ -40,10 +40,10 @@ void	fill_mlx_image(t_canvas *canvas, t_image *image)
 	}
 }
 
-void	render_canvas(t_rt *rt)
+int	render_canvas(t_rt *rt)
 {
 	rt->canvas = render(rt->camera, rt->world);
 	fill_mlx_image(rt->canvas, &rt->image);
 	mlx_put_image_to_window(rt->mlx, rt->window, rt->image.img, 0, 0);
-	return ;
+	return (0);
 }
